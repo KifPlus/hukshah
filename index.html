@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>HUKSHAH | Golden Molasses | Shah of Good Times</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,500;0,700;1,400&family=Montserrat:wght@200;300;400;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --gold:#dbb86b;
+  --gold2:#f5d78e;
+  --gold3:#8a6a1f;
+  --black:#020202;
+  --dark:#0a0a0a;
+  --smoke:rgba(219,184,107,0.07);
+}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--black);
+  color:#ececec;
+  overflow-x:hidden;
+  font-family:'Montserrat',sans-serif;
+  cursor:none;
+}
+::selection{background:var(--gold);color:#000;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:#000;}
+::-webkit-scrollbar-thumb{background:var(--gold);}
+
+/* CURSOR */
+#cur{position:fixed;width:10px;height:10px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:width .3s,height .3s;}
+#cur-outer{position:fixed;width:36px;height:36px;border:1px solid rgba(219,184,107,.45);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:transform .18s ease-out,width .3s,height .3s;}
+body:hover #cur{opacity:1;}
+
+/* NAV */
+nav{
+  position:fixed;top:0;width:100%;
+  padding:26px 60px;
+  display:flex;justify-content:space-between;align-items:center;
+  z-index:1000;
+  background:linear-gradient(180deg,rgba(0,0,0,.88) 0%,transparent 100%);
+  backdrop-filter:blur(10px);
+  transition:background .4s;
+}
+nav.solid{background:rgba(0,0,0,.97)!important;}
+.nav-logo{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:2.2rem;letter-spacing:8px;
+  background:linear-gradient(135deg,#fff 30%,var(--gold) 80%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.nav-right{display:flex;align-items:center;gap:40px;}
+.nav-links{display:flex;gap:35px;list-style:none;}
+.nav-links a{
+  font-size:.65rem;letter-spacing:4px;text-transform:uppercase;
+  color:rgba(236,236,236,.55);text-decoration:none;
+  font-weight:600;transition:color .3s;
+}
+.nav-links a:hover{color:var(--gold);}
+.nav-est{font-size:.6rem;letter-spacing:3px;color:rgba(219,184,107,.4);font-weight:500;}
+
+/* HERO */
+.hero{
+  height:100vh;
+  display:flex;flex-direction:column;
+  justify-content:center;align-items:center;
+  text-align:center;
+  position:relative;overflow:hidden;
+  background:radial-gradient(ellipse at 50% 60%,rgba(219,184,107,.06) 0%,transparent 65%),#020202;
+}
+.hero-bg-word{
+  position:absolute;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(8rem,28vw,22rem);
+  color:rgba(219,184,107,.035);
+  letter-spacing:-5px;
+  pointer-events:none;user-select:none;
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  white-space:nowrap;
+}
+.hero-eyebrow{
+  font-size:.6rem;letter-spacing:10px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:28px;opacity:0;
+}
+.hero-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(5rem,16vw,14rem);
+  letter-spacing:8px;line-height:.9;
+  background:linear-gradient(160deg,#fff 0%,var(--gold2) 35%,var(--gold) 65%,var(--gold3) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 80px rgba(219,184,107,.25));
+  opacity:0;
+}
+.hero-sub{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1rem,2.5vw,1.6rem);
+  font-style:italic;letter-spacing:6px;
+  color:var(--gold);margin-top:12px;opacity:0;
+}
+.hero-tagline{
+  font-size:.72rem;letter-spacing:8px;text-transform:uppercase;
+  color:rgba(236,236,236,.38);margin-top:32px;opacity:0;
+}
+.hero-badge{
+  margin-top:36px;
+  display:inline-flex;align-items:center;gap:10px;
+  border:1px solid rgba(219,184,107,.3);
+  padding:9px 28px;
+  font-size:.65rem;letter-spacing:4px;text-transform:uppercase;
+  color:var(--gold);opacity:0;
+  backdrop-filter:blur(6px);
+}
+.hero-badge::before,.hero-badge::after{content:'◆';font-size:.5rem;}
+.hero-cta{margin-top:48px;display:flex;gap:18px;opacity:0;}
+.btn-gold{
+  padding:13px 38px;
+  background:linear-gradient(135deg,var(--gold3),var(--gold),var(--gold2));
+  color:#000;font-size:.65rem;letter-spacing:4px;text-transform:uppercase;
+  font-weight:800;border:none;cursor:pointer;
+  clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);
+  transition:filter .3s,transform .3s;text-decoration:none;display:inline-flex;align-items:center;
+}
+.btn-gold:hover{filter:brightness(1.25);transform:scale(1.04);}
+.btn-ghost{
+  padding:13px 38px;
+  background:transparent;border:1px solid rgba(219,184,107,.35);
+  color:var(--gold);font-size:.65rem;letter-spacing:4px;text-transform:uppercase;
+  font-weight:700;cursor:pointer;
+  clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);
+  transition:all .3s;text-decoration:none;display:inline-flex;align-items:center;
+}
+.btn-ghost:hover{background:rgba(219,184,107,.1);border-color:var(--gold);}
+.hero-scroll{
+  position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;
+}
+.scroll-bar{width:1px;height:56px;background:linear-gradient(180deg,var(--gold),transparent);animation:scrollBeat 2s infinite;}
+.scroll-txt{font-size:.5rem;letter-spacing:5px;color:rgba(255,255,255,.25);text-transform:uppercase;}
+
+/* GOLD PARTICLES canvas */
+#particles-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;}
+
+/* MARQUEE */
+.marquee-wrap{
+  position:relative;z-index:2;
+  padding:22px 0;overflow:hidden;
+  border-top:1px solid rgba(219,184,107,.12);
+  border-bottom:1px solid rgba(219,184,107,.12);
+  background:rgba(219,184,107,.03);
+}
+.marquee-track{display:flex;gap:50px;white-space:nowrap;animation:marqueeScroll 28s linear infinite;}
+.m-item{
+  display:inline-flex;align-items:center;gap:16px;flex-shrink:0;
+  font-family:'Bebas Neue',sans-serif;font-size:1rem;
+  letter-spacing:5px;color:rgba(219,184,107,.45);
+}
+.m-sep{color:var(--gold);font-size:.8rem;}
+
+/* ANIMATION CONTAINER — scroll-pinned product showcase */
+.anim-container{position:relative;background:var(--black);}
+
+.scroll-section{
+  height:100vh;
+  display:flex;align-items:center;
+  justify-content:space-between;
+  padding:0 10%;position:relative;z-index:2;
+}
+.showcase-text{width:44%;z-index:20;}
+.showcase-text .s-label{
+  font-size:.58rem;letter-spacing:8px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:14px;display:block;
+}
+.showcase-text h2{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(3rem,6vw,5.5rem);
+  letter-spacing:3px;line-height:1;
+  margin-bottom:22px;
+  background:linear-gradient(135deg,#fff 50%,var(--gold));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.showcase-text p{
+  font-size:.92rem;line-height:1.85;
+  color:rgba(200,200,200,.7);font-weight:300;
+}
+.sigma-quote{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.35rem;font-weight:500;font-style:italic;
+  margin-top:26px;
+  border-left:3px solid var(--gold);padding-left:18px;
+  color:#e6e6e6;line-height:1.5;
+}
+
+/* pinned visual window */
+.showcase-visuals{
+  position:absolute;right:8%;top:50%;
+  transform:translateY(-50%);
+  width:500px;height:500px;
+  display:flex;justify-content:center;align-items:center;
+  z-index:50;pointer-events:none;
+}
+/* PLACEHOLDER PRODUCT SHAPES */
+.product-placeholder{
+  position:absolute;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  opacity:0;transform:scale(.6) rotate(0deg);
+}
+/* 50g box placeholder */
+#box-50g{
+  width:220px;height:300px;
+  background:linear-gradient(145deg,#111,#1a1a1a);
+  border:1px solid rgba(219,184,107,.3);
+  border-radius:8px;
+  box-shadow:0 30px 80px rgba(0,0,0,.9),inset 0 1px 0 rgba(219,184,107,.15);
+  position:relative;overflow:hidden;
+}
+#box-50g::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(145deg,transparent 40%,rgba(219,184,107,.06) 100%);
+}
+#box-50g::after{
+  content:'HUKSHAH\A Golden Molasses\A━━━━━━━━━━\A Misbah\A 50g';
+  white-space:pre;
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:.85rem;letter-spacing:3px;
+  color:var(--gold);text-align:center;
+  padding:20px;line-height:1.8;
+}
+/* Replace the ::after pseudo text with a real element */
+.box-label{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:6px;padding:20px;
+}
+.box-label .bl-logo{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.8rem;letter-spacing:6px;
+  background:linear-gradient(135deg,var(--gold2),var(--gold));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.box-label .bl-sub{font-size:.55rem;letter-spacing:4px;color:rgba(219,184,107,.6);}
+.box-label .bl-divider{width:80%;height:1px;background:rgba(219,184,107,.25);margin:6px 0;}
+.box-label .bl-flavor{font-size:.7rem;letter-spacing:3px;color:#fff;text-transform:uppercase;}
+.box-label .bl-weight{font-size:.6rem;letter-spacing:3px;color:rgba(255,255,255,.4);}
+.box-img{width:100%;height:100%;object-fit:cover;border-radius:8px;display:none;}
+.box-img.loaded{display:block;}
+
+/* tubs group */
+#tubs-group{
+  position:absolute;width:100%;height:100%;
+  opacity:0;
+  display:flex;justify-content:center;align-items:center;
+  gap:24px;transform:scale(.85);
+}
+.tub-placeholder{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  border-radius:12px;
+  position:relative;overflow:hidden;
+}
+.tub-img{width:100%;height:100%;object-fit:cover;border-radius:12px;display:none;}
+.tub-img.loaded{display:block;}
+/* standing tub */
+#standingTub{
+  width:200px;height:220px;
+  background:linear-gradient(170deg,#181818,#111);
+  border:1px solid rgba(219,184,107,.25);
+  box-shadow:0 40px 70px rgba(0,0,0,.95);
+  flex-shrink:0;
+}
+#standingTub .tl{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:5px;
+}
+#standingTub .tl .n{
+  font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:4px;
+  background:linear-gradient(135deg,var(--gold2),var(--gold));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+#standingTub .tl .s{font-size:.5rem;letter-spacing:4px;color:rgba(219,184,107,.55);}
+#standingTub .tl .f{font-size:.65rem;letter-spacing:2px;color:#fff;margin-top:4px;}
+#standingTub .tl .w{font-size:.5rem;letter-spacing:3px;color:rgba(255,255,255,.35);}
+/* sleeping tub */
+#sleepingTub{
+  width:200px;height:220px;
+  background:linear-gradient(170deg,#161616,#0e0e0e);
+  border:1px solid rgba(219,184,107,.2);
+  box-shadow:-20px 30px 60px rgba(0,0,0,.8);
+  transform:rotate(-75deg) translate(-20px,50px);
+  flex-shrink:0;
+}
+#sleepingTub .tl{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:5px;
+}
+#sleepingTub .tl .n{
+  font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:4px;
+  background:linear-gradient(135deg,var(--gold2),var(--gold));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+#sleepingTub .tl .s{font-size:.5rem;letter-spacing:3px;color:rgba(219,184,107,.5);}
+#sleepingTub .tl .f{font-size:.6rem;letter-spacing:2px;color:#fff;margin-top:4px;}
+#sleepingTub .tl .w{font-size:.5rem;letter-spacing:3px;color:rgba(255,255,255,.3);}
+
+/* GOLD ORB behind products */
+.gold-orb{
+  position:absolute;border-radius:50%;
+  background:radial-gradient(circle,rgba(219,184,107,.12) 0%,transparent 70%);
+  pointer-events:none;animation:orbPulse 4s ease-in-out infinite;
+}
+
+/* LEGACY / SIGMA WALL */
+.legacy-section{
+  min-height:90vh;
+  display:flex;flex-direction:column;
+  justify-content:center;align-items:center;
+  text-align:center;padding:80px 20px;
+  background:linear-gradient(160deg,#070707,#010101);
+  border-top:1px solid #1c1c1c;
+  border-bottom:1px solid #1c1c1c;
+  position:relative;overflow:hidden;z-index:2;
+}
+.legacy-bg-text{
+  position:absolute;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:22vw;
+  color:rgba(219,184,107,.025);
+  pointer-events:none;user-select:none;
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  white-space:nowrap;letter-spacing:-10px;
+}
+.legacy-section h3{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(2.5rem,6vw,5rem);
+  letter-spacing:4px;line-height:1.15;
+  max-width:1000px;
+  background:linear-gradient(135deg,#fff 30%,var(--gold));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  position:relative;z-index:1;
+}
+.gold-divider{
+  width:80px;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  margin:28px auto;
+}
+.legacy-grid{
+  display:flex;gap:30px;margin-top:50px;
+  flex-wrap:wrap;justify-content:center;position:relative;z-index:1;
+}
+.legacy-card{
+  background:rgba(0,0,0,.65);
+  backdrop-filter:blur(14px);
+  padding:30px 38px;
+  border-radius:0;
+  border:1px solid rgba(219,184,107,.18);
+  width:240px;
+  clip-path:polygon(12px 0%,100% 0%,calc(100% - 12px) 100%,0% 100%);
+  transition:transform .3s,border-color .3s;
+}
+.legacy-card:hover{transform:translateY(-5px);border-color:rgba(219,184,107,.45);}
+.legacy-card .year{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:2.8rem;letter-spacing:3px;
+  background:linear-gradient(135deg,var(--gold2),var(--gold));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  display:block;line-height:1;
+}
+.legacy-card p{
+  font-size:.75rem;color:rgba(236,236,236,.55);
+  margin-top:8px;letter-spacing:1px;line-height:1.5;
+}
+.legacy-manifesto{
+  margin-top:40px;max-width:800px;
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;font-size:1.15rem;
+  color:rgba(185,185,185,.7);line-height:1.8;
+  position:relative;z-index:1;
+}
+
+/* BLENDS GALLERY */
+.blend-gallery{
+  padding:110px 6%;background:#000;
+  text-align:center;position:relative;z-index:2;
+}
+.blend-gallery h2{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(2rem,5vw,4rem);letter-spacing:5px;
+  margin-bottom:10px;
+  background:linear-gradient(135deg,#fff 30%,var(--gold));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.blend-gallery .sub-label{
+  font-size:.65rem;letter-spacing:5px;
+  color:rgba(219,184,107,.45);text-transform:uppercase;margin-bottom:50px;display:block;
+}
+.gallery-row{
+  display:flex;flex-wrap:wrap;justify-content:center;
+  gap:3px;
+}
+.gallery-item{
+  width:280px;
+  background:#0d0d0d;
+  overflow:hidden;
+  transition:transform .4s cubic-bezier(.34,1.56,.64,1),box-shadow .4s;
+  border:1px solid #1c1c1c;
+  position:relative;
+}
+.gallery-item:hover{
+  transform:translateY(-10px) scale(1.02);
+  box-shadow:0 40px 80px rgba(0,0,0,.8),0 0 30px rgba(219,184,107,.1);
+  border-color:rgba(219,184,107,.3);
+  z-index:5;
+}
+.gi-img-wrap{
+  width:100%;height:260px;overflow:hidden;
+  background:linear-gradient(145deg,#111,#0d0d0d);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+}
+/* placeholder gradient when no image */
+.gi-img-wrap.placeholder::before{
+  content:attr(data-label);
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.1rem;letter-spacing:4px;
+  color:rgba(219,184,107,.25);
+  position:absolute;
+}
+.gi-img-wrap img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .5s;display:block;
+}
+.gallery-item:hover .gi-img-wrap img{transform:scale(1.06);}
+.gi-label{
+  padding:18px 16px;background:#0a0a0a;
+  font-size:.7rem;letter-spacing:2px;
+  font-weight:600;color:rgba(236,236,236,.7);
+  display:flex;align-items:center;gap:8px;
+}
+.gi-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--gold);flex-shrink:0;
+}
+
+/* SIGMA QUOTES section */
+.quotes-section{
+  padding:90px 6%;
+  background:linear-gradient(180deg,#000,rgba(219,184,107,.03),#000);
+  text-align:center;position:relative;z-index:2;
+  overflow:hidden;
+}
+.quotes-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:2px;
+  max-width:1200px;margin:50px auto 0;
+}
+.quote-card{
+  padding:50px 35px;
+  background:rgba(10,10,10,.9);
+  border:1px solid rgba(219,184,107,.1);
+  transition:border-color .4s,background .4s;
+  position:relative;overflow:hidden;
+}
+.quote-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  transform:scaleX(0);transition:transform .4s;
+}
+.quote-card:hover{border-color:rgba(219,184,107,.3);background:rgba(15,15,15,.95);}
+.quote-card:hover::before{transform:scaleX(1);}
+.quote-mark{
+  font-family:'Cormorant Garamond',serif;
+  font-size:5rem;line-height:.5;
+  color:rgba(219,184,107,.18);
+  display:block;margin-bottom:20px;
+}
+.quote-text{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;font-size:1.05rem;
+  color:rgba(236,236,236,.7);line-height:1.8;
+}
+.quote-attr{
+  display:block;margin-top:18px;
+  font-size:.55rem;letter-spacing:5px;
+  color:var(--gold);text-transform:uppercase;
+}
+
+/* CONTACT / FOOTER */
+.footer-info{
+  background:#010101;
+  padding:80px 8%;
+  display:flex;justify-content:space-between;
+  flex-wrap:wrap;gap:50px;
+  border-top:1px solid #181818;
+  position:relative;z-index:2;
+}
+.footer-brand{flex:1;min-width:280px;}
+.footer-brand .fb-logo{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:2.5rem;letter-spacing:8px;
+  background:linear-gradient(135deg,var(--gold2),var(--gold));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  display:block;margin-bottom:4px;
+}
+.footer-brand .fb-tagline{
+  font-size:.6rem;letter-spacing:5px;
+  color:rgba(219,184,107,.4);text-transform:uppercase;
+  display:block;margin-bottom:18px;
+}
+.footer-brand p{font-size:.82rem;color:rgba(170,170,170,.7);line-height:1.7;max-width:280px;}
+.footer-box{min-width:200px;}
+.footer-box h4{
+  color:var(--gold);letter-spacing:4px;
+  font-size:.65rem;text-transform:uppercase;
+  margin-bottom:22px;padding-bottom:12px;
+  border-bottom:1px solid rgba(219,184,107,.15);
+}
+.footer-box p,.footer-box a{
+  color:rgba(170,170,170,.7);line-height:1.7;
+  text-decoration:none;display:block;margin-bottom:8px;
+  font-size:.82rem;transition:.2s;
+}
+.footer-box a:hover{color:var(--gold);transform:translateX(6px);}
+.ceo-name{color:#fff!important;font-size:1.3rem!important;font-weight:800!important;letter-spacing:1px;}
+.footer-warning{
+  width:100%;padding:18px;text-align:center;
+  font-size:.58rem;letter-spacing:4px;
+  color:rgba(236,236,236,.18);text-transform:uppercase;
+  border-top:1px solid #111;
+}
+.footer-bottom{
+  background:#010101;padding:20px;text-align:center;
+  font-size:.58rem;letter-spacing:3px;
+  color:rgba(255,255,255,.12);border-top:1px solid #0e0e0e;
+  position:relative;z-index:2;
+}
+.footer-bottom span{color:rgba(219,184,107,.5);}
+
+/* CONTACT PULSE */
+.contact-pulse{
+  display:inline-block;
+  width:8px;height:8px;border-radius:50%;
+  background:#00ff88;margin-right:8px;
+  animation:pulse 2s infinite;vertical-align:middle;
+}
+
+/* ANIMATIONS */
+@keyframes scrollBeat{0%,100%{opacity:1;}50%{opacity:.15;}}
+@keyframes marqueeScroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+@keyframes orbPulse{0%,100%{transform:scale(1);opacity:.7;}50%{transform:scale(1.15);opacity:1;}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(0,255,136,.5);}70%{box-shadow:0 0 0 8px rgba(0,255,136,0);}}
+@keyframes scanline{0%{top:-100%;}100%{top:200%;}}
+@keyframes shimmerGold{
+  0%{background-position:-200% center;}
+  100%{background-position:200% center;}
+}
+
+/* LOADING SCREEN */
+#loader{
+  position:fixed;inset:0;z-index:99999;
+  background:#000;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;
+  transition:opacity .6s,visibility .6s;
+}
+#loader.gone{opacity:0;visibility:hidden;}
+.loader-logo{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:4rem;letter-spacing:12px;
+  background:linear-gradient(135deg,var(--gold2),var(--gold));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.loader-bar-wrap{width:200px;height:2px;background:rgba(219,184,107,.15);position:relative;overflow:hidden;}
+.loader-bar{height:100%;width:0%;background:var(--gold);transition:width 1.5s ease;}
+.loader-sub{font-size:.55rem;letter-spacing:6px;color:rgba(219,184,107,.4);text-transform:uppercase;}
+
+/* reveal utility */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .8s,transform .8s;}
+.reveal.vis{opacity:1;transform:translateY(0);}
+.rd1{transition-delay:.1s;}.rd2{transition-delay:.2s;}.rd3{transition-delay:.3s;}.rd4{transition-delay:.4s;}.rd5{transition-delay:.5s;}
+
+@media(max-width:1000px){
+  nav{padding:18px 24px;}
+  .nav-links{display:none;}
+  .scroll-section{flex-direction:column;justify-content:center;padding:100px 5%;text-align:center;}
+  .showcase-text{width:100%;}
+  .showcase-visuals{position:relative;right:auto;top:auto;width:100%;height:340px;transform:none;margin:24px 0;}
+  .quotes-grid{grid-template-columns:1fr;}
+  .footer-info{justify-content:flex-start;}
+  #box-50g{width:160px;height:220px;}
+  #standingTub,#sleepingTub{width:150px;height:165px;}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-logo">HUKSHAH</div>
+  <div class="loader-bar-wrap"><div class="loader-bar" id="lbar"></div></div>
+  <div class="loader-sub">Shah of Good Times · Est. 2022</div>
+</div>
+
+<!-- CURSOR -->
+<div id="cur"></div>
+<div id="cur-outer"></div>
+
+<!-- PARTICLES -->
+<canvas id="particles-canvas"></canvas>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <div class="nav-logo">HUKSHAH<span style="color:var(--gold);">.</span></div>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#showcase">Products</a></li>
+      <li><a href="#blends">Blends</a></li>
+      <li><a href="#legacy">Legacy</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <span class="nav-est">EST. 2022</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg-word">SIGMA</div>
+  <p class="hero-eyebrow" id="h-eyebrow">Golden Molasses · UAE · Est. 2022</p>
+  <h1 class="hero-title" id="h-title">HUKSHAH</h1>
+  <p class="hero-sub" id="h-sub">Golden Molasses</p>
+  <p class="hero-tagline" id="h-tag">Shah &nbsp;of &nbsp;Good &nbsp;Times</p>
+  <div class="hero-badge" id="h-badge">Premium Shisha Flavors · Unstoppable Dynasty</div>
+  <div class="hero-cta" id="h-cta">
+    <a href="#showcase" class="btn-gold">Explore the Blends</a>
+    <a href="#contact" class="btn-ghost">Connect Now</a>
+  </div>
+  <div class="hero-scroll" id="h-scroll">
+    <div class="scroll-bar"></div>
+    <span class="scroll-txt">Scroll</span>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="m-item">Misbah <span class="m-sep">◆</span></span>
+    <span class="m-item">Love 86 <span class="m-sep">◆</span></span>
+    <span class="m-item">Blueberry Mint <span class="m-sep">◆</span></span>
+    <span class="m-item">Grape Mint <span class="m-sep">◆</span></span>
+    <span class="m-item">Double Apple <span class="m-sep">◆</span></span>
+    <span class="m-item">Gum Mint <span class="m-sep">◆</span></span>
+    <span class="m-item">Mint <span class="m-sep">◆</span></span>
+    <span class="m-item">Shah of Good Times <span class="m-sep">◆</span></span>
+    <span class="m-item">Misbah <span class="m-sep">◆</span></span>
+    <span class="m-item">Love 86 <span class="m-sep">◆</span></span>
+    <span class="m-item">Blueberry Mint <span class="m-sep">◆</span></span>
+    <span class="m-item">Grape Mint <span class="m-sep">◆</span></span>
+    <span class="m-item">Double Apple <span class="m-sep">◆</span></span>
+    <span class="m-item">Gum Mint <span class="m-sep">◆</span></span>
+    <span class="m-item">Mint <span class="m-sep">◆</span></span>
+    <span class="m-item">Shah of Good Times <span class="m-sep">◆</span></span>
+  </div>
+</div>
+
+<!-- SCROLL SHOWCASE — ANIMATION CONTAINER -->
+<div class="anim-container" id="showcase">
+
+  <!-- PINNED VISUAL TARGET -->
+  <div class="showcase-visuals" id="animated-visual-target">
+    <div class="gold-orb" style="width:420px;height:420px;top:50%;left:50%;transform:translate(-50%,-50%);"></div>
+
+    <!-- 50g BOX — will hold real image -->
+    <div class="product-placeholder" id="box-50g">
+      <!-- PLACEHOLDER CONTENT — Replace with real <img> once confirmed -->
+      <div class="box-label">
+        <div class="bl-logo">HUKSHAH</div>
+        <div class="bl-sub">Golden Molasses</div>
+        <div class="bl-divider"></div>
+        <div class="bl-flavor">Misbah</div>
+        <div class="bl-weight">50g · Flavoured Tobacco Moassel</div>
+      </div>
+      <!-- REAL IMAGE — uncomment and fill src when ready -->
+      <!-- <img class="box-img" src="50g.jpeg" alt="Hukshah 50g Pack"> -->
+    </div>
+
+    <!-- TUBS GROUP — standing & sleeping -->
+    <div id="tubs-group">
+      <!-- Standing Tub -->
+      <div class="tub-placeholder" id="standingTub">
+        <div class="tl">
+          <div class="n">HUKSHAH</div>
+          <div class="s">Golden Molasses</div>
+          <div class="f">Love 86</div>
+          <div class="w">1 KG · Standing</div>
+        </div>
+        <!-- REAL IMAGE — uncomment when ready -->
+        <!-- <img class="tub-img" src="WhatsApp_Image_2026-05-29_at_7_31_58_PM.jpeg" alt="Love86 1KG"> -->
+      </div>
+      <!-- Sleeping Tub -->
+      <div class="tub-placeholder" id="sleepingTub">
+        <div class="tl">
+          <div class="n">HUKSHAH</div>
+          <div class="s">Golden Molasses</div>
+          <div class="f">Blueberry Mint</div>
+          <div class="w">1 KG · Laid</div>
+        </div>
+        <!-- REAL IMAGE — uncomment when ready -->
+        <!-- <img class="tub-img" src="WhatsApp_Image_2026-05-29_at_7_31_59_PM.jpeg" alt="Blueberry Mint 1KG"> -->
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 1 — The 50g -->
+  <div class="scroll-section" id="trigger-section-1">
+    <div class="showcase-text">
+      <span class="s-label">The Pocket Alpha</span>
+      <h2>The 50g<br>Precision Pack</h2>
+      <p>
+        Engineered for the sigma on the move. Our iconic 50g box is a statement of taste — compact, lethal, and unmistakably Hukshah.
+        Seven elite blends. One unforgettable experience.
+      </p>
+      <blockquote class="sigma-quote">
+        "They travel light. They smoke heavy.<br>That's the Hukshah way."
+      </blockquote>
+    </div>
+  </div>
+
+  <!-- SECTION 2 — The 1KG Tubs -->
+  <div class="scroll-section" id="trigger-section-2">
+    <div class="showcase-text">
+      <span class="s-label">The Connoisseur's Choice</span>
+      <h2>The 1KG<br>Throne Edition</h2>
+      <p>
+        One standing. One laid back. Both dominant.
+        The 1KG tub is for those who don't just smoke — they reign.
+        Sealed with UAE authenticity, packed with pure golden molasses.
+      </p>
+      <blockquote class="sigma-quote">
+        "While others count sessions, the Hukshah king counts kilograms."
+      </blockquote>
+    </div>
+  </div>
+
+</div>
+<!-- END ANIM CONTAINER -->
+
+<!-- SIGMA QUOTES -->
+<section class="quotes-section">
+  <h2 class="reveal" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,4rem);letter-spacing:5px;background:linear-gradient(135deg,#fff 30%,var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent;">SIGMA MANIFESTO</h2>
+  <div class="gold-divider"></div>
+  <div class="quotes-grid">
+    <div class="quote-card reveal rd1">
+      <span class="quote-mark">"</span>
+      <p class="quote-text">The lion doesn't explain himself to the sheep. HUKSHAH doesn't explain its quality. It lets the smoke speak.</p>
+      <span class="quote-attr">— The Dynasty Code</span>
+    </div>
+    <div class="quote-card reveal rd2">
+      <span class="quote-mark">"</span>
+      <p class="quote-text">Born in UAE. Built for kings. Every gram of Golden Molasses carries the weight of a legacy that cannot be copied.</p>
+      <span class="quote-attr">— Mubashshir Sayed, Founder</span>
+    </div>
+    <div class="quote-card reveal rd3">
+      <span class="quote-mark">"</span>
+      <p class="quote-text">Dangerous than you think. More powerful than they imagine. HUKSHAH — it is more than a brand. It is a verdict.</p>
+      <span class="quote-attr">— Shah of Good Times</span>
+    </div>
+  </div>
+</section>
+
+<!-- LEGACY SECTION -->
+<section class="legacy-section" id="legacy">
+  <div class="legacy-bg-text">LEGACY</div>
+  <h3 class="reveal">THE SIGMA<br>DYNASTY THAT<br>REDEFINED<br>UAE SHISHA</h3>
+  <div class="gold-divider"></div>
+  <div class="legacy-grid">
+    <div class="legacy-card reveal rd1">
+      <span class="year">2022</span>
+      <p>Founded in UAE. The dynasty begins. Zero compromise, maximum impact.</p>
+    </div>
+    <div class="legacy-card reveal rd2">
+      <span class="year">7+</span>
+      <p>Premium blends crafted to perfection. Each one a different throne.</p>
+    </div>
+    <div class="legacy-card reveal rd3">
+      <span class="year">50g</span>
+      <p>The pocket-sized alpha. Seven blends, one iconic black-gold box.</p>
+    </div>
+    <div class="legacy-card reveal rd4">
+      <span class="year">1KG</span>
+      <p>The Throne Edition tub. For sessions that become legends.</p>
+    </div>
+    <div class="legacy-card reveal rd5">
+      <span class="year">UAE</span>
+      <p>Made in UAE. Sold to the world. Unstoppable by definition.</p>
+    </div>
+  </div>
+  <p class="legacy-manifesto reveal">
+    "Look closely at our competitors, then look back at HUKSHAH.
+    The gap isn't a distance — it's an entirely different league.
+    Golden Molasses. Immortal legacy. Shah of Good Times."
+  </p>
+</section>
+
+<!-- BLENDS GALLERY -->
+<section class="blend-gallery" id="blends">
+  <h2 class="reveal">OUR <span style="background:linear-gradient(135deg,var(--gold2),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent;">SIGMA</span> BLENDS</h2>
+  <span class="sub-label reveal rd1">Unapologetic flavor architecture — for the chosen ones.</span>
+  
+  <div class="gallery-row">
+    <!-- PLACEHOLDER CARDS — fill src="" with actual image paths -->
+    <div class="gallery-item reveal rd1">
+      <div class="gi-img-wrap placeholder" data-label="MISBAH 50G BOX">
+        <!-- <img src="50g.jpeg" alt="Misbah 50g"> -->
+      </div>
+      <div class="gi-label"><span class="gi-dot"></span>Misbah · Blends Collection · 50g</div>
+    </div>
+    <div class="gallery-item reveal rd2">
+      <div class="gi-img-wrap placeholder" data-label="STACKED BOXES">
+        <!-- <img src="WhatsApp_Image_2026-05-29_at_7_31_56_PM.jpeg" alt="Misbah boxes stacked"> -->
+      </div>
+      <div class="gi-label"><span class="gi-dot"></span>Misbah · Love86 · Blueberry Mint · 50g</div>
+    </div>
+    <div class="gallery-item reveal rd3">
+      <div class="gi-img-wrap placeholder" data-label="LOVE86 1KG TUB">
+        <!-- <img src="WhatsApp_Image_2026-05-29_at_7_31_58_PM.jpeg" alt="Love86 1KG"> -->
+      </div>
+      <div class="gi-label"><span class="gi-dot"></span>Love 86 · 1KG · Golden Molasses</div>
+    </div>
+    <div class="gallery-item reveal rd4">
+      <div class="gi-img-wrap placeholder" data-label="BLUEBERRY MINT 1KG">
+        <!-- <img src="WhatsApp_Image_2026-05-29_at_7_31_59_PM.jpeg" alt="Blueberry Mint 1KG"> -->
+      </div>
+      <div class="gi-label"><span class="gi-dot"></span>Blueberry Mint · 1KG · Ice Cold</div>
+    </div>
+  </div>
+  
+  <div class="gallery-row" style="margin-top:3px;">
+    <div class="gallery-item reveal rd1">
+      <div class="gi-img-wrap placeholder" data-label="GRAPE MINT · MINT · GUM MINT · DOUBLE APPLE">
+        <!-- <img src="WhatsApp_Image.jpeg" alt="Blends - Grape Mint etc"> -->
+      </div>
+      <div class="gi-label"><span class="gi-dot"></span>Grape Mint · Mint · Gum Mint · Double Apple</div>
+    </div>
+    <div class="gallery-item reveal rd2">
+      <div class="gi-img-wrap placeholder" data-label="HUKSHAH LOGO — COMING SOON">
+        <!-- <img src="Hukshah.jpeg" alt="Hukshah Brand Coming Soon"> -->
+      </div>
+      <div class="gi-label"><span class="gi-dot"></span>HUKSHAH · Shah of Good Times · UAE</div>
+    </div>
+    <div class="gallery-item reveal rd3">
+      <div class="gi-img-wrap placeholder" data-label="DUAL TUB — 1KG ×2">
+        <!-- <img src="WhatsApp_Image_2026-05-29_at_7_31_58_PM__2_.jpeg" alt="Dual 1KG Tubs"> -->
+      </div>
+      <div class="gi-label"><span class="gi-dot"></span>1KG Dual Pack · Double Impact</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER / CONTACT -->
+<footer id="contact">
+  <div class="footer-info">
+    <div class="footer-brand">
+      <span class="fb-logo">HUKSHAH</span>
+      <span class="fb-tagline">Golden Molasses · Shah of Good Times</span>
+      <p>Premium shisha flavors for the UAE market and beyond. Quality that speaks — no explanations needed.</p>
+      <p style="color:var(--gold);margin-top:14px;font-size:.75rem;letter-spacing:2px;">Est. 2022 · Unstoppable Dynasty</p>
+    </div>
+    <div class="footer-box">
+      <h4>🏛 Founder & CEO</h4>
+      <p class="ceo-name">Mubashshir Sayed</p>
+      <p style="color:rgba(219,184,107,.55);font-size:.72rem;letter-spacing:1px;">The Sigma Architect · Visionary · UAE</p>
+    </div>
+    <div class="footer-box">
+      <h4>📞 Direct Command</h4>
+      <a href="tel:+971529201786"><span class="contact-pulse"></span>🇦🇪 UAE · +971 52 920 1786</a>
+      <a href="tel:+918999997786">🌍 International · +91 89999 97786</a>
+      <a href="mailto:info@hukshah.com">✉️ info@hukshah.com</a>
+      <a href="http://www.hukshah.com">🌐 www.hukshah.com</a>
+    </div>
+    <div class="footer-box">
+      <h4>🔥 Our Blends</h4>
+      <p>Misbah · Love 86 · Blueberry Mint</p>
+      <p>Grape Mint · Double Apple</p>
+      <p>Gum Mint · Mint</p>
+      <p style="margin-top:10px;color:rgba(219,184,107,.4);font-size:.65rem;letter-spacing:2px;">50g Packs · 1KG Tubs</p>
+    </div>
+  </div>
+  <div class="footer-warning">
+    ⚠ Tobacco Products Are Hazardous To Health · It Is More Dangerous Than You Think · 18+ Only · هي أخطر مما تظن
+  </div>
+  <div class="footer-bottom">
+    © 2026 <span>HUKSHAH</span> · Golden Molasses · All Rights Reserved · <span>Shah of Good Times</span>
+  </div>
+</footer>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+// ── LOADER ──────────────────────────────────────────
+window.addEventListener('load', () => {
+  const lbar = document.getElementById('lbar');
+  lbar.style.width = '100%';
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('gone');
+    initHeroAnimations();
+  }, 1800);
+});
+
+function initHeroAnimations() {
+  gsap.to('#h-eyebrow', { opacity:1, y:0, duration:.9, ease:'power3.out', delay:.1 });
+  gsap.to('#h-title',   { opacity:1, y:0, duration:1.2, ease:'power4.out', delay:.3 });
+  gsap.to('#h-sub',     { opacity:1, y:0, duration:.9, ease:'power3.out', delay:.6 });
+  gsap.to('#h-tag',     { opacity:1, y:0, duration:.8, ease:'power3.out', delay:.8 });
+  gsap.to('#h-badge',   { opacity:1, y:0, duration:.8, ease:'power3.out', delay:1 });
+  gsap.to('#h-cta',     { opacity:1, y:0, duration:.8, ease:'power3.out', delay:1.15 });
+  gsap.to('#h-scroll',  { opacity:1, y:0, duration:.7, ease:'power3.out', delay:1.4 });
+  gsap.set('#h-eyebrow,#h-title,#h-sub,#h-tag,#h-badge,#h-cta,#h-scroll', { y:35 });
+}
+
+// ── CUSTOM CURSOR ────────────────────────────────────
+const cur = document.getElementById('cur');
+const curO = document.getElementById('cur-outer');
+let mx=0,my=0,ox=0,oy=0;
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cur.style.left = mx+'px'; cur.style.top = my+'px';
+});
+(function animCur(){
+  ox += (mx-ox)*.13; oy += (my-oy)*.13;
+  curO.style.left = ox+'px'; curO.style.top = oy+'px';
+  requestAnimationFrame(animCur);
+})();
+document.querySelectorAll('a,button,.gallery-item,.legacy-card,.quote-card').forEach(el => {
+  el.addEventListener('mouseenter', () => { cur.style.width='18px'; cur.style.height='18px'; curO.style.width='55px'; curO.style.height='55px'; });
+  el.addEventListener('mouseleave', () => { cur.style.width='10px'; cur.style.height='10px'; curO.style.width='36px'; curO.style.height='36px'; });
+});
+
+// ── PARTICLE SYSTEM ──────────────────────────────────
+(function initParticles(){
+  const cv = document.getElementById('particles-canvas');
+  const ctx = cv.getContext('2d');
+  let W, H, pts = [];
+  function resize(){ W = cv.width = innerWidth; H = cv.height = innerHeight; }
+  resize(); window.addEventListener('resize', () => { resize(); rebuildPts(); });
+  class P {
+    constructor(){ this.reset(true); }
+    reset(init){
+      this.x = Math.random()*W; this.y = init ? Math.random()*H : H+5;
+      this.sz = Math.random()*1.2+.2;
+      this.vx = (Math.random()-.5)*.25; this.vy = -(Math.random()*.4+.08);
+      this.alpha = Math.random()*.5+.1;
+      this.life = 0; this.ml = Math.random()*250+120;
+      const s=['#c9a84c','#f0d080','#8a6a1f','#e8c86a'];
+      this.col = s[Math.floor(Math.random()*s.length)];
+    }
+    update(){
+      this.x+=this.vx; this.y+=this.vy; this.life++;
+      this.ca = this.alpha*Math.sin(Math.PI*this.life/this.ml);
+      if(this.life>this.ml||this.y<-10)this.reset(false);
+    }
+    draw(){
+      ctx.save(); ctx.globalAlpha=this.ca; ctx.fillStyle=this.col;
+      ctx.translate(this.x,this.y); ctx.rotate(Math.PI/4);
+      ctx.fillRect(-this.sz,-this.sz,this.sz*2,this.sz*2);
+      ctx.restore();
+    }
+  }
+  function rebuildPts(){
+    pts=[];
+    const n = Math.min(Math.floor(W*H/6000),140);
+    for(let i=0;i<n;i++){const p=new P();p.life=Math.random()*p.ml;pts.push(p);}
+  }
+  rebuildPts();
+  function lines(){
+    for(let i=0;i<pts.length;i++){
+      for(let j=i+1;j<pts.length;j++){
+        const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y;
+        const d=Math.sqrt(dx*dx+dy*dy);
+        if(d<100){
+          ctx.save(); ctx.globalAlpha=(1-d/100)*.05*pts[i].ca;
+          ctx.strokeStyle='#c9a84c'; ctx.lineWidth=.4;
+          ctx.beginPath(); ctx.moveTo(pts[i].x,pts[i].y);
+          ctx.lineTo(pts[j].x,pts[j].y); ctx.stroke(); ctx.restore();
+        }
+      }
+    }
+  }
+  function anim(){
+    ctx.clearRect(0,0,W,H);
+    lines();
+    pts.forEach(p=>{p.update();p.draw();});
+    requestAnimationFrame(anim);
+  }
+  anim();
+})();
+
+// ── NAV scroll solid ─────────────────────────────────
+window.addEventListener('scroll',()=>{
+  document.getElementById('main-nav').classList.toggle('solid',scrollY>60);
+});
+
+// ── PIN + SCROLL ANIMATIONS ──────────────────────────
+ScrollTrigger.create({
+  trigger: ".anim-container",
+  start: "top top",
+  end: "bottom bottom",
+  pin: "#animated-visual-target",
+  pinSpacing: false
+});
+
+// ANIMATION 1 — 50g box spins in
+gsap.set("#box-50g", { opacity:0, scale:.55, rotation:0 });
+const tl1 = gsap.timeline({
+  scrollTrigger:{
+    trigger:"#trigger-section-1",
+    start:"top 80%", end:"top 15%",
+    scrub:1.2, toggleActions:"play reverse play reverse"
+  }
+});
+tl1
+  .to("#box-50g",{ opacity:1, scale:1.08, rotation:360, duration:1.2, ease:"power2.inOut" })
+  .to("#box-50g",{ scale:1.03, duration:.2, ease:"none" }, 0);
+
+// ANIMATION 2 — 50g exits, tubs appear
+gsap.set("#tubs-group", { opacity:0, scale:.85 });
+gsap.set("#sleepingTub", { rotate:"-75deg", x:-25, y:50 });
+const tl2 = gsap.timeline({
+  scrollTrigger:{
+    trigger:"#trigger-section-2",
+    start:"top 80%", end:"top 15%",
+    scrub:1, toggleActions:"play reverse play reverse"
+  }
+});
+tl2
+  .to("#box-50g",{ opacity:0, scale:.25, rotation:720, duration:.65, ease:"back.in(1)" }, 0)
+  .to("#tubs-group",{ opacity:1, scale:1, duration:.6, ease:"elastic.out(.8,.5)" }, "-=.3")
+  .fromTo("#standingTub",{ y:30, filter:"drop-shadow(0 10px 20px black)" },
+    { y:0, filter:"drop-shadow(0 40px 50px rgba(0,0,0,.95))", duration:.8, ease:"power2.out" }, .2)
+  .fromTo("#sleepingTub",{ rotate:"-85deg", x:-45, opacity:.5 },
+    { rotate:"-75deg", x:-25, opacity:1, duration:.9, ease:"back.out(.6)" }, .25);
+
+// floating tub micro-anim
+ScrollTrigger.create({
+  trigger:"#trigger-section-2", start:"top 60%", end:"bottom 20%", scrub:1,
+  onUpdate(self){
+    const p = self.progress;
+    if(p>.08){
+      gsap.to("#standingTub",{ y:9*Math.sin(p*Math.PI*3), rotation:2.5*Math.sin(p*5), duration:.25, overwrite:true, ease:"none" });
+      gsap.to("#sleepingTub",{ y:5*Math.cos(p*4), duration:.2, overwrite:true });
+    }
+  }
+});
+
+// gold glow pulse on tubs
+const gGlow = gsap.timeline({ repeat:-1, repeatDelay:1.5, yoyo:true, paused:true });
+gGlow.to("#standingTub",{ filter:"drop-shadow(0 0 20px rgba(219,184,107,.6))", duration:1.4, ease:"sine.inOut" });
+ScrollTrigger.create({
+  trigger:"#trigger-section-2", start:"top 75%",
+  onEnter:()=>gGlow.resume(), onLeaveBack:()=>gGlow.pause(),
+  onLeave:()=>gGlow.pause(), onEnterBack:()=>gGlow.resume()
+});
+
+// ── GALLERY parallax reveal ──────────────────────────
+gsap.utils.toArray(".gallery-item").forEach((item,i)=>{
+  gsap.fromTo(item,
+    { opacity:0, y:65, rotateX:-8 },
+    { scrollTrigger:{ trigger:item, start:"top 90%", end:"top 28%", scrub:.8 },
+      opacity:1, y:0, rotateX:0 }
+  );
+});
+
+// ── LEGACY CARDS ─────────────────────────────────────
+gsap.from(".legacy-card",{
+  scrollTrigger:{ trigger:".legacy-section", start:"top 70%", toggleActions:"play none none reverse" },
+  scale:.75, opacity:0, stagger:.15, duration:.8, ease:"back.out(1.3)"
+});
+
+// ── SCROLL REVEAL UTILITY ────────────────────────────
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('vis'); });
+},{ threshold:.1, rootMargin:"0px 0px -40px 0px" });
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// ── SMOOTH SCROLL LINKS ──────────────────────────────
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if(t) t.scrollIntoView({ behavior:'smooth' });
+  });
+});
+
+// ── FOOTER LINK HOVER ────────────────────────────────
+document.querySelectorAll('.footer-box a').forEach(link=>{
+  link.addEventListener('mouseenter',()=> gsap.to(link,{ color:'#dbb86b', x:6, duration:.2 }));
+  link.addEventListener('mouseleave',()=> gsap.to(link,{ color:'rgba(170,170,170,.7)', x:0, duration:.2 }));
+});
+
+console.log('%cHUKSHAH SIGMA ENGINE ACTIVE 👑', 'font-size:1.2rem;color:#dbb86b;font-weight:bold;');
+</script>
+</body>
+</html>
