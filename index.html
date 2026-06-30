@@ -2,1101 +2,3708 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>HUKSHAH | Golden Molasses | Shah of Good Times</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,500;0,700;1,400&family=Montserrat:wght@200;300;400;600;700;800;900&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FINTELL PRO — Financial Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-:root{
-  --gold:#dbb86b;
-  --gold2:#f5d78e;
-  --gold3:#8a6a1f;
-  --black:#020202;
-  --dark:#0a0a0a;
-  --smoke:rgba(219,184,107,0.07);
-}
-html{scroll-behavior:smooth;}
-body{
-  background:var(--black);
-  color:#ececec;
-  overflow-x:hidden;
-  font-family:'Montserrat',sans-serif;
-  cursor:none;
-}
-::selection{background:var(--gold);color:#000;}
-::-webkit-scrollbar{width:4px;}
-::-webkit-scrollbar-track{background:#000;}
-::-webkit-scrollbar-thumb{background:var(--gold);}
-
-/* CURSOR */
-#cur{position:fixed;width:10px;height:10px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:width .3s,height .3s;}
-#cur-outer{position:fixed;width:36px;height:36px;border:1px solid rgba(219,184,107,.45);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:transform .18s ease-out,width .3s,height .3s;}
-body:hover #cur{opacity:1;}
-
-/* NAV */
-nav{
-  position:fixed;top:0;width:100%;
-  padding:26px 60px;
-  display:flex;justify-content:space-between;align-items:center;
-  z-index:1000;
-  background:linear-gradient(180deg,rgba(0,0,0,.88) 0%,transparent 100%);
-  backdrop-filter:blur(10px);
-  transition:background .4s;
-}
-nav.solid{background:rgba(0,0,0,.97)!important;}
-.nav-logo{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:2.2rem;letter-spacing:8px;
-  background:linear-gradient(135deg,#fff 30%,var(--gold) 80%);
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-}
-.nav-right{display:flex;align-items:center;gap:40px;}
-.nav-links{display:flex;gap:35px;list-style:none;}
-.nav-links a{
-  font-size:.65rem;letter-spacing:4px;text-transform:uppercase;
-  color:rgba(236,236,236,.55);text-decoration:none;
-  font-weight:600;transition:color .3s;
-}
-.nav-links a:hover{color:var(--gold);}
-.nav-est{font-size:.6rem;letter-spacing:3px;color:rgba(219,184,107,.4);font-weight:500;}
-
-/* HERO */
-.hero{
-  height:100vh;
-  display:flex;flex-direction:column;
-  justify-content:center;align-items:center;
-  text-align:center;
-  position:relative;overflow:hidden;
-  background:radial-gradient(ellipse at 50% 60%,rgba(219,184,107,.06) 0%,transparent 65%),#020202;
-}
-.hero-bg-word{
-  position:absolute;
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(8rem,28vw,22rem);
-  color:rgba(219,184,107,.035);
-  letter-spacing:-5px;
-  pointer-events:none;user-select:none;
-  top:50%;left:50%;transform:translate(-50%,-50%);
-  white-space:nowrap;
-}
-.hero-eyebrow{
-  font-size:.6rem;letter-spacing:10px;text-transform:uppercase;
-  color:var(--gold);margin-bottom:28px;opacity:0;
-}
-.hero-title{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(5rem,16vw,14rem);
-  letter-spacing:8px;line-height:.9;
-  background:linear-gradient(160deg,#fff 0%,var(--gold2) 35%,var(--gold) 65%,var(--gold3) 100%);
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-  filter:drop-shadow(0 0 80px rgba(219,184,107,.25));
-  opacity:0;
-}
-.hero-sub{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(1rem,2.5vw,1.6rem);
-  font-style:italic;letter-spacing:6px;
-  color:var(--gold);margin-top:12px;opacity:0;
-}
-.hero-tagline{
-  font-size:.72rem;letter-spacing:8px;text-transform:uppercase;
-  color:rgba(236,236,236,.38);margin-top:32px;opacity:0;
-}
-.hero-badge{
-  margin-top:36px;
-  display:inline-flex;align-items:center;gap:10px;
-  border:1px solid rgba(219,184,107,.3);
-  padding:9px 28px;
-  font-size:.65rem;letter-spacing:4px;text-transform:uppercase;
-  color:var(--gold);opacity:0;
-  backdrop-filter:blur(6px);
-}
-.hero-badge::before,.hero-badge::after{content:'◆';font-size:.5rem;}
-.hero-cta{margin-top:48px;display:flex;gap:18px;opacity:0;}
-.btn-gold{
-  padding:13px 38px;
-  background:linear-gradient(135deg,var(--gold3),var(--gold),var(--gold2));
-  color:#000;font-size:.65rem;letter-spacing:4px;text-transform:uppercase;
-  font-weight:800;border:none;cursor:pointer;
-  clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);
-  transition:filter .3s,transform .3s;text-decoration:none;display:inline-flex;align-items:center;
-}
-.btn-gold:hover{filter:brightness(1.25);transform:scale(1.04);}
-.btn-ghost{
-  padding:13px 38px;
-  background:transparent;border:1px solid rgba(219,184,107,.35);
-  color:var(--gold);font-size:.65rem;letter-spacing:4px;text-transform:uppercase;
-  font-weight:700;cursor:pointer;
-  clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);
-  transition:all .3s;text-decoration:none;display:inline-flex;align-items:center;
-}
-.btn-ghost:hover{background:rgba(219,184,107,.1);border-color:var(--gold);}
-.hero-scroll{
-  position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
-  display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;
-}
-.scroll-bar{width:1px;height:56px;background:linear-gradient(180deg,var(--gold),transparent);animation:scrollBeat 2s infinite;}
-.scroll-txt{font-size:.5rem;letter-spacing:5px;color:rgba(255,255,255,.25);text-transform:uppercase;}
-
-/* GOLD PARTICLES canvas */
-#particles-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;}
-
-/* MARQUEE */
-.marquee-wrap{
-  position:relative;z-index:2;
-  padding:22px 0;overflow:hidden;
-  border-top:1px solid rgba(219,184,107,.12);
-  border-bottom:1px solid rgba(219,184,107,.12);
-  background:rgba(219,184,107,.03);
-}
-.marquee-track{display:flex;gap:50px;white-space:nowrap;animation:marqueeScroll 28s linear infinite;}
-.m-item{
-  display:inline-flex;align-items:center;gap:16px;flex-shrink:0;
-  font-family:'Bebas Neue',sans-serif;font-size:1rem;
-  letter-spacing:5px;color:rgba(219,184,107,.45);
-}
-.m-sep{color:var(--gold);font-size:.8rem;}
-
-/* ANIMATION CONTAINER — scroll-pinned product showcase */
-.anim-container{position:relative;background:var(--black);}
-
-.scroll-section{
-  height:100vh;
-  display:flex;align-items:center;
-  justify-content:space-between;
-  padding:0 10%;position:relative;z-index:2;
-}
-.showcase-text{width:44%;z-index:20;}
-.showcase-text .s-label{
-  font-size:.58rem;letter-spacing:8px;text-transform:uppercase;
-  color:var(--gold);margin-bottom:14px;display:block;
-}
-.showcase-text h2{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(3rem,6vw,5.5rem);
-  letter-spacing:3px;line-height:1;
-  margin-bottom:22px;
-  background:linear-gradient(135deg,#fff 50%,var(--gold));
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-}
-.showcase-text p{
-  font-size:.92rem;line-height:1.85;
-  color:rgba(200,200,200,.7);font-weight:300;
-}
-.sigma-quote{
-  font-family:'Cormorant Garamond',serif;
-  font-size:1.35rem;font-weight:500;font-style:italic;
-  margin-top:26px;
-  border-left:3px solid var(--gold);padding-left:18px;
-  color:#e6e6e6;line-height:1.5;
+/* ============================================
+   THEME VARIABLES
+   ============================================ */
+:root {
+  --bg-primary: #f5f7fb;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #eef2f8;
+  --bg-glass: rgba(255, 255, 255, 0.65);
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --border: rgba(15, 23, 42, 0.08);
+  --border-strong: rgba(15, 23, 42, 0.15);
+  --accent: #6366f1;
+  --accent-2: #8b5cf6;
+  --accent-3: #06b6d4;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --info: #3b82f6;
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+  --shadow-lg: 0 20px 60px rgba(15, 23, 42, 0.12);
+  --shadow-glow: 0 0 40px rgba(99, 102, 241, 0.25);
+  --gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
+  --gradient-2: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+  --gradient-3: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+  --radius: 16px;
+  --radius-sm: 10px;
+  --radius-lg: 24px;
+  --sidebar-width: 260px;
+  --ticker-height: 36px;
 }
 
-/* pinned visual window */
-.showcase-visuals{
-  position:absolute;right:8%;top:50%;
-  transform:translateY(-50%);
-  width:500px;height:500px;
-  display:flex;justify-content:center;align-items:center;
-  z-index:50;pointer-events:none;
-}
-/* PLACEHOLDER PRODUCT SHAPES */
-.product-placeholder{
-  position:absolute;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  opacity:0;transform:scale(.6) rotate(0deg);
-}
-/* 50g box placeholder */
-#box-50g{
-  width:220px;height:300px;
-  background:linear-gradient(145deg,#111,#1a1a1a);
-  border:1px solid rgba(219,184,107,.3);
-  border-radius:8px;
-  box-shadow:0 30px 80px rgba(0,0,0,.9),inset 0 1px 0 rgba(219,184,107,.15);
-  position:relative;overflow:hidden;
-}
-#box-50g::before{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(145deg,transparent 40%,rgba(219,184,107,.06) 100%);
-}
-#box-50g::after{
-  content:'HUKSHAH\A Golden Molasses\A━━━━━━━━━━\A Misbah\A 50g';
-  white-space:pre;
-  position:absolute;inset:0;
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Bebas Neue',sans-serif;
-  font-size:.85rem;letter-spacing:3px;
-  color:var(--gold);text-align:center;
-  padding:20px;line-height:1.8;
-}
-/* Replace the ::after pseudo text with a real element */
-.box-label{
-  position:absolute;inset:0;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:6px;padding:20px;
-}
-.box-label .bl-logo{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:1.8rem;letter-spacing:6px;
-  background:linear-gradient(135deg,var(--gold2),var(--gold));
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-}
-.box-label .bl-sub{font-size:.55rem;letter-spacing:4px;color:rgba(219,184,107,.6);}
-.box-label .bl-divider{width:80%;height:1px;background:rgba(219,184,107,.25);margin:6px 0;}
-.box-label .bl-flavor{font-size:.7rem;letter-spacing:3px;color:#fff;text-transform:uppercase;}
-.box-label .bl-weight{font-size:.6rem;letter-spacing:3px;color:rgba(255,255,255,.4);}
-.box-img{width:100%;height:100%;object-fit:cover;border-radius:8px;display:none;}
-.box-img.loaded{display:block;}
-
-/* tubs group */
-#tubs-group{
-  position:absolute;width:100%;height:100%;
-  opacity:0;
-  display:flex;justify-content:center;align-items:center;
-  gap:24px;transform:scale(.85);
-}
-.tub-placeholder{
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  border-radius:12px;
-  position:relative;overflow:hidden;
-}
-.tub-img{width:100%;height:100%;object-fit:cover;border-radius:12px;display:none;}
-.tub-img.loaded{display:block;}
-/* standing tub */
-#standingTub{
-  width:200px;height:220px;
-  background:linear-gradient(170deg,#181818,#111);
-  border:1px solid rgba(219,184,107,.25);
-  box-shadow:0 40px 70px rgba(0,0,0,.95);
-  flex-shrink:0;
-}
-#standingTub .tl{
-  position:absolute;inset:0;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;gap:5px;
-}
-#standingTub .tl .n{
-  font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:4px;
-  background:linear-gradient(135deg,var(--gold2),var(--gold));
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-}
-#standingTub .tl .s{font-size:.5rem;letter-spacing:4px;color:rgba(219,184,107,.55);}
-#standingTub .tl .f{font-size:.65rem;letter-spacing:2px;color:#fff;margin-top:4px;}
-#standingTub .tl .w{font-size:.5rem;letter-spacing:3px;color:rgba(255,255,255,.35);}
-/* sleeping tub */
-#sleepingTub{
-  width:200px;height:220px;
-  background:linear-gradient(170deg,#161616,#0e0e0e);
-  border:1px solid rgba(219,184,107,.2);
-  box-shadow:-20px 30px 60px rgba(0,0,0,.8);
-  transform:rotate(-75deg) translate(-20px,50px);
-  flex-shrink:0;
-}
-#sleepingTub .tl{
-  position:absolute;inset:0;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;gap:5px;
-}
-#sleepingTub .tl .n{
-  font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:4px;
-  background:linear-gradient(135deg,var(--gold2),var(--gold));
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-}
-#sleepingTub .tl .s{font-size:.5rem;letter-spacing:3px;color:rgba(219,184,107,.5);}
-#sleepingTub .tl .f{font-size:.6rem;letter-spacing:2px;color:#fff;margin-top:4px;}
-#sleepingTub .tl .w{font-size:.5rem;letter-spacing:3px;color:rgba(255,255,255,.3);}
-
-/* GOLD ORB behind products */
-.gold-orb{
-  position:absolute;border-radius:50%;
-  background:radial-gradient(circle,rgba(219,184,107,.12) 0%,transparent 70%);
-  pointer-events:none;animation:orbPulse 4s ease-in-out infinite;
+[data-theme="dark"] {
+  --bg-primary: #0a0e1a;
+  --bg-secondary: #131827;
+  --bg-tertiary: #1a2036;
+  --bg-glass: rgba(19, 24, 39, 0.7);
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --text-muted: #64748b;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.15);
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.5);
 }
 
-/* LEGACY / SIGMA WALL */
-.legacy-section{
-  min-height:90vh;
-  display:flex;flex-direction:column;
-  justify-content:center;align-items:center;
-  text-align:center;padding:80px 20px;
-  background:linear-gradient(160deg,#070707,#010101);
-  border-top:1px solid #1c1c1c;
-  border-bottom:1px solid #1c1c1c;
-  position:relative;overflow:hidden;z-index:2;
-}
-.legacy-bg-text{
-  position:absolute;
-  font-family:'Bebas Neue',sans-serif;
-  font-size:22vw;
-  color:rgba(219,184,107,.025);
-  pointer-events:none;user-select:none;
-  top:50%;left:50%;transform:translate(-50%,-50%);
-  white-space:nowrap;letter-spacing:-10px;
-}
-.legacy-section h3{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(2.5rem,6vw,5rem);
-  letter-spacing:4px;line-height:1.15;
-  max-width:1000px;
-  background:linear-gradient(135deg,#fff 30%,var(--gold));
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-  position:relative;z-index:1;
-}
-.gold-divider{
-  width:80px;height:2px;
-  background:linear-gradient(90deg,transparent,var(--gold),transparent);
-  margin:28px auto;
-}
-.legacy-grid{
-  display:flex;gap:30px;margin-top:50px;
-  flex-wrap:wrap;justify-content:center;position:relative;z-index:1;
-}
-.legacy-card{
-  background:rgba(0,0,0,.65);
-  backdrop-filter:blur(14px);
-  padding:30px 38px;
-  border-radius:0;
-  border:1px solid rgba(219,184,107,.18);
-  width:240px;
-  clip-path:polygon(12px 0%,100% 0%,calc(100% - 12px) 100%,0% 100%);
-  transition:transform .3s,border-color .3s;
-}
-.legacy-card:hover{transform:translateY(-5px);border-color:rgba(219,184,107,.45);}
-.legacy-card .year{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:2.8rem;letter-spacing:3px;
-  background:linear-gradient(135deg,var(--gold2),var(--gold));
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-  display:block;line-height:1;
-}
-.legacy-card p{
-  font-size:.75rem;color:rgba(236,236,236,.55);
-  margin-top:8px;letter-spacing:1px;line-height:1.5;
-}
-.legacy-manifesto{
-  margin-top:40px;max-width:800px;
-  font-family:'Cormorant Garamond',serif;
-  font-style:italic;font-size:1.15rem;
-  color:rgba(185,185,185,.7);line-height:1.8;
-  position:relative;z-index:1;
+[data-theme="ocean"] {
+  --bg-primary: #0c1929;
+  --bg-secondary: #0f2744;
+  --bg-tertiary: #133659;
+  --bg-glass: rgba(15, 39, 68, 0.6);
+  --text-primary: #e0f2fe;
+  --text-secondary: #bae6fd;
+  --text-muted: #7dd3fc;
+  --border: rgba(125, 211, 252, 0.15);
+  --border-strong: rgba(125, 211, 252, 0.25);
+  --accent: #22d3ee;
+  --accent-2: #06b6d4;
+  --accent-3: #0ea5e9;
+  --gradient: linear-gradient(135deg, #06b6d4 0%, #0ea5e9 50%, #22d3ee 100%);
 }
 
-/* BLENDS GALLERY */
-.blend-gallery{
-  padding:110px 6%;background:#000;
-  text-align:center;position:relative;z-index:2;
-}
-.blend-gallery h2{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(2rem,5vw,4rem);letter-spacing:5px;
-  margin-bottom:10px;
-  background:linear-gradient(135deg,#fff 30%,var(--gold));
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-}
-.blend-gallery .sub-label{
-  font-size:.65rem;letter-spacing:5px;
-  color:rgba(219,184,107,.45);text-transform:uppercase;margin-bottom:50px;display:block;
-}
-.gallery-row{
-  display:flex;flex-wrap:wrap;justify-content:center;
-  gap:3px;
-}
-.gallery-item{
-  width:280px;
-  background:#0d0d0d;
-  overflow:hidden;
-  transition:transform .4s cubic-bezier(.34,1.56,.64,1),box-shadow .4s;
-  border:1px solid #1c1c1c;
-  position:relative;
-}
-.gallery-item:hover{
-  transform:translateY(-10px) scale(1.02);
-  box-shadow:0 40px 80px rgba(0,0,0,.8),0 0 30px rgba(219,184,107,.1);
-  border-color:rgba(219,184,107,.3);
-  z-index:5;
-}
-.gi-img-wrap{
-  width:100%;height:260px;overflow:hidden;
-  background:linear-gradient(145deg,#111,#0d0d0d);
-  display:flex;align-items:center;justify-content:center;
-  position:relative;
-}
-/* placeholder gradient when no image */
-.gi-img-wrap.placeholder::before{
-  content:attr(data-label);
-  font-family:'Bebas Neue',sans-serif;
-  font-size:1.1rem;letter-spacing:4px;
-  color:rgba(219,184,107,.25);
-  position:absolute;
-}
-.gi-img-wrap img{
-  width:100%;height:100%;object-fit:cover;
-  transition:transform .5s;display:block;
-}
-.gallery-item:hover .gi-img-wrap img{transform:scale(1.06);}
-.gi-label{
-  padding:18px 16px;background:#0a0a0a;
-  font-size:.7rem;letter-spacing:2px;
-  font-weight:600;color:rgba(236,236,236,.7);
-  display:flex;align-items:center;gap:8px;
-}
-.gi-dot{
-  width:6px;height:6px;border-radius:50%;
-  background:var(--gold);flex-shrink:0;
+/* ============================================
+   RESET & BASE
+   ============================================ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background 0.4s ease, color 0.4s ease;
+  line-height: 1.5;
 }
 
-/* SIGMA QUOTES section */
-.quotes-section{
-  padding:90px 6%;
-  background:linear-gradient(180deg,#000,rgba(219,184,107,.03),#000);
-  text-align:center;position:relative;z-index:2;
-  overflow:hidden;
+/* Animated background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.08) 0%, transparent 70%);
+  z-index: -1;
+  animation: bgShift 20s ease infinite;
 }
-.quotes-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:2px;
-  max-width:1200px;margin:50px auto 0;
-}
-.quote-card{
-  padding:50px 35px;
-  background:rgba(10,10,10,.9);
-  border:1px solid rgba(219,184,107,.1);
-  transition:border-color .4s,background .4s;
-  position:relative;overflow:hidden;
-}
-.quote-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,transparent,var(--gold),transparent);
-  transform:scaleX(0);transition:transform .4s;
-}
-.quote-card:hover{border-color:rgba(219,184,107,.3);background:rgba(15,15,15,.95);}
-.quote-card:hover::before{transform:scaleX(1);}
-.quote-mark{
-  font-family:'Cormorant Garamond',serif;
-  font-size:5rem;line-height:.5;
-  color:rgba(219,184,107,.18);
-  display:block;margin-bottom:20px;
-}
-.quote-text{
-  font-family:'Cormorant Garamond',serif;
-  font-style:italic;font-size:1.05rem;
-  color:rgba(236,236,236,.7);line-height:1.8;
-}
-.quote-attr{
-  display:block;margin-top:18px;
-  font-size:.55rem;letter-spacing:5px;
-  color:var(--gold);text-transform:uppercase;
+@keyframes bgShift {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.1) rotate(5deg); }
 }
 
-/* CONTACT / FOOTER */
-.footer-info{
-  background:#010101;
-  padding:80px 8%;
-  display:flex;justify-content:space-between;
-  flex-wrap:wrap;gap:50px;
-  border-top:1px solid #181818;
-  position:relative;z-index:2;
-}
-.footer-brand{flex:1;min-width:280px;}
-.footer-brand .fb-logo{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:2.5rem;letter-spacing:8px;
-  background:linear-gradient(135deg,var(--gold2),var(--gold));
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-  display:block;margin-bottom:4px;
-}
-.footer-brand .fb-tagline{
-  font-size:.6rem;letter-spacing:5px;
-  color:rgba(219,184,107,.4);text-transform:uppercase;
-  display:block;margin-bottom:18px;
-}
-.footer-brand p{font-size:.82rem;color:rgba(170,170,170,.7);line-height:1.7;max-width:280px;}
-.footer-box{min-width:200px;}
-.footer-box h4{
-  color:var(--gold);letter-spacing:4px;
-  font-size:.65rem;text-transform:uppercase;
-  margin-bottom:22px;padding-bottom:12px;
-  border-bottom:1px solid rgba(219,184,107,.15);
-}
-.footer-box p,.footer-box a{
-  color:rgba(170,170,170,.7);line-height:1.7;
-  text-decoration:none;display:block;margin-bottom:8px;
-  font-size:.82rem;transition:.2s;
-}
-.footer-box a:hover{color:var(--gold);transform:translateX(6px);}
-.ceo-name{color:#fff!important;font-size:1.3rem!important;font-weight:800!important;letter-spacing:1px;}
-.footer-warning{
-  width:100%;padding:18px;text-align:center;
-  font-size:.58rem;letter-spacing:4px;
-  color:rgba(236,236,236,.18);text-transform:uppercase;
-  border-top:1px solid #111;
-}
-.footer-bottom{
-  background:#010101;padding:20px;text-align:center;
-  font-size:.58rem;letter-spacing:3px;
-  color:rgba(255,255,255,.12);border-top:1px solid #0e0e0e;
-  position:relative;z-index:2;
-}
-.footer-bottom span{color:rgba(219,184,107,.5);}
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-tertiary); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-2); }
 
-/* CONTACT PULSE */
-.contact-pulse{
-  display:inline-block;
-  width:8px;height:8px;border-radius:50%;
-  background:#00ff88;margin-right:8px;
-  animation:pulse 2s infinite;vertical-align:middle;
+/* ============================================
+   LOADING SCREEN
+   ============================================ */
+#loader {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+#loader.hidden { opacity: 0; visibility: hidden; }
+.loader-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 48px;
+  font-weight: 800;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 30px;
+  animation: pulse 1.5s ease infinite;
+}
+.loader-ring {
+  width: 60px; height: 60px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+.loader-text {
+  margin-top: 20px;
+  color: var(--text-secondary);
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.8; }
 }
 
-/* ANIMATIONS */
-@keyframes scrollBeat{0%,100%{opacity:1;}50%{opacity:.15;}}
-@keyframes marqueeScroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
-@keyframes orbPulse{0%,100%{transform:scale(1);opacity:.7;}50%{transform:scale(1.15);opacity:1;}}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(0,255,136,.5);}70%{box-shadow:0 0 0 8px rgba(0,255,136,0);}}
-@keyframes scanline{0%{top:-100%;}100%{top:200%;}}
-@keyframes shimmerGold{
-  0%{background-position:-200% center;}
-  100%{background-position:200% center;}
+/* ============================================
+   TICKER BAR
+   ============================================ */
+.ticker {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--ticker-height);
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+.ticker-track {
+  display: flex;
+  gap: 40px;
+  white-space: nowrap;
+  animation: tickerScroll 60s linear infinite;
+  padding-left: 100%;
+}
+.ticker-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 500;
+}
+.ticker-item .symbol { color: var(--text-muted); }
+.ticker-item .price { color: var(--text-primary); font-weight: 600; }
+.ticker-item .change { font-weight: 600; }
+.ticker-item .up { color: var(--success); }
+.ticker-item .down { color: var(--danger); }
+@keyframes tickerScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
 }
 
-/* LOADING SCREEN */
-#loader{
-  position:fixed;inset:0;z-index:99999;
-  background:#000;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;
-  transition:opacity .6s,visibility .6s;
+/* ============================================
+   LAYOUT
+   ============================================ */
+.app {
+  display: flex;
+  min-height: 100vh;
+  padding-top: var(--ticker-height);
 }
-#loader.gone{opacity:0;visibility:hidden;}
-.loader-logo{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:4rem;letter-spacing:12px;
-  background:linear-gradient(135deg,var(--gold2),var(--gold));
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-}
-.loader-bar-wrap{width:200px;height:2px;background:rgba(219,184,107,.15);position:relative;overflow:hidden;}
-.loader-bar{height:100%;width:0%;background:var(--gold);transition:width 1.5s ease;}
-.loader-sub{font-size:.55rem;letter-spacing:6px;color:rgba(219,184,107,.4);text-transform:uppercase;}
 
-/* reveal utility */
-.reveal{opacity:0;transform:translateY(32px);transition:opacity .8s,transform .8s;}
-.reveal.vis{opacity:1;transform:translateY(0);}
-.rd1{transition-delay:.1s;}.rd2{transition-delay:.2s;}.rd3{transition-delay:.3s;}.rd4{transition-delay:.4s;}.rd5{transition-delay:.5s;}
-
-@media(max-width:1000px){
-  nav{padding:18px 24px;}
-  .nav-links{display:none;}
-  .scroll-section{flex-direction:column;justify-content:center;padding:100px 5%;text-align:center;}
-  .showcase-text{width:100%;}
-  .showcase-visuals{position:relative;right:auto;top:auto;width:100%;height:340px;transform:none;margin:24px 0;}
-  .quotes-grid{grid-template-columns:1fr;}
-  .footer-info{justify-content:flex-start;}
-  #box-50g{width:160px;height:220px;}
-  #standingTub,#sleepingTub{width:150px;height:165px;}
+/* Sidebar */
+.sidebar {
+  width: var(--sidebar-width);
+  height: calc(100vh - var(--ticker-height));
+  position: fixed;
+  left: 0;
+  top: var(--ticker-height);
+  background: var(--bg-glass);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border-right: 1px solid var(--border);
+  padding: 24px 16px;
+  overflow-y: auto;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), width 0.4s ease;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
 }
+.sidebar.collapsed { transform: translateX(-100%); }
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 8px 20px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 20px;
+}
+.sidebar-logo-icon {
+  width: 40px; height: 40px;
+  background: var(--gradient);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  box-shadow: var(--shadow-glow);
+}
+.sidebar-logo-text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.sidebar-logo-text small {
+  display: block;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-muted);
+  -webkit-text-fill-color: var(--text-muted);
+  letter-spacing: 2px;
+}
+.nav-section { margin-bottom: 20px; }
+.nav-section-title {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 0 12px;
+  margin-bottom: 8px;
+}
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-size: 14px;
+  font-weight: 500;
+  position: relative;
+  margin-bottom: 2px;
+}
+.nav-item:hover {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  transform: translateX(4px);
+}
+.nav-item.active {
+  background: var(--gradient);
+  color: white;
+  box-shadow: var(--shadow-glow);
+}
+.nav-item i { width: 18px; text-align: center; font-size: 15px; }
+.nav-item .badge {
+  margin-left: auto;
+  background: var(--danger);
+  color: white;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-weight: 700;
+}
+.nav-item.active .badge { background: rgba(255,255,255,0.3); }
+
+/* Main content */
+.main {
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  padding: 28px 32px;
+  transition: margin-left 0.4s ease;
+  min-width: 0;
+}
+.sidebar.collapsed ~ .main { margin-left: 0; }
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.topbar-left { display: flex; align-items: center; gap: 16px; }
+.menu-toggle {
+  width: 40px; height: 40px;
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: all 0.25s ease;
+}
+.menu-toggle:hover { background: var(--bg-tertiary); transform: scale(1.05); }
+.page-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+}
+.page-subtitle {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+.topbar-right { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  min-width: 220px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.search-box:hover { border-color: var(--accent); }
+.search-box i { color: var(--text-muted); font-size: 13px; }
+.search-box span { color: var(--text-muted); font-size: 13px; flex: 1; }
+.search-box kbd {
+  background: var(--bg-tertiary);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-family: monospace;
+  color: var(--text-secondary);
+}
+.icon-btn {
+  width: 40px; height: 40px;
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: all 0.25s ease;
+  position: relative;
+}
+.icon-btn:hover { background: var(--bg-tertiary); transform: translateY(-2px); }
+.icon-btn .dot {
+  position: absolute;
+  top: 8px; right: 8px;
+  width: 8px; height: 8px;
+  background: var(--danger);
+  border-radius: 50%;
+  border: 2px solid var(--bg-secondary);
+}
+.avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  border: 2px solid var(--bg-secondary);
+  box-shadow: var(--shadow);
+}
+
+/* ============================================
+   SECTIONS
+   ============================================ */
+.section { display: none; animation: fadeIn 0.5s ease; }
+.section.active { display: block; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card {
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.card:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.card-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.card-title i {
+  width: 32px; height: 32px;
+  background: var(--gradient);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 14px;
+}
+.card-subtitle { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+/* Grid */
+.grid { display: grid; gap: 20px; }
+.grid-4 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.grid-3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.grid-2 { grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); }
+
+/* Stat Cards */
+.stat-card {
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.stat-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--gradient);
+}
+.stat-card .stat-icon {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: white;
+  margin-bottom: 14px;
+}
+.stat-card .stat-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+.stat-card .stat-value {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.stat-card .stat-change {
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.stat-change.up { color: var(--success); }
+.stat-change.down { color: var(--danger); }
+
+/* Buttons */
+.btn {
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  border: none;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--gradient);
+  color: white;
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.3);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4); }
+.btn-secondary {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+}
+.btn-secondary:hover { background: var(--bg-secondary); }
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+}
+.btn-ghost:hover { background: var(--bg-tertiary); color: var(--text-primary); }
+.btn-danger { background: var(--danger); color: white; }
+.btn-sm { padding: 6px 12px; font-size: 12px; }
+
+/* Inputs */
+.input, .select, .textarea {
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 13px;
+  transition: all 0.25s ease;
+}
+.input:focus, .select:focus, .textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+.label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+
+/* Progress */
+.progress {
+  height: 8px;
+  background: var(--bg-tertiary);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+.progress-bar {
+  height: 100%;
+  background: var(--gradient);
+  border-radius: 4px;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+.progress-bar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  animation: shimmer 2s infinite;
+}
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Tags */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  background: var(--bg-tertiary);
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+.tag.success { background: rgba(16, 185, 129, 0.15); color: var(--success); }
+.tag.warning { background: rgba(245, 158, 11, 0.15); color: var(--warning); }
+.tag.danger { background: rgba(239, 68, 68, 0.15); color: var(--danger); }
+.tag.info { background: rgba(59, 130, 246, 0.15); color: var(--info); }
+
+/* Tables */
+.table-wrap { overflow-x: auto; border-radius: var(--radius); }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th {
+  text-align: left;
+  padding: 12px 16px;
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+}
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: var(--bg-tertiary); }
+
+/* ============================================
+   FLOATING ACTION BUTTON
+   ============================================ */
+.fab {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 60px;
+  height: 60px;
+  background: var(--gradient);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.5);
+  z-index: 80;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.fab:hover { transform: scale(1.1) rotate(90deg); }
+.fab-menu {
+  position: fixed;
+  bottom: 100px;
+  right: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 79;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+}
+.fab-menu.open { opacity: 1; pointer-events: auto; transform: translateY(0); }
+.fab-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: flex-end;
+}
+.fab-item-label {
+  background: var(--bg-secondary);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: var(--shadow);
+  white-space: nowrap;
+}
+.fab-item-btn {
+  width: 44px; height: 44px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: all 0.25s ease;
+}
+.fab-item-btn:hover { background: var(--accent); color: white; transform: scale(1.1); }
+
+/* ============================================
+   COMMAND PALETTE
+   ============================================ */
+.command-palette {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 15vh;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s ease;
+}
+.command-palette.open { opacity: 1; visibility: visible; }
+.command-box {
+  width: 90%;
+  max-width: 600px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  transform: scale(0.95);
+  transition: transform 0.25s ease;
+}
+.command-palette.open .command-box { transform: scale(1); }
+.command-input {
+  width: 100%;
+  padding: 18px 20px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-primary);
+  font-size: 16px;
+  font-family: inherit;
+  outline: none;
+}
+.command-results {
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 8px;
+}
+.command-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.command-item:hover, .command-item.selected { background: var(--bg-tertiary); }
+.command-item i { width: 20px; color: var(--accent); }
+.command-item span { flex: 1; font-size: 14px; }
+.command-item kbd {
+  background: var(--bg-tertiary);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-family: monospace;
+  color: var(--text-muted);
+}
+
+/* ============================================
+   MODALS
+   ============================================ */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s ease;
+  padding: 20px;
+}
+.modal.open { opacity: 1; visibility: visible; }
+.modal-box {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-lg);
+  transform: scale(0.9);
+  transition: transform 0.25s ease;
+}
+.modal.open .modal-box { transform: scale(1); }
+.modal-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.modal-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+}
+.modal-close {
+  width: 32px; height: 32px;
+  background: var(--bg-tertiary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+}
+.modal-close:hover { background: var(--danger); color: white; }
+.modal-body { padding: 24px; }
+.modal-footer {
+  padding: 16px 24px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+/* ============================================
+   TOAST
+   ============================================ */
+.toast-container {
+  position: fixed;
+  top: calc(var(--ticker-height) + 16px);
+  right: 20px;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.toast {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  min-width: 280px;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: slideIn 0.3s ease;
+}
+.toast.success { border-left-color: var(--success); }
+.toast.warning { border-left-color: var(--warning); }
+.toast.danger { border-left-color: var(--danger); }
+.toast i { font-size: 18px; color: var(--accent); }
+.toast.success i { color: var(--success); }
+.toast.warning i { color: var(--warning); }
+.toast.danger i { color: var(--danger); }
+.toast-msg { font-size: 13px; font-weight: 500; flex: 1; }
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* ============================================
+   TOOLTIPS
+   ============================================ */
+[data-tip] { position: relative; }
+[data-tip]:hover::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+  z-index: 100;
+  pointer-events: none;
+  animation: fadeIn 0.2s ease;
+}
+
+/* ============================================
+   PANIC MODE
+   ============================================ */
+body.panic .sensitive {
+  filter: blur(8px);
+  user-select: none;
+  transition: filter 0.3s ease;
+}
+body.panic .panic-indicator { display: inline-flex !important; }
+.panic-indicator {
+  display: none !important;
+  background: var(--danger);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: 700;
+  margin-left: 6px;
+}
+
+/* ============================================
+   HEALTH GAUGE
+   ============================================ */
+.gauge {
+  width: 160px;
+  height: 160px;
+  position: relative;
+  margin: 0 auto;
+}
+.gauge svg { transform: rotate(-90deg); }
+.gauge-bg { fill: none; stroke: var(--bg-tertiary); stroke-width: 12; }
+.gauge-fill {
+  fill: none;
+  stroke: url(#gaugeGradient);
+  stroke-width: 12;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.gauge-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.gauge-value {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 36px;
+  font-weight: 800;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.gauge-label { font-size: 11px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+
+/* ============================================
+   AI TWIN
+   ============================================ */
+.ai-twin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+  text-align: center;
+}
+.twin-avatar {
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  background: var(--gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  color: white;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow-glow);
+  animation: float 3s ease-in-out infinite;
+  position: relative;
+}
+.twin-avatar::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  opacity: 0.4;
+  animation: ring 2s ease infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes ring {
+  0% { transform: scale(1); opacity: 0.4; }
+  100% { transform: scale(1.3); opacity: 0; }
+}
+.twin-name { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+.twin-role { color: var(--text-muted); font-size: 13px; margin-bottom: 16px; }
+.twin-message {
+  background: var(--bg-tertiary);
+  padding: 16px;
+  border-radius: var(--radius);
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 400px;
+  margin-bottom: 16px;
+  border-left: 3px solid var(--accent);
+}
+
+/* ============================================
+   MOOD RING
+   ============================================ */
+.mood-ring {
+  width: 100px; height: 100px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, #10b981, #06b6d4, #6366f1, #8b5cf6, #f59e0b, #ef4444, #10b981);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: moodRotate 8s linear infinite;
+  box-shadow: 0 0 40px currentColor;
+  transition: all 0.5s ease;
+}
+.mood-ring-inner {
+  width: 70px; height: 70px;
+  background: var(--bg-secondary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+}
+@keyframes moodRotate { to { transform: rotate(360deg); } }
+
+/* ============================================
+   ACHIEVEMENTS
+   ============================================ */
+.badge-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 12px;
+}
+.badge-item {
+  aspect-ratio: 1;
+  background: var(--bg-tertiary);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+.badge-item.unlocked {
+  background: var(--gradient);
+  border-color: transparent;
+  color: white;
+  box-shadow: var(--shadow-glow);
+}
+.badge-item.locked { opacity: 0.4; filter: grayscale(1); }
+.badge-item:hover { transform: scale(1.05) rotate(5deg); }
+.badge-icon { font-size: 28px; }
+.badge-name { font-size: 10px; font-weight: 600; text-align: center; }
+
+.xp-bar {
+  height: 12px;
+  background: var(--bg-tertiary);
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 12px 0;
+}
+.xp-fill {
+  height: 100%;
+  background: var(--gradient);
+  border-radius: 6px;
+  transition: width 0.8s ease;
+}
+
+/* ============================================
+   DREAM BOARD
+   ============================================ */
+.dream-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+}
+.dream-card {
+  aspect-ratio: 1;
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: var(--gradient);
+  display: flex;
+  align-items: flex-end;
+  padding: 16px;
+  color: white;
+}
+.dream-card:hover { transform: scale(1.03); box-shadow: var(--shadow-lg); }
+.dream-card .dream-icon {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -60%);
+  font-size: 50px;
+  opacity: 0.3;
+}
+.dream-card .dream-info { position: relative; z-index: 2; }
+.dream-card .dream-title { font-weight: 700; font-size: 16px; margin-bottom: 4px; }
+.dream-card .dream-amount { font-size: 12px; opacity: 0.9; }
+
+/* ============================================
+   CALENDAR
+   ============================================ */
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+.cal-header {
+  padding: 8px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+.cal-day {
+  aspect-ratio: 1;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-sm);
+  padding: 6px;
+  font-size: 12px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+.cal-day:hover { background: var(--bg-secondary); transform: scale(1.05); }
+.cal-day.other-month { opacity: 0.3; }
+.cal-day.today { background: var(--gradient); color: white; }
+.cal-day .day-num { font-weight: 700; }
+.cal-day .day-events {
+  margin-top: auto;
+  display: flex;
+  gap: 2px;
+  flex-wrap: wrap;
+}
+.cal-event {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.cal-event.income { background: var(--success); }
+.cal-event.expense { background: var(--danger); }
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 1024px) {
+  .sidebar { transform: translateX(-100%); }
+  .sidebar.open { transform: translateX(0); }
+  .main { margin-left: 0; padding: 20px; }
+}
+@media (max-width: 640px) {
+  .topbar { flex-direction: column; align-items: stretch; }
+  .topbar-right { justify-content: space-between; }
+  .search-box { min-width: 0; flex: 1; }
+  .page-title { font-size: 22px; }
+  .stat-card .stat-value { font-size: 22px; }
+  .fab { bottom: 20px; right: 20px; width: 54px; height: 54px; }
+}
+
+/* Utility */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.gap-2 { gap: 8px; }
+.gap-3 { gap: 12px; }
+.gap-4 { gap: 16px; }
+.mt-2 { margin-top: 8px; }
+.mt-3 { margin-top: 12px; }
+.mt-4 { margin-top: 16px; }
+.mb-2 { margin-bottom: 8px; }
+.mb-3 { margin-bottom: 12px; }
+.mb-4 { margin-bottom: 16px; }
+.text-sm { font-size: 12px; }
+.text-muted { color: var(--text-muted); }
+.text-success { color: var(--success); }
+.text-danger { color: var(--danger); }
+.text-warning { color: var(--warning); }
+.font-bold { font-weight: 700; }
+.w-full { width: 100%; }
+.hidden { display: none !important; }
 </style>
 </head>
-<body>
+<body data-theme="light">
 
-<!-- LOADER -->
+<!-- ============================================
+     LOADING SCREEN
+     ============================================ -->
 <div id="loader">
-  <div class="loader-logo">HUKSHAH</div>
-  <div class="loader-bar-wrap"><div class="loader-bar" id="lbar"></div></div>
-  <div class="loader-sub">Shah of Good Times · Est. 2022</div>
+  <div class="loader-logo">FINTELL PRO</div>
+  <div class="loader-ring"></div>
+  <div class="loader-text">LOADING YOUR FINANCIAL UNIVERSE</div>
 </div>
 
-<!-- CURSOR -->
-<div id="cur"></div>
-<div id="cur-outer"></div>
-
-<!-- PARTICLES -->
-<canvas id="particles-canvas"></canvas>
-
-<!-- NAV -->
-<nav id="main-nav">
-  <div class="nav-logo">HUKSHAH<span style="color:var(--gold);">.</span></div>
-  <div class="nav-right">
-    <ul class="nav-links">
-      <li><a href="#showcase">Products</a></li>
-      <li><a href="#blends">Blends</a></li>
-      <li><a href="#legacy">Legacy</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <span class="nav-est">EST. 2022</span>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-bg-word">SIGMA</div>
-  <p class="hero-eyebrow" id="h-eyebrow">Golden Molasses · UAE · Est. 2022</p>
-  <h1 class="hero-title" id="h-title">HUKSHAH</h1>
-  <p class="hero-sub" id="h-sub">Golden Molasses</p>
-  <p class="hero-tagline" id="h-tag">Shah &nbsp;of &nbsp;Good &nbsp;Times</p>
-  <div class="hero-badge" id="h-badge">Premium Shisha Flavors · Unstoppable Dynasty</div>
-  <div class="hero-cta" id="h-cta">
-    <a href="#showcase" class="btn-gold">Explore the Blends</a>
-    <a href="#contact" class="btn-ghost">Connect Now</a>
-  </div>
-  <div class="hero-scroll" id="h-scroll">
-    <div class="scroll-bar"></div>
-    <span class="scroll-txt">Scroll</span>
-  </div>
-</section>
-
-<!-- MARQUEE -->
-<div class="marquee-wrap">
-  <div class="marquee-track">
-    <span class="m-item">Misbah <span class="m-sep">◆</span></span>
-    <span class="m-item">Love 86 <span class="m-sep">◆</span></span>
-    <span class="m-item">Blueberry Mint <span class="m-sep">◆</span></span>
-    <span class="m-item">Grape Mint <span class="m-sep">◆</span></span>
-    <span class="m-item">Double Apple <span class="m-sep">◆</span></span>
-    <span class="m-item">Gum Mint <span class="m-sep">◆</span></span>
-    <span class="m-item">Mint <span class="m-sep">◆</span></span>
-    <span class="m-item">Shah of Good Times <span class="m-sep">◆</span></span>
-    <span class="m-item">Misbah <span class="m-sep">◆</span></span>
-    <span class="m-item">Love 86 <span class="m-sep">◆</span></span>
-    <span class="m-item">Blueberry Mint <span class="m-sep">◆</span></span>
-    <span class="m-item">Grape Mint <span class="m-sep">◆</span></span>
-    <span class="m-item">Double Apple <span class="m-sep">◆</span></span>
-    <span class="m-item">Gum Mint <span class="m-sep">◆</span></span>
-    <span class="m-item">Mint <span class="m-sep">◆</span></span>
-    <span class="m-item">Shah of Good Times <span class="m-sep">◆</span></span>
-  </div>
+<!-- ============================================
+     TICKER BAR
+     ============================================ -->
+<div class="ticker">
+  <div class="ticker-track" id="tickerTrack"></div>
 </div>
 
-<!-- SCROLL SHOWCASE — ANIMATION CONTAINER -->
-<div class="anim-container" id="showcase">
+<!-- ============================================
+     APP
+     ============================================ -->
+<div class="app">
 
-  <!-- PINNED VISUAL TARGET -->
-  <div class="showcase-visuals" id="animated-visual-target">
-    <div class="gold-orb" style="width:420px;height:420px;top:50%;left:50%;transform:translate(-50%,-50%);"></div>
-
-    <!-- 50g BOX — will hold real image -->
-    <div class="product-placeholder" id="box-50g">
-      <!-- PLACEHOLDER CONTENT — Replace with real <img> once confirmed -->
-      <div class="box-label">
-        <div class="bl-logo">HUKSHAH</div>
-        <div class="bl-sub">Golden Molasses</div>
-        <div class="bl-divider"></div>
-        <div class="bl-flavor">Misbah</div>
-        <div class="bl-weight">50g · Flavoured Tobacco Moassel</div>
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-icon"><i class="fas fa-bolt"></i></div>
+      <div class="sidebar-logo-text">
+        FINTELL
+        <small>PRO • 2026</small>
       </div>
-      <!-- REAL IMAGE — uncomment and fill src when ready -->
-      <!-- <img class="box-img" src="50g.jpeg" alt="Hukshah 50g Pack"> -->
     </div>
 
-    <!-- TUBS GROUP — standing & sleeping -->
-    <div id="tubs-group">
-      <!-- Standing Tub -->
-      <div class="tub-placeholder" id="standingTub">
-        <div class="tl">
-          <div class="n">HUKSHAH</div>
-          <div class="s">Golden Molasses</div>
-          <div class="f">Love 86</div>
-          <div class="w">1 KG · Standing</div>
+    <div class="nav-section">
+      <div class="nav-section-title">Overview</div>
+      <div class="nav-item active" data-section="dashboard" data-tip="Dashboard (D)">
+        <i class="fas fa-chart-line"></i><span>Dashboard</span>
+      </div>
+      <div class="nav-item" data-section="timemachine" data-tip="Time Machine">
+        <i class="fas fa-clock-rotate-left"></i><span>Time Machine</span>
+      </div>
+      <div class="nav-item" data-section="fire" data-tip="FIRE Calculator">
+        <i class="fas fa-fire"></i><span>FIRE Calculator</span>
+      </div>
+      <div class="nav-item" data-section="networth" data-tip="Net Worth Timeline">
+        <i class="fas fa-chart-area"></i><span>Net Worth</span>
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Money</div>
+      <div class="nav-item" data-section="transactions" data-tip="Transactions">
+        <i class="fas fa-arrow-right-arrow-left"></i><span>Transactions</span>
+      </div>
+      <div class="nav-item" data-section="budget" data-tip="Budgets">
+        <i class="fas fa-wallet"></i><span>Budgets</span>
+      </div>
+      <div class="nav-item" data-section="goals" data-tip="Goals">
+        <i class="fas fa-bullseye"></i><span>Goals</span>
+      </div>
+      <div class="nav-item" data-section="bills" data-tip="Bills & Subscriptions">
+        <i class="fas fa-file-invoice-dollar"></i><span>Bills</span>
+        <span class="badge">3</span>
+      </div>
+      <div class="nav-item" data-section="calendar" data-tip="Financial Calendar">
+        <i class="fas fa-calendar-days"></i><span>Calendar</span>
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Invest</div>
+      <div class="nav-item" data-section="portfolio" data-tip="Portfolio">
+        <i class="fas fa-briefcase"></i><span>Portfolio</span>
+      </div>
+      <div class="nav-item" data-section="loans" data-tip="Loans">
+        <i class="fas fa-hand-holding-dollar"></i><span>Loans</span>
+      </div>
+      <div class="nav-item" data-section="mortgage" data-tip="Mortgage">
+        <i class="fas fa-house"></i><span>Mortgage</span>
+      </div>
+      <div class="nav-item" data-section="fd" data-tip="Fixed Deposits">
+        <i class="fas fa-piggy-bank"></i><span>Fixed Deposits</span>
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Smart Tools</div>
+      <div class="nav-item" data-section="aitwin" data-tip="AI Financial Twin">
+        <i class="fas fa-robot"></i><span>AI Twin</span>
+        <span class="badge" style="background: var(--accent);">NEW</span>
+      </div>
+      <div class="nav-item" data-section="nudges" data-tip="Smart Nudges">
+        <i class="fas fa-lightbulb"></i><span>Smart Nudges</span>
+      </div>
+      <div class="nav-item" data-section="dna" data-tip="Spending DNA">
+        <i class="fas fa-dna"></i><span>Spending DNA</span>
+      </div>
+      <div class="nav-item" data-section="carbon" data-tip="Carbon Footprint">
+        <i class="fas fa-leaf"></i><span>Carbon Footprint</span>
+      </div>
+      <div class="nav-item" data-section="subs" data-tip="Subscription Autopsy">
+        <i class="fas fa-scissors"></i><span>Sub Autopsy</span>
+      </div>
+      <div class="nav-item" data-section="sidehustle" data-tip="Side Hustle Finder">
+        <i class="fas fa-rocket"></i><span>Side Hustle</span>
+      </div>
+      <div class="nav-item" data-section="inflation" data-tip="Inflation Simulator">
+        <i class="fas fa-chart-line"></i><span>Inflation Sim</span>
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Gamify</div>
+      <div class="nav-item" data-section="achievements" data-tip="Achievements">
+        <i class="fas fa-trophy"></i><span>Achievements</span>
+      </div>
+      <div class="nav-item" data-section="dreamboard" data-tip="Dream Board">
+        <i class="fas fa-star"></i><span>Dream Board</span>
+      </div>
+      <div class="nav-item" data-section="battle" data-tip="Budget Battle">
+        <i class="fas fa-shield-halved"></i><span>Budget Battle</span>
+      </div>
+      <div class="nav-item" data-section="challenge" data-tip="Savings Challenge">
+        <i class="fas fa-fire-flame-curved"></i><span>Savings Challenge</span>
+      </div>
+      <div class="nav-item" data-section="benchmark" data-tip="Social Benchmark">
+        <i class="fas fa-users"></i><span>Benchmark</span>
+      </div>
+      <div class="nav-item" data-section="mantras" data-tip="Money Mantras">
+        <i class="fas fa-quote-left"></i><span>Mantras</span>
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Services</div>
+      <div class="nav-item" data-section="cards" data-tip="Cards">
+        <i class="fas fa-credit-card"></i><span>Cards</span>
+      </div>
+      <div class="nav-item" data-section="remit" data-tip="Remittance">
+        <i class="fas fa-paper-plane"></i><span>Remit</span>
+      </div>
+      <div class="nav-item" data-section="banks" data-tip="Banks">
+        <i class="fas fa-building-columns"></i><span>Banks</span>
+      </div>
+      <div class="nav-item" data-section="insurance" data-tip="Insurance">
+        <i class="fas fa-shield"></i><span>Insurance</span>
+      </div>
+      <div class="nav-item" data-section="credit" data-tip="Credit Score">
+        <i class="fas fa-star-half-stroke"></i><span>Credit Score</span>
+      </div>
+      <div class="nav-item" data-section="emergency" data-tip="Emergency Fund">
+        <i class="fas fa-kit-medical"></i><span>Emergency</span>
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">System</div>
+      <div class="nav-item" data-section="settings" data-tip="Settings">
+        <i class="fas fa-gear"></i><span>Settings</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+
+    <!-- Topbar -->
+    <div class="topbar">
+      <div class="topbar-left">
+        <div class="menu-toggle" id="menuToggle" data-tip="Toggle Sidebar (B)">
+          <i class="fas fa-bars"></i>
         </div>
-        <!-- REAL IMAGE — uncomment when ready -->
-        <!-- <img class="tub-img" src="WhatsApp_Image_2026-05-29_at_7_31_58_PM.jpeg" alt="Love86 1KG"> -->
-      </div>
-      <!-- Sleeping Tub -->
-      <div class="tub-placeholder" id="sleepingTub">
-        <div class="tl">
-          <div class="n">HUKSHAH</div>
-          <div class="s">Golden Molasses</div>
-          <div class="f">Blueberry Mint</div>
-          <div class="w">1 KG · Laid</div>
+        <div>
+          <div class="page-title" id="pageTitle">Dashboard</div>
+          <div class="page-subtitle" id="pageSubtitle">Welcome back 👋</div>
         </div>
-        <!-- REAL IMAGE — uncomment when ready -->
-        <!-- <img class="tub-img" src="WhatsApp_Image_2026-05-29_at_7_31_59_PM.jpeg" alt="Blueberry Mint 1KG"> -->
+        <span class="panic-indicator"><i class="fas fa-eye-slash"></i> PANIC MODE</span>
+      </div>
+      <div class="topbar-right">
+        <div class="search-box" id="searchBox" data-tip="Command Palette">
+          <i class="fas fa-search"></i>
+          <span>Search anything...</span>
+          <kbd>⌘K</kbd>
+        </div>
+        <div class="icon-btn" id="voiceBtn" data-tip="Voice Commands (V)">
+          <i class="fas fa-microphone"></i>
+        </div>
+        <div class="icon-btn" id="panicBtn" data-tip="Panic Mode (P)">
+          <i class="fas fa-eye-slash"></i>
+        </div>
+        <div class="icon-btn" id="themeBtn" data-tip="Toggle Theme (T)">
+          <i class="fas fa-moon"></i>
+        </div>
+        <div class="icon-btn" id="notifBtn" data-tip="Notifications (N)">
+          <i class="fas fa-bell"></i>
+          <span class="dot"></span>
+        </div>
+        <div class="avatar" data-tip="Profile">HS</div>
       </div>
     </div>
-  </div>
 
-  <!-- SECTION 1 — The 50g -->
-  <div class="scroll-section" id="trigger-section-1">
-    <div class="showcase-text">
-      <span class="s-label">The Pocket Alpha</span>
-      <h2>The 50g<br>Precision Pack</h2>
-      <p>
-        Engineered for the sigma on the move. Our iconic 50g box is a statement of taste — compact, lethal, and unmistakably Hukshah.
-        Seven elite blends. One unforgettable experience.
-      </p>
-      <blockquote class="sigma-quote">
-        "They travel light. They smoke heavy.<br>That's the Hukshah way."
-      </blockquote>
+    <!-- ============================================
+         DASHBOARD
+         ============================================ -->
+    <div class="section active" id="section-dashboard">
+
+      <!-- Health Gauge + Mood Ring Row -->
+      <div class="grid grid-3 mb-4">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><i class="fas fa-heart-pulse"></i> Financial Health</div>
+            <span class="tag success">Excellent</span>
+          </div>
+          <div class="gauge">
+            <svg width="160" height="160" viewBox="0 0 160 160">
+              <defs>
+                <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#6366f1"/>
+                  <stop offset="50%" stop-color="#8b5cf6"/>
+                  <stop offset="100%" stop-color="#06b6d4"/>
+                </linearGradient>
+              </defs>
+              <circle class="gauge-bg" cx="80" cy="80" r="68"/>
+              <circle class="gauge-fill" id="healthGauge" cx="80" cy="80" r="68"
+                      stroke-dasharray="427" stroke-dashoffset="85"/>
+            </svg>
+            <div class="gauge-text">
+              <div class="gauge-value">82</div>
+              <div class="gauge-label">Health Score</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><i class="fas fa-circle-half-stroke"></i> Mood Ring</div>
+            <span class="tag info">Balanced</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <div class="mood-ring" id="moodRing">
+              <div class="mood-ring-inner">😊</div>
+            </div>
+            <div>
+              <div class="font-bold mb-2">Financial Mood</div>
+              <div class="text-sm text-muted mb-2">Based on your spending, savings, and debt patterns</div>
+              <div class="tag success"><i class="fas fa-arrow-up"></i> Improving</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><i class="fas fa-trophy"></i> Today's Wins</div>
+            <span class="tag">+25 XP</span>
+          </div>
+          <div class="flex items-center gap-3 mb-3">
+            <div style="font-size: 36px;">🏆</div>
+            <div>
+              <div class="font-bold">Level 12 • Savvy Saver</div>
+              <div class="text-sm text-muted">2,450 / 3,000 XP to next level</div>
+            </div>
+          </div>
+          <div class="xp-bar"><div class="xp-fill" style="width: 82%"></div></div>
+          <div class="flex justify-between text-sm">
+            <span class="text-muted">🔥 14-day streak</span>
+            <span class="text-success">3 badges earned</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="grid grid-4 mb-4">
+        <div class="stat-card">
+          <div class="stat-icon" style="background: var(--gradient);"><i class="fas fa-wallet"></i></div>
+          <div class="stat-label">Balance</div>
+          <div class="stat-value sensitive">AED 184,250</div>
+          <div class="stat-change up"><i class="fas fa-arrow-up"></i> +3.2% this month</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background: var(--gradient-3);"><i class="fas fa-arrow-down"></i></div>
+          <div class="stat-label">Income</div>
+          <div class="stat-value sensitive">AED 22,400</div>
+          <div class="stat-change up"><i class="fas fa-arrow-up"></i> +5.8% vs last</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background: var(--gradient-2);"><i class="fas fa-arrow-up"></i></div>
+          <div class="stat-label">Expenses</div>
+          <div class="stat-value sensitive">AED 14,820</div>
+          <div class="stat-change down"><i class="fas fa-arrow-down"></i> +2.1% vs last</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background: linear-gradient(135deg, #10b981, #06b6d4);"><i class="fas fa-piggy-bank"></i></div>
+          <div class="stat-label">Savings Rate</div>
+          <div class="stat-value">33.8%</div>
+          <div class="stat-change up"><i class="fas fa-arrow-up"></i> +1.2% improved</div>
+        </div>
+      </div>
+
+      <!-- Charts Row -->
+      <div class="grid grid-2 mb-4">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title"><i class="fas fa-chart-line"></i> Cash Flow</div>
+              <div class="card-subtitle">Income vs Expenses (6 months)</div>
+            </div>
+          </div>
+          <canvas id="cashflowChart" height="220"></canvas>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title"><i class="fas fa-chart-pie"></i> Spending Breakdown</div>
+              <div class="card-subtitle">Where your money goes</div>
+            </div>
+          </div>
+          <canvas id="spendingChart" height="220"></canvas>
+        </div>
+      </div>
+
+      <!-- AI Twin + Nudges -->
+      <div class="grid grid-2 mb-4">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><i class="fas fa-robot"></i> AI Twin Insights</div>
+            <button class="btn btn-sm btn-ghost" onclick="navigateTo('aitwin')">View Full <i class="fas fa-arrow-right"></i></button>
+          </div>
+          <div class="ai-twin" style="padding: 16px 0;">
+            <div class="twin-avatar" style="width: 80px; height: 80px; font-size: 32px;">🤖</div>
+            <div class="twin-message" style="margin-top: 12px; max-width: 100%;">
+              "Your savings rate improved by 1.2% this month! If you keep this pace, you'll hit your Dubai apartment goal 3 months early. Consider redirecting AED 500 from dining to investments."
+            </div>
+            <button class="btn btn-primary btn-sm">Ask Me Anything</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><i class="fas fa-lightbulb"></i> Smart Nudges</div>
+            <span class="tag info">5 new</span>
+          </div>
+          <div id="nudgesList" style="display: flex; flex-direction: column; gap: 10px;"></div>
+        </div>
+      </div>
+
+      <!-- Recent TX -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title"><i class="fas fa-clock-rotate-left"></i> Recent Transactions</div>
+            <div class="card-subtitle">Latest activity</div>
+          </div>
+          <button class="btn btn-sm btn-secondary" onclick="navigateTo('transactions')">View All</button>
+        </div>
+        <div class="table-wrap">
+          <table id="recentTxTable">
+            <thead>
+              <tr><th>Date</th><th>Description</th><th>Category</th><th style="text-align: right;">Amount</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <!-- SECTION 2 — The 1KG Tubs -->
-  <div class="scroll-section" id="trigger-section-2">
-    <div class="showcase-text">
-      <span class="s-label">The Connoisseur's Choice</span>
-      <h2>The 1KG<br>Throne Edition</h2>
-      <p>
-        One standing. One laid back. Both dominant.
-        The 1KG tub is for those who don't just smoke — they reign.
-        Sealed with UAE authenticity, packed with pure golden molasses.
-      </p>
-      <blockquote class="sigma-quote">
-        "While others count sessions, the Hukshah king counts kilograms."
-      </blockquote>
+    <!-- ============================================
+         TIME MACHINE
+         ============================================ -->
+    <div class="section" id="section-timemachine">
+      <div class="card mb-4">
+        <div class="card-header">
+          <div>
+            <div class="card-title"><i class="fas fa-clock-rotate-left"></i> Time Machine</div>
+            <div class="card-subtitle">Project your net worth into the future</div>
+          </div>
+        </div>
+        <div class="grid grid-4 mb-4">
+          <div>
+            <label class="label">Current Net Worth (AED)</label>
+            <input type="number" class="input" id="tmCurrent" value="250000">
+          </div>
+          <div>
+            <label class="label">Monthly Savings (AED)</label>
+            <input type="number" class="input" id="tmMonthly" value="7500">
+          </div>
+          <div>
+            <label class="label">Annual Return (%)</label>
+            <input type="number" class="input" id="tmReturn" value="8" step="0.1">
+          </div>
+          <div>
+            <label class="label">Inflation (%)</label>
+            <input type="number" class="input" id="tmInflation" value="3" step="0.1">
+          </div>
+        </div>
+        <div class="flex gap-3 mb-4">
+          <button class="btn btn-primary" onclick="runTimeMachine()"><i class="fas fa-play"></i> Project</button>
+          <button class="btn btn-secondary" onclick="setTmPreset(5)">5 Years</button>
+          <button class="btn btn-secondary" onclick="setTmPreset(10)">10 Years</button>
+          <button class="btn btn-secondary" onclick="setTmPreset(15)">15 Years</button>
+          <button class="btn btn-secondary" onclick="setTmPreset(20)">20 Years</button>
+        </div>
+        <canvas id="tmChart" height="100"></canvas>
+      </div>
+      <div class="grid grid-4">
+        <div class="stat-card">
+          <div class="stat-icon" style="background: var(--gradient);"><i class="fas fa-calendar"></i></div>
+          <div class="stat-label">5 Years</div>
+          <div class="stat-value sensitive" id="tm5">—</div>
+          <div class="text-sm text-muted">Real value: <span id="tm5real">—</span></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background: var(--gradient-3);"><i class="fas fa-calendar"></i></div>
+          <div class="stat-label">10 Years</div>
+          <div class="stat-value sensitive" id="tm10">—</div>
+          <div class="text-sm text-muted">Real value: <span id="tm10real">—</span></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background: var(--gradient-2);"><i class="fas fa-calendar"></i></div>
+          <div class="stat-label">15 Years</div>
+          <div class="stat-value sensitive" id="tm15">—</div>
+          <div class="text-sm text-muted">Real value: <span id="tm15real">—</span></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background: linear-gradient(135deg, #f59e0b, #ef4444);"><i class="fas fa-calendar"></i></div>
+          <div class="stat-label">20 Years</div>
+          <div class="stat-value sensitive" id="tm20">—</div>
+          <div class="text-sm text-muted">Real value: <span id="tm20real">—</span></div>
+        </div>
+      </div>
     </div>
-  </div>
 
+    <!-- ============================================
+         FIRE CALCULATOR
+         ============================================ -->
+    <div class="section" id="section-fire">
+      <div class="card mb-4">
+        <div class="card-header">
+          <div>
+            <div class="card-title"><i class="fas fa-fire"></i> FIRE Calculator</div>
+            <div class="card-subtitle">Financial Independence, Retire Early</div>
+          </div>
+        </div>
+        <div class="grid grid-3 mb-4">
+          <div>
+            <label class="label">Annual Expenses (AED)</label>
+            <input type="number" class="input" id="fireExpenses" value="120000">
+          </div>
+          <div>
+            <label class="label">Current Savings (AED)</label>
+            <input type="number" class="input" id="fireSavings" value="250000">
+          </div>
+          <div>
+            <label class="label">Annual Investment (AED)</label>
+            <input type="number" class="input" id="fireAnnual" value="90000">
+          </div>
+          <div>
+            <label class="label">Expected Return (%)</label>
+            <input type="number" class="input" id="fireReturn" value="7" step="0.1">
+          </div>
+          <div>
+            <label class="label">Safe Withdrawal Rate (%)</label>
+            <input type="number" class="input" id="fireSWR" value="4" step="0.1">
+          </div>
+          <div>
+            <label class="label">FIRE Number Multiple</label>
+            <input type="number" class="input" id="fireMultiple" value="25" step="1">
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="calcFIRE()"><i class="fas fa-calculator"></i> Calculate FIRE Date</button>
+      </div>
+
+      <div class="grid grid-3">
+        <div class="stat-card">
+          <div class="stat-icon" style="background: var(--gradient);"><i class="fas fa-bullseye"></i></div>
+          <div class="stat-label">FIRE Number</div>
+          <div class="stat-value sensitive" id="fireNumber">—</div>
+          <div class="text-sm text-muted">Target portfolio</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background: var(--gradient-3);"><i class="fas fa-calendar-check"></i></div>
+          <div class="stat-label">Years to FIRE</div>
+          <div class="stat-value" id="fireYears">—</div>
+          <div class="text-sm text-muted" id="fireDate">—</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background: var(--gradient-2);"><i class="fas fa-percent"></i></div>
+          <div class="stat-label">Progress</div>
+          <div class="stat-value" id="fireProgress">—</div>
+          <div class="progress mt-2"><div class="progress-bar" id="fireBar" style="width: 0%"></div></div>
+        </div>
+      </div>
+
+      <div class="card mt-4">
+        <div class="card-header">
+          <div class="card-title"><i class="fas fa-chart-area"></i> Path to Freedom</div>
+        </div>
+        <canvas id="fireChart" height="100"></canvas>
+      </div>
+    </div>
+
+    <!-- ============================================
+     TRANSACTIONS
+     ============================================ -->
+    <div class="section" id="section-transactions">
+      <div class="card mb-4">
+        <div class="card-header">
+          <div class="card-title"><i class="fas fa-arrow-right-arrow-left"></i> Transactions</div>
+          <button class="btn btn-primary btn-sm" onclick="openTxModal()"><i class="fas fa-plus"></i> Add Transaction</button>
+        </div>
+        <div class="flex gap-3 mb-3" style="flex-wrap: wrap;">
+          <input type="text" class="input" id="txSearch" placeholder="Search transactions..." style="max-width: 300px;">
+          <select class="select" id="txFilterType" style="max-width: 150px;">
+            <option value="all">All Types</option>
+            <option value="income">Income</option>
+            <option value="expense">Expense</option>
+          </select>
+          <select class="select" id="txFilterCat" style="max-width: 180px;">
+            <option value="all">All Categories</option>
+          </select>
+        </div>
+        <div class="table-wrap">
+          <table id="txTable">
+            <thead>
+              <tr><th>Date</th><th>Description</th><th>Category</th><th>Type</th><th style="text-align: right;">Amount</th><th></th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="flex justify-between items-center mt-3">
+          <div class="text-sm text-muted" id="txCount">0 transactions</div>
+          <div class="flex gap-2">
+            <button class="btn btn-sm btn-secondary" onclick="txPage(-1)"><i class="fas fa-chevron-left"></i></button>
+            <span class="text-sm" id="txPageInfo" style="padding: 6px 12px;">Page 1</span>
+            <button class="btn btn-sm btn-secondary" onclick="txPage(1)"><i class="fas fa-chevron-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================
+         BUDGET
+         ============================================ -->
+    <div class="section" id="section-budget">
+      <div class="card mb-4">
+        <div class="card-header">
+          <div class="card-title"><i class="fas fa-wallet"></i> Budgets</div>
+          <button class="btn btn-primary btn-sm" onclick="openBudgetModal()"><i class="fas fa-plus"></i> Add Budget</button>
+        </div>
+        <div class="grid grid-2" id="budgetList"></div>
+      </div>
+    </div>
+
+    <!-- ============================================
+         GOALS
+         ============================================ -->
+    <div class="section" id="section-goals">
+      <div class="card mb-4">
+        <div class="card-header">
+          <div class="card-title"><i class="fas fa-bullseye"></i> Savings Goals</div>
+          <button class="btn btn-primary btn-sm" onclick="openGoalModal()"><i class="fas fa-plus"></i> Add Goal</button>
+        </div>
+        <div class="grid grid-3" id="goalList"></div>
+      </div>
+    </div>
+
+    <!-- ============================================
+         BILLS
+         ============================================ -->
+    <div class="section" id="section-bills">
+      <div class="card mb-4">
+        <div class="card-header">
+          <div class="card-title"><i class="fas fa-file-invoice-dollar"></i> Bills & Subscriptions</div>
+          <button class="btn btn-primary btn-sm" onclick="openBillModal()"><i class="fas fa-plus"></i> Add Bill</button>
+        </div>
+        <div class="table-wrap">
+          <table id="billTable">
+            <thead>
+              <tr><th>Service</th><th>Amount</th><th>Due Date</th><th>Frequency</th><th>Status</th><th></th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================
+     PORTFOLIO
+     ============================================ -->
+    <div class="section" id="section-portfolio">
+      <div class="grid grid-2 mb-4">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><i class="fas fa-briefcase"></i> Portfolio Allocation</div>
+          </div>
+          <canvas id="portfolioChart" height="220"></canvas>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><i class="fas fa-chart-line"></i> Performance</div>
+          </div>
+          <canvas id="perfChart" height="220"></canvas>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title"><i class="fas fa-list"></i> Holdings</div>
+          <button class="btn btn-primary btn-sm" onclick="openInvestModal()"><i class="fas fa-plus"></i> Add Holding</button>
+        </div>
+        <div class="table-wrap">
+          <table id="investTable">
+            <thead>
+              <tr><th>Asset</th><th>Type</th><th>Units</th><th>Avg Cost</th><th>Current</th><th>P/L</th><th></th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================
+         AI TWIN
+         ============================================ -->
+    <div class="section" id="section-aitwin">
+      <div class="card mb-4">
+        <div class="ai-twin">
+          <div class="twin-avatar">🤖</div>
+          <div class="twin-name">Aria — Your Financial Twin</div>
+          <div class="twin-role">AI-Powered Financial Advisor • Available 24/7</div>
+          <div class="twin-message" id="twinMessage">
+            "Hello! I've analyzed your financial profile. You're in the top 15% of savers in the UAE. Your emergency fund covers 4.2 months of expenses — aim for 6 months. I noticed you spent AED 2,340 on dining last month. Would you like me to suggest ways to reduce this?"
+          </div>
+          <div class="flex gap-2" style="flex-wrap: wrap; justify-content: center;">
+            <button class="btn btn-primary btn-sm" onclick="askTwin('savings')"><i class="fas fa-piggy-bank"></i> Savings Tips</button>
+            <button class="btn btn-secondary btn-sm" onclick="askTwin('invest')"><i class="fas fa-chart-line"></i> Investment Ideas</button>
+            <button class="btn btn-secondary btn-sm" onclick="askTwin('debt')"><i class="fas fa-credit-card"></i> Debt Strategy</button>
+            <button class="btn btn-secondary btn-sm" onclick="askTwin('retire')"><i class="fas fa-umbrella-beach"></i> Retirement Plan</button>
+            <button class="btn btn-secondary btn-sm" onclick="askTwin('tax')"><i class="fas fa-file-invoice"></i> Tax Optimization</button>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title"><i class="fas fa-comments"></i> Chat with Aria</div>
+        </div>
+        <div id="twinChat" style="max-height: 400px; overflow-y: auto; padding: 12px; background: var(--bg-tertiary); border-radius: var(--radius); margin-bottom: 12px;"></div>
+        <div class="flex gap-2">
+          <input type="text" class="input" id="twinInput" placeholder="Ask me anything about your finances..." onkeypress="if(event.key==='Enter')sendTwinMsg()">
+          <button class="btn btn-primary" onclick="sendTwinMsg()"><i class="fas fa-paper-plane"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================
+     SUBSCRIPTION AUTOPSY
+     ============================================ -->
+    <div class="section" id="section-subs">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title"><i class="fas fa-scissors"></i> Subscription Autopsy</div>
+        </div>
+        <div id="subsList"></div>
+      </div>
+    </div>
+
+    <!-- ============================================
+     LOANS
+     ============================================ -->
+    <div class="section" id="section-loans">
+      <div class="card mb-4">
+        <div class="card-header">
+          <div class="card-title"><i class="fas fa-calculator"></i> EMI Calculator</div>
+        </div>
+        <div class="grid grid-3 mb-4">
+          <div><label class="label">Loan Amount (AED)</label><input type="number" class="input" id="emiAmount" value="100000"></div>
+          <div><label class="label">Interest Rate (%)</label><input type="number" class="input" id="emiRate" value="7.5" step="0.1"></div>
+          <div><label class="label">Tenure (months)</label><input type="number" class="input" id="emiTenure" value="60"></div>
+        </div>
+        <button class="btn btn-primary" onclick="calcEMI()"><i class="fas fa-calculator"></i> Calculate EMI</button>
+        <div class="grid grid-3 mt-4">
+          <div class="stat-card"><div class="stat-label">Monthly EMI</div><div class="stat-value sensitive" id="emiMonthly">—</div></div>
+          <div class="stat-card"><div class="stat-label">Total Interest</div><div class="stat-value sensitive" id="emiInterest">—</div></div>
+          <div class="stat-card"><div class="stat-label">Total Payment</div><div class="stat-value sensitive" id="emiTotal">—</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title"><i class="fas fa-building-columns"></i> Best Loan Rates 2026</div></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Bank</th><th>Rate</th><th>Type</th><th>Max Loan</th><th>Min Salary</th></tr></thead>
+            <tbody>
+              <tr><td>Emirates NBD</td><td>6.99%</td><td>Personal</td><td>AED 1M</td><td>AED 8,000</td></tr>
+              <tr><td>ADCB</td><td>7.25%</td><td>Personal</td><td>AED 1.5M</td><td>AED 10,000</td></tr>
+              <tr><td>FAB</td><td>6.75%</td><td>Personal</td><td>AED 2M</td><td>AED 15,000</td></tr>
+              <tr><td>Mashreq</td><td>7.49%</td><td>Personal</td><td>AED 1M</td><td>AED 8,000</td></tr>
+              <tr><td>DIB</td><td>7.99%</td><td>Islamic</td><td>AED 750K</td><td>AED 7,000</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================
+     SETTINGS
+     ============================================ -->
+    <div class="section" id="section-settings">
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="card-header"><div class="card-title"><i class="fas fa-user"></i> Profile</div></div>
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div><label class="label">Name</label><input type="text" class="input" value="Hammad Sayed"></div>
+            <div><label class="label">Email</label><input type="email" class="input" value="hammad@fintell.me"></div>
+            <button class="btn btn-primary"><i class="fas fa-save"></i> Save Changes</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><div class="card-title"><i class="fas fa-palette"></i> Preferences</div></div>
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div>
+              <label class="label">Theme</label>
+              <div class="flex gap-2">
+                <button class="btn btn-secondary" onclick="setTheme('light')"><i class="fas fa-sun"></i> Light</button>
+                <button class="btn btn-secondary" onclick="setTheme('dark')"><i class="fas fa-moon"></i> Dark</button>
+                <button class="btn btn-secondary" onclick="setTheme('ocean')"><i class="fas fa-water"></i> Ocean</button>
+              </div>
+            </div>
+            <div>
+              <label class="label">Currency</label>
+              <select class="select"><option>AED</option><option>USD</option><option>GBP</option><option>INR</option></select>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><div class="card-title"><i class="fas fa-database"></i> Data Management</div></div>
+          <div class="flex gap-2" style="flex-wrap: wrap;">
+            <button class="btn btn-secondary" onclick="exportAllData()"><i class="fas fa-download"></i> Export All Data</button>
+            <button class="btn btn-secondary" onclick="document.getElementById('importFile').click()"><i class="fas fa-upload"></i> Import</button>
+            <input type="file" id="importFile" style="display:none" accept=".json" onchange="importAllData(event)">
+            <button class="btn btn-danger" onclick="resetAllData()"><i class="fas fa-trash"></i> Reset All</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><div class="card-title"><i class="fas fa-keyboard"></i> Keyboard Shortcuts</div></div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 13px;">
+            <div><kbd style="background: var(--bg-tertiary); padding: 2px 8px; border-radius: 4px;">⌘K</kbd> Command Palette</div>
+            <div><kbd style="background: var(--bg-tertiary); padding: 2px 8px; border-radius: 4px;">D</kbd> Dashboard</div>
+            <div><kbd style="background: var(--bg-tertiary); padding: 2px 8px; border-radius: 4px;">T</kbd> Toggle Theme</div>
+            <div><kbd style="background: var(--bg-tertiary); padding: 2px 8px; border-radius: 4px;">P</kbd> Panic Mode</div>
+            <div><kbd style="background: var(--bg-tertiary); padding: 2px 8px; border-radius: 4px;">V</kbd> Voice Command</div>
+            <div><kbd style="background: var(--bg-tertiary); padding: 2px 8px; border-radius: 4px;">B</kbd> Toggle Sidebar</div>
+            <div><kbd style="background: var(--bg-tertiary); padding: 2px 8px; border-radius: 4px;">N</kbd> Notifications</div>
+            <div><kbd style="background: var(--bg-tertiary); padding: 2px 8px; border-radius: 4px;">Esc</kbd> Close Modal</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
 </div>
-<!-- END ANIM CONTAINER -->
 
-<!-- SIGMA QUOTES -->
-<section class="quotes-section">
-  <h2 class="reveal" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,4rem);letter-spacing:5px;background:linear-gradient(135deg,#fff 30%,var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent;">SIGMA MANIFESTO</h2>
-  <div class="gold-divider"></div>
-  <div class="quotes-grid">
-    <div class="quote-card reveal rd1">
-      <span class="quote-mark">"</span>
-      <p class="quote-text">The lion doesn't explain himself to the sheep. HUKSHAH doesn't explain its quality. It lets the smoke speak.</p>
-      <span class="quote-attr">— The Dynasty Code</span>
-    </div>
-    <div class="quote-card reveal rd2">
-      <span class="quote-mark">"</span>
-      <p class="quote-text">Born in UAE. Built for kings. Every gram of Golden Molasses carries the weight of a legacy that cannot be copied.</p>
-      <span class="quote-attr">— Mubashshir Sayed, Founder</span>
-    </div>
-    <div class="quote-card reveal rd3">
-      <span class="quote-mark">"</span>
-      <p class="quote-text">Dangerous than you think. More powerful than they imagine. HUKSHAH — it is more than a brand. It is a verdict.</p>
-      <span class="quote-attr">— Shah of Good Times</span>
-    </div>
-  </div>
-</section>
+<!-- ============================================
+     FAB
+     ============================================ -->
+<div class="fab" id="fab" data-tip="Quick Actions"><i class="fas fa-plus"></i></div>
+<div class="fab-menu" id="fabMenu">
+  <div class="fab-item"><span class="fab-item-label">Add Transaction</span><div class="fab-item-btn" onclick="openTxModal()"><i class="fas fa-arrow-right-arrow-left"></i></div></div>
+  <div class="fab-item"><span class="fab-item-label">Add Budget</span><div class="fab-item-btn" onclick="openBudgetModal()"><i class="fas fa-wallet"></i></div></div>
+  <div class="fab-item"><span class="fab-item-label">Add Goal</span><div class="fab-item-btn" onclick="openGoalModal()"><i class="fas fa-bullseye"></i></div></div>
+  <div class="fab-item"><span class="fab-item-label">Add Bill</span><div class="fab-item-btn" onclick="openBillModal()"><i class="fas fa-file-invoice-dollar"></i></div></div>
+  <div class="fab-item"><span class="fab-item-label">New Dream</span><div class="fab-item-btn" onclick="openDreamModal()"><i class="fas fa-star"></i></div></div>
+</div>
 
-<!-- LEGACY SECTION -->
-<section class="legacy-section" id="legacy">
-  <div class="legacy-bg-text">LEGACY</div>
-  <h3 class="reveal">THE SIGMA<br>DYNASTY THAT<br>REDEFINED<br>UAE SHISHA</h3>
-  <div class="gold-divider"></div>
-  <div class="legacy-grid">
-    <div class="legacy-card reveal rd1">
-      <span class="year">2022</span>
-      <p>Founded in UAE. The dynasty begins. Zero compromise, maximum impact.</p>
-    </div>
-    <div class="legacy-card reveal rd2">
-      <span class="year">7+</span>
-      <p>Premium blends crafted to perfection. Each one a different throne.</p>
-    </div>
-    <div class="legacy-card reveal rd3">
-      <span class="year">50g</span>
-      <p>The pocket-sized alpha. Seven blends, one iconic black-gold box.</p>
-    </div>
-    <div class="legacy-card reveal rd4">
-      <span class="year">1KG</span>
-      <p>The Throne Edition tub. For sessions that become legends.</p>
-    </div>
-    <div class="legacy-card reveal rd5">
-      <span class="year">UAE</span>
-      <p>Made in UAE. Sold to the world. Unstoppable by definition.</p>
-    </div>
+<!-- ============================================
+     COMMAND PALETTE
+     ============================================ -->
+<div class="command-palette" id="commandPalette">
+  <div class="command-box">
+    <input type="text" class="command-input" id="commandInput" placeholder="Type a command or search...">
+    <div class="command-results" id="commandResults"></div>
   </div>
-  <p class="legacy-manifesto reveal">
-    "Look closely at our competitors, then look back at HUKSHAH.
-    The gap isn't a distance — it's an entirely different league.
-    Golden Molasses. Immortal legacy. Shah of Good Times."
-  </p>
-</section>
+</div>
 
-<!-- BLENDS GALLERY -->
-<section class="blend-gallery" id="blends">
-  <h2 class="reveal">OUR <span style="background:linear-gradient(135deg,var(--gold2),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent;">SIGMA</span> BLENDS</h2>
-  <span class="sub-label reveal rd1">Unapologetic flavor architecture — for the chosen ones.</span>
-  
-  <div class="gallery-row">
-    <!-- PLACEHOLDER CARDS — fill src="" with actual image paths -->
-    <div class="gallery-item reveal rd1">
-      <div class="gi-img-wrap placeholder" data-label="MISBAH 50G BOX">
-        <!-- <img src="50g.jpeg" alt="Misbah 50g"> -->
-      </div>
-      <div class="gi-label"><span class="gi-dot"></span>Misbah · Blends Collection · 50g</div>
-    </div>
-    <div class="gallery-item reveal rd2">
-      <div class="gi-img-wrap placeholder" data-label="STACKED BOXES">
-        <!-- <img src="WhatsApp_Image_2026-05-29_at_7_31_56_PM.jpeg" alt="Misbah boxes stacked"> -->
-      </div>
-      <div class="gi-label"><span class="gi-dot"></span>Misbah · Love86 · Blueberry Mint · 50g</div>
-    </div>
-    <div class="gallery-item reveal rd3">
-      <div class="gi-img-wrap placeholder" data-label="LOVE86 1KG TUB">
-        <!-- <img src="WhatsApp_Image_2026-05-29_at_7_31_58_PM.jpeg" alt="Love86 1KG"> -->
-      </div>
-      <div class="gi-label"><span class="gi-dot"></span>Love 86 · 1KG · Golden Molasses</div>
-    </div>
-    <div class="gallery-item reveal rd4">
-      <div class="gi-img-wrap placeholder" data-label="BLUEBERRY MINT 1KG">
-        <!-- <img src="WhatsApp_Image_2026-05-29_at_7_31_59_PM.jpeg" alt="Blueberry Mint 1KG"> -->
-      </div>
-      <div class="gi-label"><span class="gi-dot"></span>Blueberry Mint · 1KG · Ice Cold</div>
-    </div>
-  </div>
-  
-  <div class="gallery-row" style="margin-top:3px;">
-    <div class="gallery-item reveal rd1">
-      <div class="gi-img-wrap placeholder" data-label="GRAPE MINT · MINT · GUM MINT · DOUBLE APPLE">
-        <!-- <img src="WhatsApp_Image.jpeg" alt="Blends - Grape Mint etc"> -->
-      </div>
-      <div class="gi-label"><span class="gi-dot"></span>Grape Mint · Mint · Gum Mint · Double Apple</div>
-    </div>
-    <div class="gallery-item reveal rd2">
-      <div class="gi-img-wrap placeholder" data-label="HUKSHAH LOGO — COMING SOON">
-        <!-- <img src="Hukshah.jpeg" alt="Hukshah Brand Coming Soon"> -->
-      </div>
-      <div class="gi-label"><span class="gi-dot"></span>HUKSHAH · Shah of Good Times · UAE</div>
-    </div>
-    <div class="gallery-item reveal rd3">
-      <div class="gi-img-wrap placeholder" data-label="DUAL TUB — 1KG ×2">
-        <!-- <img src="WhatsApp_Image_2026-05-29_at_7_31_58_PM__2_.jpeg" alt="Dual 1KG Tubs"> -->
-      </div>
-      <div class="gi-label"><span class="gi-dot"></span>1KG Dual Pack · Double Impact</div>
-    </div>
-  </div>
-</section>
+<!-- ============================================
+     TOAST CONTAINER
+     ============================================ -->
+<div class="toast-container" id="toastContainer"></div>
 
-<!-- FOOTER / CONTACT -->
-<footer id="contact">
-  <div class="footer-info">
-    <div class="footer-brand">
-      <span class="fb-logo">HUKSHAH</span>
-      <span class="fb-tagline">Golden Molasses · Shah of Good Times</span>
-      <p>Premium shisha flavors for the UAE market and beyond. Quality that speaks — no explanations needed.</p>
-      <p style="color:var(--gold);margin-top:14px;font-size:.75rem;letter-spacing:2px;">Est. 2022 · Unstoppable Dynasty</p>
+<!-- ============================================
+     MODALS
+     ============================================ -->
+<div class="modal" id="txModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-title">Add Transaction</div>
+      <div class="modal-close" onclick="closeModal('txModal')"><i class="fas fa-times"></i></div>
     </div>
-    <div class="footer-box">
-      <h4>🏛 Founder & CEO</h4>
-      <p class="ceo-name">Mubashshir Sayed</p>
-      <p style="color:rgba(219,184,107,.55);font-size:.72rem;letter-spacing:1px;">The Sigma Architect · Visionary · UAE</p>
+    <div class="modal-body">
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div><label class="label">Type</label><select class="select" id="txType"><option value="expense">Expense</option><option value="income">Income</option></select></div>
+        <div><label class="label">Description</label><input type="text" class="input" id="txDesc" placeholder="e.g., Coffee at Starbucks"></div>
+        <div><label class="label">Amount (AED)</label><input type="number" class="input" id="txAmount" placeholder="0.00"></div>
+        <div><label class="label">Category</label><select class="select" id="txCat"></select></div>
+        <div><label class="label">Date</label><input type="date" class="input" id="txDate"></div>
+      </div>
     </div>
-    <div class="footer-box">
-      <h4>📞 Direct Command</h4>
-      <a href="tel:+971529201786"><span class="contact-pulse"></span>🇦🇪 UAE · +971 52 920 1786</a>
-      <a href="tel:+918999997786">🌍 International · +91 89999 97786</a>
-      <a href="mailto:info@hukshah.com">✉️ info@hukshah.com</a>
-      <a href="http://www.hukshah.com">🌐 www.hukshah.com</a>
-    </div>
-    <div class="footer-box">
-      <h4>🔥 Our Blends</h4>
-      <p>Misbah · Love 86 · Blueberry Mint</p>
-      <p>Grape Mint · Double Apple</p>
-      <p>Gum Mint · Mint</p>
-      <p style="margin-top:10px;color:rgba(219,184,107,.4);font-size:.65rem;letter-spacing:2px;">50g Packs · 1KG Tubs</p>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="closeModal('txModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveTx()"><i class="fas fa-save"></i> Save</button>
     </div>
   </div>
-  <div class="footer-warning">
-    ⚠ Tobacco Products Are Hazardous To Health · It Is More Dangerous Than You Think · 18+ Only · هي أخطر مما تظن
+</div>
+
+<div class="modal" id="budgetModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-title">Add Budget</div>
+      <div class="modal-close" onclick="closeModal('budgetModal')"><i class="fas fa-times"></i></div>
+    </div>
+    <div class="modal-body">
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div><label class="label">Category</label><select class="select" id="budgetCat"></select></div>
+        <div><label class="label">Monthly Limit (AED)</label><input type="number" class="input" id="budgetLimit" placeholder="0.00"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="closeModal('budgetModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveBudget()"><i class="fas fa-save"></i> Save</button>
+    </div>
   </div>
-  <div class="footer-bottom">
-    © 2026 <span>HUKSHAH</span> · Golden Molasses · All Rights Reserved · <span>Shah of Good Times</span>
+</div>
+
+<div class="modal" id="goalModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-title">Add Goal</div>
+      <div class="modal-close" onclick="closeModal('goalModal')"><i class="fas fa-times"></i></div>
+    </div>
+    <div class="modal-body">
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div><label class="label">Goal Name</label><input type="text" class="input" id="goalName" placeholder="e.g., Dubai Apartment"></div>
+        <div><label class="label">Target Amount (AED)</label><input type="number" class="input" id="goalTarget" placeholder="0.00"></div>
+        <div><label class="label">Current Amount (AED)</label><input type="number" class="input" id="goalCurrent" placeholder="0.00"></div>
+        <div><label class="label">Target Date</label><input type="date" class="input" id="goalDate"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="closeModal('goalModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveGoal()"><i class="fas fa-save"></i> Save</button>
+    </div>
   </div>
-</footer>
+</div>
+
+<div class="modal" id="billModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-title">Add Bill</div>
+      <div class="modal-close" onclick="closeModal('billModal')"><i class="fas fa-times"></i></div>
+    </div>
+    <div class="modal-body">
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div><label class="label">Service Name</label><input type="text" class="input" id="billName" placeholder="e.g., Netflix"></div>
+        <div><label class="label">Amount (AED)</label><input type="number" class="input" id="billAmount" placeholder="0.00"></div>
+        <div><label class="label">Due Date</label><input type="date" class="input" id="billDate"></div>
+        <div><label class="label">Frequency</label><select class="select" id="billFreq"><option>Monthly</option><option>Yearly</option><option>Weekly</option></select></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="closeModal('billModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveBill()"><i class="fas fa-save"></i> Save</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="investModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-title">Add Investment</div>
+      <div class="modal-close" onclick="closeModal('investModal')"><i class="fas fa-times"></i></div>
+    </div>
+    <div class="modal-body">
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div><label class="label">Asset Name</label><input type="text" class="input" id="invName" placeholder="e.g., Apple Stock"></div>
+        <div><label class="label">Type</label><select class="select" id="invType"><option>Stock</option><option>ETF</option><option>Crypto</option><option>Bond</option><option>Real Estate</option></select></div>
+        <div><label class="label">Units</label><input type="number" class="input" id="invUnits" step="0.01"></div>
+        <div><label class="label">Avg Cost (AED)</label><input type="number" class="input" id="invCost" step="0.01"></div>
+        <div><label class="label">Current Price (AED)</label><input type="number" class="input" id="invCurrent" step="0.01"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="closeModal('investModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveInvest()"><i class="fas fa-save"></i> Save</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="dreamModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-title">Add Dream</div>
+      <div class="modal-close" onclick="closeModal('dreamModal')"><i class="fas fa-times"></i></div>
+    </div>
+    <div class="modal-body">
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div><label class="label">Dream Name</label><input type="text" class="input" id="dreamName" placeholder="e.g., World Tour"></div>
+        <div><label class="label">Icon (emoji)</label><input type="text" class="input" id="dreamIcon" placeholder="🌍" maxlength="2"></div>
+        <div><label class="label">Target Amount (AED)</label><input type="number" class="input" id="dreamTarget" placeholder="0.00"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="closeModal('dreamModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveDream()"><i class="fas fa-save"></i> Save</button>
+    </div>
+  </div>
+</div>
+
 
 <script>
-gsap.registerPlugin(ScrollTrigger);
+/* ============================================
+   APP STATE
+   ============================================ */
+const STORAGE_KEY = 'fintell_pro_v2';
+let state = {
+  transactions: [],
+  budgets: [],
+  goals: [],
+  bills: [],
+  investments: [],
+  dreams: [],
+  networth: [],
+  theme: 'light',
+  panic: false,
+  xp: 2450,
+  level: 12,
+  streak: 14,
+  txPage: 1,
+  txPerPage: 10,
+  calDate: new Date()
+};
 
-// ── LOADER ──────────────────────────────────────────
-window.addEventListener('load', () => {
-  const lbar = document.getElementById('lbar');
-  lbar.style.width = '100%';
-  setTimeout(() => {
-    document.getElementById('loader').classList.add('gone');
-    initHeroAnimations();
-  }, 1800);
-});
+const CATEGORIES = ['Food & Dining','Shopping','Transport','Bills & Utilities','Entertainment','Health','Education','Travel','Investment','Salary','Freelance','Other'];
+const CAT_ICONS = {'Food & Dining':'🍽️','Shopping':'🛍️','Transport':'🚗','Bills & Utilities':'💡','Entertainment':'🎬','Health':'💊','Education':'📚','Travel':'✈️','Investment':'📈','Salary':'💰','Freelance':'💼','Other':'📦'};
 
-function initHeroAnimations() {
-  gsap.to('#h-eyebrow', { opacity:1, y:0, duration:.9, ease:'power3.out', delay:.1 });
-  gsap.to('#h-title',   { opacity:1, y:0, duration:1.2, ease:'power4.out', delay:.3 });
-  gsap.to('#h-sub',     { opacity:1, y:0, duration:.9, ease:'power3.out', delay:.6 });
-  gsap.to('#h-tag',     { opacity:1, y:0, duration:.8, ease:'power3.out', delay:.8 });
-  gsap.to('#h-badge',   { opacity:1, y:0, duration:.8, ease:'power3.out', delay:1 });
-  gsap.to('#h-cta',     { opacity:1, y:0, duration:.8, ease:'power3.out', delay:1.15 });
-  gsap.to('#h-scroll',  { opacity:1, y:0, duration:.7, ease:'power3.out', delay:1.4 });
-  gsap.set('#h-eyebrow,#h-title,#h-sub,#h-tag,#h-badge,#h-cta,#h-scroll', { y:35 });
+/* ============================================
+   STORAGE
+   ============================================ */
+function loadState() {
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if (saved) {
+    try {
+      const parsed = JSON.parse(saved);
+      state = { ...state, ...parsed };
+    } catch(e) { console.error(e); }
+  }
+  if (state.transactions.length === 0) seedData();
 }
 
-// ── CUSTOM CURSOR ────────────────────────────────────
-const cur = document.getElementById('cur');
-const curO = document.getElementById('cur-outer');
-let mx=0,my=0,ox=0,oy=0;
-document.addEventListener('mousemove', e => {
-  mx = e.clientX; my = e.clientY;
-  cur.style.left = mx+'px'; cur.style.top = my+'px';
-});
-(function animCur(){
-  ox += (mx-ox)*.13; oy += (my-oy)*.13;
-  curO.style.left = ox+'px'; curO.style.top = oy+'px';
-  requestAnimationFrame(animCur);
-})();
-document.querySelectorAll('a,button,.gallery-item,.legacy-card,.quote-card').forEach(el => {
-  el.addEventListener('mouseenter', () => { cur.style.width='18px'; cur.style.height='18px'; curO.style.width='55px'; curO.style.height='55px'; });
-  el.addEventListener('mouseleave', () => { cur.style.width='10px'; cur.style.height='10px'; curO.style.width='36px'; curO.style.height='36px'; });
+function saveState() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
+function seedData() {
+  // Sample transactions
+  const descs = [
+    {d:'Carrefour Groceries',c:'Food & Dining',t:'expense',a:-342},
+    {d:'Salary - June',c:'Salary',t:'income',a:22400},
+    {d:'Netflix Subscription',c:'Entertainment',t:'expense',a:-49},
+    {d:'Uber Ride',c:'Transport',t:'expense',a:-65},
+    {d:'DEWA Bill',c:'Bills & Utilities',t:'expense',a:-420},
+    {d:'Starbucks Coffee',c:'Food & Dining',t:'expense',a:-28},
+    {d:'Amazon Purchase',c:'Shopping',t:'expense',a:-289},
+    {d:'Freelance Project',c:'Freelance',t:'income',a:3500},
+    {d:'Gym Membership',c:'Health',t:'expense',a:-299},
+    {d:'Dubai Mall Shopping',c:'Shopping',t:'expense',a:-890},
+    {d:'Etisalat Bill',c:'Bills & Utilities',t:'expense',a:-285},
+    {d:'Restaurant Dinner',c:'Food & Dining',t:'expense',a:-420},
+    {d:'Fuel - ENOC',c:'Transport',t:'expense',a:-250},
+    {d:'Investment Dividend',c:'Investment',t:'income',a:1240},
+    {d:'Pharmacy',c:'Health',t:'expense',a:-145}
+  ];
+  const today = new Date();
+  state.transactions = [];
+  for (let i = 0; i < 120; i++) {
+    const ref = descs[i % descs.length];
+    const d = new Date(today);
+    d.setDate(d.getDate() - i);
+    const variation = (Math.random() - 0.5) * 0.4 + 1;
+    state.transactions.push({
+      id: Date.now() + i,
+      date: d.toISOString().split('T')[0],
+      desc: ref.d,
+      category: ref.c,
+      type: ref.t,
+      amount: Math.round(ref.a * variation)
+    });
+  }
+
+  state.budgets = [
+    {id:1,cat:'Food & Dining',limit:3000},
+    {id:2,cat:'Shopping',limit:2000},
+    {id:3,cat:'Transport',limit:1500},
+    {id:4,cat:'Entertainment',limit:800},
+    {id:5,cat:'Bills & Utilities',limit:2500},
+    {id:6,cat:'Health',limit:1000},
+    {id:7,cat:'Education',limit:1500},
+    {id:8,cat:'Travel',limit:3000}
+  ];
+
+  state.goals = [
+    {id:1,name:'Dubai Apartment',target:500000,current:125000,date:'2028-12-31',icon:'🏠'},
+    {id:2,name:'World Tour',target:50000,current:18500,date:'2026-12-31',icon:'✈️'},
+    {id:3,name:'New Car',target:150000,current:45000,date:'2027-06-30',icon:'🚗'},
+    {id:4,name:'Emergency Fund',target:90000,current:72000,date:'2026-09-30',icon:'🛡️'}
+  ];
+
+  state.bills = [
+    {id:1,name:'Netflix',amount:49,date:'2026-07-05',freq:'Monthly',status:'Upcoming'},
+    {id:2,name:'DEWA',amount:420,date:'2026-07-10',freq:'Monthly',status:'Upcoming'},
+    {id:3,name:'Etisalat',amount:285,date:'2026-07-15',freq:'Monthly',status:'Upcoming'},
+    {id:4,name:'Spotify',amount:24,date:'2026-07-02',freq:'Monthly',status:'Paid'},
+    {id:5,name:'Gym',amount:299,date:'2026-07-01',freq:'Monthly',status:'Paid'},
+    {id:6,name:'Adobe CC',amount:99,date:'2026-07-20',freq:'Monthly',status:'Upcoming'}
+  ];
+
+  state.investments = [
+    {id:1,name:'Apple Inc.',type:'Stock',units:50,cost:680,current:780},
+    {id:2,name:'S&P 500 ETF',type:'ETF',units:100,cost:1650,current:1820},
+    {id:3,name:'Bitcoin',type:'Crypto',units:0.5,cost:225000,current:285000},
+    {id:4,name:'Emirates REIT',type:'Real Estate',units:1000,cost:3.2,current:3.65},
+    {id:5,name:'Tesla',type:'Stock',units:30,cost:920,current:1150},
+    {id:6,name:'Gold ETF',type:'ETF',units:50,cost:780,current:845}
+  ];
+
+  state.dreams = [
+    {id:1,name:'Maldives Vacation',icon:'🏝️',target:25000},
+    {id:2,name:'New MacBook Pro',icon:'💻',target:12000},
+    {id:3,name:'Start a Business',icon:'🚀',target:200000},
+    {id:4,name:'Luxury Watch',icon:'⌚',target:35000},
+    {id:5,name:'Photography Gear',icon:'📷',target:18000},
+    {id:6,name:'Charity Donation',icon:'❤️',target:50000}
+  ];
+
+  // Net worth history
+  const nw = [];
+  let nwv = 150000;
+  for (let i = 12; i >= 0; i--) {
+    const d = new Date();
+    d.setMonth(d.getMonth() - i);
+    nwv += Math.floor(Math.random() * 15000) + 3000;
+    nw.push({date: d.toISOString().split('T')[0], value: nwv});
+  }
+  state.networth = nw;
+
+  saveState();
+}
+
+/* ============================================
+   UTILITIES
+   ============================================ */
+function fmt(n, cur='AED') {
+  const abs = Math.abs(n);
+  const str = abs.toLocaleString('en-US', {maximumFractionDigits: 0});
+  return (n < 0 ? '-' : '') + cur + ' ' + str;
+}
+
+function toast(msg, type='success') {
+  const icons = {success:'fa-check-circle',warning:'fa-exclamation-triangle',danger:'fa-times-circle',info:'fa-info-circle'};
+  const t = document.createElement('div');
+  t.className = 'toast ' + type;
+  t.innerHTML = `<i class="fas ${icons[type]}"></i><span class="toast-msg">${msg}</span>`;
+  document.getElementById('toastContainer').appendChild(t);
+  setTimeout(() => { t.style.animation = 'slideIn 0.3s ease reverse'; setTimeout(() => t.remove(), 300); }, 3000);
+}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+function navigateTo(section) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  const sec = document.getElementById('section-' + section);
+  if (sec) sec.classList.add('active');
+  const nav = document.querySelector(`.nav-item[data-section="${section}"]`);
+  if (nav) nav.classList.add('active');
+
+  const titles = {
+    dashboard: ['Dashboard', 'Welcome back 👋'],
+    timemachine: ['Time Machine', 'Project your future net worth'],
+    fire: ['FIRE Calculator', 'Financial Independence, Retire Early'],
+    networth: ['Net Worth Timeline', 'Track your wealth journey'],
+    transactions: ['Transactions', 'All your income & expenses'],
+    budget: ['Budgets', 'Track your spending limits'],
+    goals: ['Goals', 'Your savings targets'],
+    bills: ['Bills & Subscriptions', 'Never miss a payment'],
+    calendar: ['Financial Calendar', 'Visual overview of your month'],
+    portfolio: ['Portfolio', 'Your investment holdings'],
+    aitwin: ['AI Financial Twin', 'Your personal AI advisor'],
+    nudges: ['Smart Nudges', 'AI-driven financial tips'],
+    dna: ['Spending DNA', 'Your unique financial fingerprint'],
+    carbon: ['Carbon Footprint', 'Environmental impact of spending'],
+    subs: ['Subscription Autopsy', 'Find & cancel unused subs'],
+    sidehustle: ['Side Hustle Finder', 'Ways to earn extra income'],
+    inflation: ['Inflation Simulator', 'True cost of inflation'],
+    achievements: ['Achievements', 'Your financial badges'],
+    dreamboard: ['Dream Board', 'Visualize your dreams'],
+    battle: ['Budget Battle', 'Gamified budget challenge'],
+    challenge: ['Savings Challenge', 'Daily savings streak'],
+    benchmark: ['Social Benchmark', 'Compare with peers'],
+    mantras: ['Money Mantras', 'Daily financial wisdom'],
+    loans: ['Loans', 'Compare & calculate'],
+    mortgage: ['Mortgage', 'Home loan calculator'],
+    fd: ['Fixed Deposits', 'Best FD rates 2026'],
+    cards: ['Credit Cards', 'Best cards for you'],
+    remit: ['Remittance', 'Send money home'],
+    banks: ['Banks', 'UAE bank directory'],
+    insurance: ['Insurance', 'Compare providers'],
+    credit: ['Credit Score', 'Your credit health'],
+    emergency: ['Emergency Fund', 'Be prepared'],
+    settings: ['Settings', 'Customize your experience']
+  };
+
+  const [t, s] = titles[section] || ['FINTELL PRO', ''];
+  document.getElementById('pageTitle').textContent = t;
+  document.getElementById('pageSubtitle').textContent = s;
+
+  closeCommandPalette();
+
+  if (section === 'calendar') renderCalendar();
+  if (section === 'subs') renderSubs();
+  if (section === 'achievements') renderBadges();
+  if (section === 'dreamboard') renderDreams();
+  if (section === 'banks') renderBanks();
+  if (section === 'cards') renderCards();
+  if (section === 'insurance') renderInsurance();
+  if (section === 'remit') compareRemit();
+  if (section === 'fire') calcFIRE();
+  if (section === 'timemachine') runTimeMachine();
+
+  if (window.innerWidth <= 1024) document.getElementById('sidebar').classList.remove('open');
+}
+
+document.querySelectorAll('.nav-item').forEach(item => {
+  item.addEventListener('click', () => navigateTo(item.dataset.section));
 });
 
-// ── PARTICLE SYSTEM ──────────────────────────────────
-(function initParticles(){
-  const cv = document.getElementById('particles-canvas');
-  const ctx = cv.getContext('2d');
-  let W, H, pts = [];
-  function resize(){ W = cv.width = innerWidth; H = cv.height = innerHeight; }
-  resize(); window.addEventListener('resize', () => { resize(); rebuildPts(); });
-  class P {
-    constructor(){ this.reset(true); }
-    reset(init){
-      this.x = Math.random()*W; this.y = init ? Math.random()*H : H+5;
-      this.sz = Math.random()*1.2+.2;
-      this.vx = (Math.random()-.5)*.25; this.vy = -(Math.random()*.4+.08);
-      this.alpha = Math.random()*.5+.1;
-      this.life = 0; this.ml = Math.random()*250+120;
-      const s=['#c9a84c','#f0d080','#8a6a1f','#e8c86a'];
-      this.col = s[Math.floor(Math.random()*s.length)];
-    }
-    update(){
-      this.x+=this.vx; this.y+=this.vy; this.life++;
-      this.ca = this.alpha*Math.sin(Math.PI*this.life/this.ml);
-      if(this.life>this.ml||this.y<-10)this.reset(false);
-    }
-    draw(){
-      ctx.save(); ctx.globalAlpha=this.ca; ctx.fillStyle=this.col;
-      ctx.translate(this.x,this.y); ctx.rotate(Math.PI/4);
-      ctx.fillRect(-this.sz,-this.sz,this.sz*2,this.sz*2);
-      ctx.restore();
-    }
+/* ============================================
+   THEME
+   ============================================ */
+function setTheme(t) {
+  document.body.dataset.theme = t;
+  state.theme = t;
+  saveState();
+  const icons = {light:'fa-sun',dark:'fa-moon',ocean:'fa-water'};
+  const icon = document.querySelector('#themeBtn i');
+  if (icon) icon.className = 'fas ' + icons[t];
+}
+
+document.getElementById('themeBtn').addEventListener('click', () => {
+  const themes = ['light','dark','ocean'];
+  const next = themes[(themes.indexOf(state.theme) + 1) % themes.length];
+  setTheme(next);
+});
+
+/* ============================================
+   SIDEBAR
+   ============================================ */
+document.getElementById('menuToggle').addEventListener('click', () => {
+  if (window.innerWidth <= 1024) {
+    document.getElementById('sidebar').classList.toggle('open');
+  } else {
+    document.getElementById('sidebar').classList.toggle('collapsed');
   }
-  function rebuildPts(){
-    pts=[];
-    const n = Math.min(Math.floor(W*H/6000),140);
-    for(let i=0;i<n;i++){const p=new P();p.life=Math.random()*p.ml;pts.push(p);}
+});
+
+/* ============================================
+   PANIC MODE
+   ============================================ */
+document.getElementById('panicBtn').addEventListener('click', togglePanic);
+
+function togglePanic() {
+  state.panic = !state.panic;
+  document.body.classList.toggle('panic', state.panic);
+  toast(state.panic ? 'Panic mode activated — sensitive data hidden' : 'Panic mode deactivated', 'warning');
+}
+
+/* ============================================
+   TICKER
+   ============================================ */
+function renderTicker() {
+  const items = [
+    {s:'BTC/USD',p:'68,450',c:'+2.4%',u:true},
+    {s:'ETH/USD',p:'3,820',c:'+1.8%',u:true},
+    {s:'GOLD',p:'2,385',c:'+0.6%',u:true},
+    {s:'S&P 500',p:'5,482',c:'+0.3%',u:true},
+    {s:'NASDAQ',p:'17,654',c:'-0.2%',u:false},
+    {s:'EUR/USD',p:'1.0845',c:'+0.1%',u:true},
+    {s:'GBP/USD',p:'1.2712',c:'-0.1%',u:false},
+    {s:'USD/INR',p:'83.42',c:'+0.2%',u:true},
+    {s:'OIL',p:'82.35',c:'-0.8%',u:false},
+    {s:'EIBOR 3M',p:'4.35%',c:'+0.02',u:true},
+    {s:'DWC-DFC',p:'3.92%',c:'+0.05',u:true},
+    {s:'APPLE',p:'185.42',c:'+1.2%',u:true},
+    {s:'TESLA',p:'248.90',c:'-0.5%',u:false},
+    {s:'ARAMCO',p:'29.15',c:'+0.3%',u:true}
+  ];
+  const track = document.getElementById('tickerTrack');
+  if (!track) return;
+  const html = items.concat(items).map(i => `
+    <div class="ticker-item">
+      <span class="symbol">${i.s}</span>
+      <span class="price">${i.p}</span>
+      <span class="change ${i.u?'up':'down'}"><i class="fas fa-${i.u?'caret-up':'caret-down'}"></i> ${i.c}</span>
+    </div>
+  `).join('');
+  track.innerHTML = html;
+}
+
+/* ============================================
+   COMMAND PALETTE
+   ============================================ */
+const COMMANDS = [
+  {icon:'fa-chart-line',label:'Go to Dashboard',action:()=>navigateTo('dashboard')},
+  {icon:'fa-fire',label:'FIRE Calculator',action:()=>navigateTo('fire')},
+  {icon:'fa-clock-rotate-left',label:'Time Machine',action:()=>navigateTo('timemachine')},
+  {icon:'fa-arrow-right-arrow-left',label:'Add Transaction',action:()=>openTxModal()},
+  {icon:'fa-wallet',label:'Add Budget',action:()=>openBudgetModal()},
+  {icon:'fa-bullseye',label:'Add Goal',action:()=>openGoalModal()},
+  {icon:'fa-file-invoice-dollar',label:'Add Bill',action:()=>openBillModal()},
+  {icon:'fa-robot',label:'AI Twin',action:()=>navigateTo('aitwin')},
+  {icon:'fa-lightbulb',label:'Smart Nudges',action:()=>navigateTo('nudges')},
+  {icon:'fa-scissors',label:'Subscription Autopsy',action:()=>navigateTo('subs')},
+  {icon:'fa-trophy',label:'Achievements',action:()=>navigateTo('achievements')},
+  {icon:'fa-credit-card',label:'Best Cards',action:()=>navigateTo('cards')},
+  {icon:'fa-paper-plane',label:'Remittance',action:()=>navigateTo('remit')},
+  {icon:'fa-gear',label:'Settings',action:()=>navigateTo('settings')},
+  {icon:'fa-moon',label:'Toggle Theme',action:()=>{
+    const themes = ['light','dark','ocean'];
+    const next = themes[(themes.indexOf(state.theme) + 1) % themes.length];
+    setTheme(next);
+  }},
+  {icon:'fa-eye-slash',label:'Panic Mode',action:()=>togglePanic()}
+];
+
+function openCommandPalette() {
+  document.getElementById('commandPalette').classList.add('open');
+  document.getElementById('commandInput').value = '';
+  document.getElementById('commandInput').focus();
+  filterCommands('');
+}
+
+function closeCommandPalette() {
+  document.getElementById('commandPalette').classList.remove('open');
+}
+
+function filterCommands(q) {
+  const filtered = COMMANDS.filter(c => c.label.toLowerCase().includes(q.toLowerCase()));
+  const results = document.getElementById('commandResults');
+  if (!results) return;
+  results.innerHTML = filtered.map((c, i) => `
+    <div class="command-item ${i===0?'selected':''}" onclick="c.action();closeCommandPalette();">
+      <i class="fas ${c.icon}"></i>
+      <span>${c.label}</span>
+    </div>
+  `).join('');
+}
+
+const cmdInput = document.getElementById('commandInput');
+if (cmdInput) {
+  cmdInput.addEventListener('input', e => filterCommands(e.target.value));
+  cmdInput.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeCommandPalette();
+    if (e.key === 'Enter') {
+      const first = document.querySelector('.command-item.selected');
+      if (first) first.click();
+    }
+  });
+}
+
+const searchBox = document.getElementById('searchBox');
+if (searchBox) searchBox.addEventListener('click', openCommandPalette);
+
+const cmdPalette = document.getElementById('commandPalette');
+if (cmdPalette) {
+  cmdPalette.addEventListener('click', e => {
+    if (e.target.id === 'commandPalette') closeCommandPalette();
+  });
+}
+
+document.addEventListener('keydown', e => {
+  if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); openCommandPalette(); }
+  if (e.key === 'Escape') closeCommandPalette();
+  if (e.key === 'd' && !e.ctrlKey && !e.metaKey && !e.target.closest('input')) navigateTo('dashboard');
+  if (e.key === 't' && !e.ctrlKey && !e.metaKey && !e.target.closest('input')) document.getElementById('themeBtn').click();
+  if (e.key === 'p' && !e.ctrlKey && !e.metaKey && !e.target.closest('input')) togglePanic();
+});
+
+/* ============================================
+   FAB
+   ============================================ */
+const fab = document.getElementById('fab');
+const fabMenu = document.getElementById('fabMenu');
+if (fab && fabMenu) {
+  fab.addEventListener('click', function() {
+    fabMenu.classList.toggle('open');
+  });
+
+  document.addEventListener('click', e => {
+    if (!fab.contains(e.target) && !fabMenu.contains(e.target)) {
+      fabMenu.classList.remove('open');
+    }
+  });
+}
+
+/* ============================================
+   DASHBOARD — main view
+   ============================================ */
+let cashflowChart, spendingChart;
+
+function renderDashboard() {
+  const total = state.transactions.reduce((s, t) => s + t.amount, 0);
+  const income = state.transactions.filter(t => t.type === 'income').reduce((s, t) => s + t.amount, 0);
+  const expense = state.transactions.filter(t => t.type === 'expense').reduce((s, t) => s + Math.abs(t.amount), 0);
+  const rate = income > 0 ? ((income - expense) / income * 100).toFixed(1) : 0;
+
+  // Stat cards
+  const statValues = document.querySelectorAll('.stat-value');
+  if (statValues.length >= 5) {
+    statValues[0].textContent = fmt(total);
+    statValues[1].textContent = fmt(income);
+    statValues[2].textContent = fmt(expense);
+    statValues[3].textContent = rate + '%';
+    const score = 720 + Math.floor(Math.random() * 60);
+    statValues[4].textContent = score;
   }
-  rebuildPts();
-  function lines(){
-    for(let i=0;i<pts.length;i++){
-      for(let j=i+1;j<pts.length;j++){
-        const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y;
-        const d=Math.sqrt(dx*dx+dy*dy);
-        if(d<100){
-          ctx.save(); ctx.globalAlpha=(1-d/100)*.05*pts[i].ca;
-          ctx.strokeStyle='#c9a84c'; ctx.lineWidth=.4;
-          ctx.beginPath(); ctx.moveTo(pts[i].x,pts[i].y);
-          ctx.lineTo(pts[j].x,pts[j].y); ctx.stroke(); ctx.restore();
+
+  // Cashflow chart
+  const ctx1 = document.getElementById('cashflowChart');
+  if (cashflowChart) cashflowChart.destroy();
+  if (ctx1) {
+    const months = ['Jan','Feb','Mar','Apr','May','Jun'];
+    const incData = [20500,21200,21800,22000,22400,22400];
+    const expData = [13200,13800,14200,14500,14650,14820];
+
+    cashflowChart = new Chart(ctx1, {
+      type: 'line',
+      data: {
+        labels: months,
+        datasets: [
+          {label:'Income',data:incData,borderColor:'#10b981',backgroundColor:'rgba(16,185,129,0.1)',fill:true,tension:0.4,borderWidth:3},
+          {label:'Expenses',data:expData,borderColor:'#ef4444',backgroundColor:'rgba(239,68,68,0.1)',fill:true,tension:0.4,borderWidth:3}
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { labels: { color: '#8892B0' } } },
+        scales: {
+          x: { ticks: { color: '#8892B0' }, grid: { color: 'rgba(255,255,255,0.05)' } },
+          y: { ticks: { color: '#8892B0' }, grid: { color: 'rgba(255,255,255,0.05)' } }
         }
       }
-    }
+    });
   }
-  function anim(){
-    ctx.clearRect(0,0,W,H);
-    lines();
-    pts.forEach(p=>{p.update();p.draw();});
-    requestAnimationFrame(anim);
+
+  // Spending pie
+  const ctx2 = document.getElementById('spendingChart');
+  if (spendingChart) spendingChart.destroy();
+  if (ctx2) {
+    const catTotals = {};
+    state.transactions.filter(t => t.type === 'expense').forEach(t => {
+      catTotals[t.category] = (catTotals[t.category] || 0) + Math.abs(t.amount);
+    });
+    const labels = Object.keys(catTotals);
+    const data = Object.values(catTotals);
+    const colors = ['#6366f1','#8b5cf6','#06b6d4','#10b981','#f59e0b','#ef4444','#ec4899','#14b8a6','#f97316','#84cc16','#a855f7','#3b82f6'];
+
+    spendingChart = new Chart(ctx2, {
+      type: 'doughnut',
+      data: { labels, datasets: [{ data, backgroundColor: colors, borderWidth: 0 }] },
+      options: {
+        responsive: true,
+        plugins: { legend: { position: 'right', labels: { color: '#8892B0', padding: 10, font: { size: 11 } } } }
+      }
+    });
   }
-  anim();
-})();
 
-// ── NAV scroll solid ─────────────────────────────────
-window.addEventListener('scroll',()=>{
-  document.getElementById('main-nav').classList.toggle('solid',scrollY>60);
-});
-
-// ── PIN + SCROLL ANIMATIONS ──────────────────────────
-ScrollTrigger.create({
-  trigger: ".anim-container",
-  start: "top top",
-  end: "bottom bottom",
-  pin: "#animated-visual-target",
-  pinSpacing: false
-});
-
-// ANIMATION 1 — 50g box spins in
-gsap.set("#box-50g", { opacity:0, scale:.55, rotation:0 });
-const tl1 = gsap.timeline({
-  scrollTrigger:{
-    trigger:"#trigger-section-1",
-    start:"top 80%", end:"top 15%",
-    scrub:1.2, toggleActions:"play reverse play reverse"
+  // Recent transactions
+  const tbody = document.querySelector('#recentTxTable tbody');
+  if (tbody) {
+    tbody.innerHTML = state.transactions.slice(0, 5).map(t => `
+      <tr>
+        <td class="text-muted">${t.date}</td>
+        <td>${CAT_ICONS[t.category]||'📦'} ${t.desc}</td>
+        <td><span class="tag">${t.category}</span></td>
+        <td style="text-align: right; font-weight: 600; color: ${t.amount>0?'var(--success)':'var(--danger)'}">
+          ${t.amount>0?'+':''}${fmt(t.amount)}
+        </td>
+      </tr>
+    `).join('');
   }
-});
-tl1
-  .to("#box-50g",{ opacity:1, scale:1.08, rotation:360, duration:1.2, ease:"power2.inOut" })
-  .to("#box-50g",{ scale:1.03, duration:.2, ease:"none" }, 0);
 
-// ANIMATION 2 — 50g exits, tubs appear
-gsap.set("#tubs-group", { opacity:0, scale:.85 });
-gsap.set("#sleepingTub", { rotate:"-75deg", x:-25, y:50 });
-const tl2 = gsap.timeline({
-  scrollTrigger:{
-    trigger:"#trigger-section-2",
-    start:"top 80%", end:"top 15%",
-    scrub:1, toggleActions:"play reverse play reverse"
+  // Nudges
+  renderNudges();
+}
+
+function renderNudges() {
+  const nudges = [
+    {icon:'💡',title:'Savings Opportunity',msg:'You could save AED 450/month by switching to annual Netflix plan.',type:'info'},
+    {icon:'🎯',title:'Goal Alert',msg:'Your Dubai Apartment goal is 25% complete. Keep it up!',type:'success'},
+    {icon:'⚠️',title:'Budget Warning',msg:'Dining budget is 85% used with 8 days left in the month.',type:'warning'},
+    {icon:'📈',title:'Investment Tip',msg:'Consider diversifying — 60% of your portfolio is in tech stocks.',type:'info'},
+    {icon:'🔥',title:'Streak Bonus',msg:'You\'re on a 14-day savings streak! +50 XP earned.',type:'success'}
+  ];
+  const list = document.getElementById('nudgesList');
+  if (list) {
+    list.innerHTML = nudges.map(n => `
+      <div class="flex gap-3 items-center" style="padding: 10px; background: var(--bg-tertiary); border-radius: var(--radius-sm); border-left: 3px solid var(--accent);">
+        <div style="font-size: 24px;">${n.icon}</div>
+        <div style="flex: 1;">
+          <div class="font-bold text-sm">${n.title}</div>
+          <div class="text-sm text-muted">${n.msg}</div>
+        </div>
+      </div>
+    `).join('');
   }
-});
-tl2
-  .to("#box-50g",{ opacity:0, scale:.25, rotation:720, duration:.65, ease:"back.in(1)" }, 0)
-  .to("#tubs-group",{ opacity:1, scale:1, duration:.6, ease:"elastic.out(.8,.5)" }, "-=.3")
-  .fromTo("#standingTub",{ y:30, filter:"drop-shadow(0 10px 20px black)" },
-    { y:0, filter:"drop-shadow(0 40px 50px rgba(0,0,0,.95))", duration:.8, ease:"power2.out" }, .2)
-  .fromTo("#sleepingTub",{ rotate:"-85deg", x:-45, opacity:.5 },
-    { rotate:"-75deg", x:-25, opacity:1, duration:.9, ease:"back.out(.6)" }, .25);
+}
 
-// floating tub micro-anim
-ScrollTrigger.create({
-  trigger:"#trigger-section-2", start:"top 60%", end:"bottom 20%", scrub:1,
-  onUpdate(self){
-    const p = self.progress;
-    if(p>.08){
-      gsap.to("#standingTub",{ y:9*Math.sin(p*Math.PI*3), rotation:2.5*Math.sin(p*5), duration:.25, overwrite:true, ease:"none" });
-      gsap.to("#sleepingTub",{ y:5*Math.cos(p*4), duration:.2, overwrite:true });
-    }
+/* ============================================
+   TRANSACTIONS
+   ============================================ */
+function renderTransactions() {
+  const search = document.getElementById('txSearch');
+  const typeF = document.getElementById('txFilterType');
+  const catF = document.getElementById('txFilterCat');
+
+  const searchVal = search ? search.value.toLowerCase() : '';
+  const typeVal = typeF ? typeF.value : 'all';
+  const catVal = catF ? catF.value : 'all';
+
+  let filtered = state.transactions.filter(t => {
+    if (searchVal && !t.desc.toLowerCase().includes(searchVal) && !t.category.toLowerCase().includes(searchVal)) return false;
+    if (typeVal !== 'all' && t.type !== typeVal) return false;
+    if (catVal !== 'all' && t.category !== catVal) return false;
+    return true;
+  });
+
+  filtered.sort((a,b) => new Date(b.date) - new Date(a.date));
+  const total = filtered.length;
+  const pages = Math.max(1, Math.ceil(total / state.txPerPage));
+  state.txPage = Math.min(state.txPage, pages);
+  const start = (state.txPage - 1) * state.txPerPage;
+  const page = filtered.slice(start, start + state.txPerPage);
+
+  const tbody = document.querySelector('#txTable tbody');
+  if (tbody) {
+    tbody.innerHTML = page.map(t => `
+      <tr>
+        <td class="text-muted">${t.date}</td>
+        <td>${CAT_ICONS[t.category]||'📦'} ${t.desc}</td>
+        <td><span class="tag">${t.category}</span></td>
+        <td><span class="tag ${t.type==='income'?'success':'danger'}">${t.type}</span></td>
+        <td style="text-align: right; font-weight: 600; color: ${t.amount>0?'var(--success)':'var(--danger)'}">
+          ${t.amount>0?'+':''}${fmt(t.amount)}
+        </td>
+        <td><button class="btn btn-sm btn-ghost" onclick="deleteTx(${t.id})"><i class="fas fa-trash"></i></button></td>
+      </tr>
+    `).join('');
   }
-});
 
-// gold glow pulse on tubs
-const gGlow = gsap.timeline({ repeat:-1, repeatDelay:1.5, yoyo:true, paused:true });
-gGlow.to("#standingTub",{ filter:"drop-shadow(0 0 20px rgba(219,184,107,.6))", duration:1.4, ease:"sine.inOut" });
-ScrollTrigger.create({
-  trigger:"#trigger-section-2", start:"top 75%",
-  onEnter:()=>gGlow.resume(), onLeaveBack:()=>gGlow.pause(),
-  onLeave:()=>gGlow.pause(), onEnterBack:()=>gGlow.resume()
-});
+  const txCount = document.getElementById('txCount');
+  if (txCount) txCount.textContent = total + ' transactions';
 
-// ── GALLERY parallax reveal ──────────────────────────
-gsap.utils.toArray(".gallery-item").forEach((item,i)=>{
-  gsap.fromTo(item,
-    { opacity:0, y:65, rotateX:-8 },
-    { scrollTrigger:{ trigger:item, start:"top 90%", end:"top 28%", scrub:.8 },
-      opacity:1, y:0, rotateX:0 }
-  );
-});
+  const txPageInfo = document.getElementById('txPageInfo');
+  if (txPageInfo) txPageInfo.textContent = `Page ${state.txPage} of ${pages}`;
+}
 
-// ── LEGACY CARDS ─────────────────────────────────────
-gsap.from(".legacy-card",{
-  scrollTrigger:{ trigger:".legacy-section", start:"top 70%", toggleActions:"play none none reverse" },
-  scale:.75, opacity:0, stagger:.15, duration:.8, ease:"back.out(1.3)"
-});
+function txPage(dir) {
+  state.txPage += dir;
+  renderTransactions();
+}
 
-// ── SCROLL REVEAL UTILITY ────────────────────────────
-const obs = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('vis'); });
-},{ threshold:.1, rootMargin:"0px 0px -40px 0px" });
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+function deleteTx(id) {
+  state.transactions = state.transactions.filter(t => t.id !== id);
+  saveState();
+  renderTransactions();
+  toast('Transaction deleted');
+}
 
-// ── SMOOTH SCROLL LINKS ──────────────────────────────
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',e=>{
-    e.preventDefault();
-    const t = document.querySelector(a.getAttribute('href'));
-    if(t) t.scrollIntoView({ behavior:'smooth' });
+function openTxModal() {
+  const catSel = document.getElementById('txCat');
+  if (catSel) catSel.innerHTML = CATEGORIES.map(c => `<option>${c}</option>`).join('');
+  const txDate = document.getElementById('txDate');
+  if (txDate) txDate.value = new Date().toISOString().split('T')[0];
+  const txDesc = document.getElementById('txDesc');
+  if (txDesc) txDesc.value = '';
+  const txAmount = document.getElementById('txAmount');
+  if (txAmount) txAmount.value = '';
+  const modal = document.getElementById('txModal');
+  if (modal) modal.classList.add('open');
+}
+
+function saveTx() {
+  const type = document.getElementById('txType');
+  const desc = document.getElementById('txDesc');
+  const amount = document.getElementById('txAmount');
+  const cat = document.getElementById('txCat');
+  const date = document.getElementById('txDate');
+
+  if (!desc || !amount || !cat || !date) {
+    toast('Please fill all fields', 'danger');
+    return;
+  }
+
+  const descVal = desc.value.trim();
+  const amountVal = parseFloat(amount.value);
+  const catVal = cat.value;
+  const dateVal = date.value;
+  const typeVal = type ? type.value : 'expense';
+
+  if (!descVal || !amountVal || !dateVal) {
+    toast('Please fill all fields', 'danger');
+    return;
+  }
+
+  state.transactions.push({
+    id: Date.now(),
+    date: dateVal,
+    desc: descVal,
+    category: catVal,
+    type: typeVal,
+    amount: typeVal === 'income' ? Math.abs(amountVal) : -Math.abs(amountVal)
+  });
+
+  saveState();
+  const modal = document.getElementById('txModal');
+  if (modal) modal.classList.remove('open');
+  renderTransactions();
+  toast('Transaction added! +10 XP', 'success');
+  state.xp += 10;
+  saveState();
+}
+
+/* ============================================
+   BUDGETS
+   ============================================ */
+function renderBudgets() {
+  const catSel = document.getElementById('budgetCat');
+  if (catSel) catSel.innerHTML = CATEGORIES.map(c => `<option>${c}</option>`).join('');
+
+  const list = document.getElementById('budgetList');
+  if (!list) return;
+
+  list.innerHTML = state.budgets.map(b => {
+    const spent = state.transactions
+      .filter(t => t.type === 'expense' && t.category === b.cat && isThisMonth(t.date))
+      .reduce((s,t) => s + Math.abs(t.amount), 0);
+    const pct = Math.min(100, (spent / b.limit) * 100);
+    const color = pct > 90 ? 'var(--danger)' : pct > 70 ? 'var(--warning)' : 'var(--success)';
+
+    return `
+      <div class="card">
+        <div class="flex justify-between items-center mb-3">
+          <div class="flex items-center gap-2">
+            <div style="font-size: 28px;">${CAT_ICONS[b.cat]||'📦'}</div>
+            <div>
+              <div class="font-bold">${b.cat}</div>
+              <div class="text-sm text-muted">${fmt(spent)} of ${fmt(b.limit)}</div>
+            </div>
+          </div>
+          <button class="btn btn-sm btn-ghost" onclick="deleteBudget(${b.id})"><i class="fas fa-trash"></i></button>
+        </div>
+        <div class="progress"><div class="progress-bar" style="width: ${pct}%; background: ${color};"></div></div>
+        <div class="flex justify-between mt-2 text-sm">
+          <span style="color: ${color}; font-weight: 600;">${pct.toFixed(0)}% used</span>
+          <span class="text-muted">${fmt(b.limit - spent)} left</span>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function isThisMonth(dateStr) {
+  const d = new Date(dateStr);
+  const now = new Date();
+  return d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear();
+}
+
+function openBudgetModal() {
+  const modal = document.getElementById('budgetModal');
+  if (modal) modal.classList.add('open');
+}
+
+function saveBudget() {
+  const cat = document.getElementById('budgetCat');
+  const limit = document.getElementById('budgetLimit');
+
+  if (!cat || !limit) { toast('Enter a valid budget', 'danger'); return; }
+
+  const catVal = cat.value;
+  const limitVal = parseFloat(limit.value);
+
+  if (!catVal || !limitVal) { toast('Enter a valid limit', 'danger'); return; }
+
+  state.budgets.push({id: Date.now(), cat: catVal, limit: limitVal});
+  saveState();
+  const modal = document.getElementById('budgetModal');
+  if (modal) modal.classList.remove('open');
+  renderBudgets();
+  toast('Budget added! +15 XP', 'success');
+  state.xp += 15;
+  saveState();
+}
+
+function deleteBudget(id) {
+  state.budgets = state.budgets.filter(b => b.id !== id);
+  saveState();
+  renderBudgets();
+  toast('Budget removed');
+}
+
+/* ============================================
+   GOALS
+   ============================================ */
+function renderGoals() {
+  const list = document.getElementById('goalList');
+  if (!list) return;
+
+  list.innerHTML = state.goals.map(g => {
+    const pct = Math.min(100, (g.current / g.target) * 100);
+    const daysLeft = Math.ceil((new Date(g.date) - new Date()) / (1000*60*60*24));
+    const circumference = 2 * Math.PI * 36;
+    const offset = circumference - (pct / 100) * circumference;
+
+    return `
+      <div class="card" style="text-align: center;">
+        <div style="font-size: 48px; margin-bottom: 8px;">${g.icon||'🎯'}</div>
+        <div class="font-bold mb-2">${g.name}</div>
+        <div class="circular" style="margin: 12px auto;">
+          <svg width="80" height="80" viewBox="0 0 80 80">
+            <circle class="circular-bg" cx="40" cy="40" r="36"/>
+            <circle class="circular-fill" cx="40" cy="40" r="36"
+                    stroke="url(#goalGrad)" stroke-dasharray="${circumference}" stroke-dashoffset="${offset}"/>
+            <defs><linearGradient id="goalGrad"><stop offset="0%" stop-color="#6366f1"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient></defs>
+          </svg>
+          <div class="circular-text">${pct.toFixed(0)}%</div>
+        </div>
+        <div class="text-sm text-muted mb-2">${fmt(g.current)} / ${fmt(g.target)}</div>
+        <div class="tag info"><i class="fas fa-calendar"></i> ${daysLeft} days left</div>
+        <button class="btn btn-sm btn-ghost mt-2" onclick="deleteGoal(${g.id})"><i class="fas fa-trash"></i></button>
+      </div>
+    `;
+  }).join('');
+}
+
+function openGoalModal() {
+  const modal = document.getElementById('goalModal');
+  if (modal) modal.classList.add('open');
+}
+
+function saveGoal() {
+  const name = document.getElementById('goalName');
+  const target = document.getElementById('goalTarget');
+  const current = document.getElementById('goalCurrent');
+  const date = document.getElementById('goalDate');
+
+  if (!name || !target || !date) { toast('Fill all fields', 'danger'); return; }
+
+  const nameVal = name.value.trim();
+  const targetVal = parseFloat(target.value);
+  const currentVal = parseFloat(current.value) || 0;
+  const dateVal = date.value;
+
+  if (!nameVal || !targetVal || !dateVal) { toast('Fill all fields', 'danger'); return; }
+
+  const icons = ['🎯','🏠','✈️','🚗','💎','🎓','💼','🛡️'];
+  state.goals.push({
+    id: Date.now(),
+    name: nameVal,
+    target: targetVal,
+    current: currentVal,
+    date: dateVal,
+    icon: icons[Math.floor(Math.random() * icons.length)]
+  });
+
+  saveState();
+  const modal = document.getElementById('goalModal');
+  if (modal) modal.classList.remove('open');
+  renderGoals();
+  toast('Goal added! +20 XP', 'success');
+  state.xp += 20;
+  saveState();
+}
+
+function deleteGoal(id) {
+  state.goals = state.goals.filter(g => g.id !== id);
+  saveState();
+  renderGoals();
+  toast('Goal removed');
+}
+
+/* ============================================
+   BILLS
+   ============================================ */
+function renderBills() {
+  const tbody = document.querySelector('#billTable tbody');
+  if (!tbody) return;
+
+  tbody.innerHTML = state.bills.map(b => {
+    const statusClass = b.status === 'Paid' ? 'success' : 'warning';
+    return `
+      <tr>
+        <td class="font-bold">${b.name}</td>
+        <td class="sensitive">${fmt(b.amount)}</td>
+        <td>${b.date}</td>
+        <td><span class="tag">${b.freq}</span></td>
+        <td><span class="tag ${statusClass}">${b.status}</span></td>
+        <td>
+          <button class="btn btn-sm btn-ghost" onclick="deleteBill(${b.id})"><i class="fas fa-trash"></i></button>
+          ${b.status !== 'Paid' ? `<button class="btn btn-sm btn-primary" onclick="payBill(${b.id})"><i class="fas fa-check"></i></button>` : ''}
+        </td>
+      </tr>
+    `;
+  }).join('');
+}
+
+function openBillModal() {
+  const modal = document.getElementById('billModal');
+  if (modal) modal.classList.add('open');
+}
+
+function saveBill() {
+  const name = document.getElementById('billName');
+  const amount = document.getElementById('billAmount');
+  const date = document.getElementById('billDate');
+  const freq = document.getElementById('billFreq');
+
+  if (!name || !amount || !date) { toast('Fill all fields', 'danger'); return; }
+
+  const nameVal = name.value.trim();
+  const amountVal = parseFloat(amount.value);
+  const dateVal = date.value;
+  const freqVal = freq ? freq.value : 'Monthly';
+
+  if (!nameVal || !amountVal || !dateVal) { toast('Fill all fields', 'danger'); return; }
+
+  state.bills.push({id: Date.now(), name: nameVal, amount: amountVal, date: dateVal, freq: freqVal, status: 'Upcoming'});
+  saveState();
+  const modal = document.getElementById('billModal');
+  if (modal) modal.classList.remove('open');
+  renderBills();
+  toast('Bill added! +10 XP', 'success');
+  state.xp += 10;
+  saveState();
+}
+
+function deleteBill(id) {
+  state.bills = state.bills.filter(b => b.id !== id);
+  saveState();
+  renderBills();
+  toast('Bill removed');
+}
+
+function payBill(id) {
+  const b = state.bills.find(x => x.id === id);
+  if (b) {
+    b.status = 'Paid';
+    saveState();
+    renderBills();
+    toast('Bill marked as paid! +5 XP');
+    state.xp += 5;
+    saveState();
+  }
+}
+
+/* ============================================
+   PORTFOLIO
+   ============================================ */
+let portfolioChart, perfChart;
+
+function renderPortfolio() {
+  const ctx1 = document.getElementById('portfolioChart');
+  if (portfolioChart) portfolioChart.destroy();
+  if (ctx1) {
+    const types = {};
+    state.investments.forEach(i => {
+      const val = i.units * i.current;
+      types[i.type] = (types[i.type] || 0) + val;
+    });
+
+    portfolioChart = new Chart(ctx1, {
+      type: 'doughnut',
+      data: {
+        labels: Object.keys(types),
+        datasets: [{ data: Object.values(types), backgroundColor: ['#6366f1','#8b5cf6','#06b6d4','#10b981','#f59e0b'], borderWidth: 0 }]
+      },
+      options: { plugins: { legend: { position: 'right', labels: { color: '#8892B0' } } } }
+    });
+  }
+
+  const ctx2 = document.getElementById('perfChart');
+  if (perfChart) perfChart.destroy();
+  if (ctx2) {
+    const months = ['Jan','Feb','Mar','Apr','May','Jun'];
+    let v = 50000;
+    const perf = months.map(() => { v += Math.random() * 5000 - 1000; return Math.round(v); });
+
+    perfChart = new Chart(ctx2, {
+      type: 'line',
+      data: {
+        labels: months,
+        datasets: [{label:'Portfolio Value',data:perf,borderColor:'#6366f1',backgroundColor:'rgba(99,102,241,0.1)',fill:true,tension:0.4,borderWidth:3}]
+      },
+      options: {
+        plugins: { legend: { labels: { color: '#8892B0' } } },
+        scales: {
+          x: { ticks: { color: '#8892B0' }, grid: { color: 'rgba(255,255,255,0.05)' } },
+          y: { ticks: { color: '#8892B0' }, grid: { color: 'rgba(255,255,255,0.05)' } }
+        }
+      }
+    });
+  }
+
+  const tbody = document.querySelector('#investTable tbody');
+  if (tbody) {
+    tbody.innerHTML = state.investments.map(i => {
+      const pl = (i.current - i.cost) * i.units;
+      const plPct = ((i.current - i.cost) / i.cost * 100).toFixed(1);
+      return `
+        <tr>
+          <td class="font-bold">${i.name}</td>
+          <td><span class="tag">${i.type}</span></td>
+          <td>${i.units}</td>
+          <td class="sensitive">${fmt(i.cost)}</td>
+          <td class="sensitive">${fmt(i.current)}</td>
+          <td style="color: ${pl>=0?'var(--success)':'var(--danger)'}; font-weight: 600;">
+            ${pl>=0?'+':''}${fmt(pl)} <span class="text-sm">(${plPct}%)</span>
+          </td>
+          <td><button class="btn btn-sm btn-ghost" onclick="deleteInvest(${i.id})"><i class="fas fa-trash"></i></button></td>
+        </tr>
+      `;
+    }).join('');
+  }
+}
+
+function openInvestModal() {
+  const modal = document.getElementById('investModal');
+  if (modal) modal.classList.add('open');
+}
+
+function saveInvest() {
+  const name = document.getElementById('invName');
+  const type = document.getElementById('invType');
+  const units = document.getElementById('invUnits');
+  const cost = document.getElementById('invCost');
+  const current = document.getElementById('invCurrent');
+
+  if (!name || !units || !cost || !current) { toast('Fill all fields', 'danger'); return; }
+
+  const nameVal = name.value.trim();
+  const typeVal = type ? type.value : 'Stock';
+  const unitsVal = parseFloat(units.value);
+  const costVal = parseFloat(cost.value);
+  const currentVal = parseFloat(current.value);
+
+  if (!nameVal || !unitsVal || !costVal || !currentVal) { toast('Fill all fields', 'danger'); return; }
+
+  state.investments.push({id: Date.now(), name: nameVal, type: typeVal, units: unitsVal, cost: costVal, current: currentVal});
+  saveState();
+  const modal = document.getElementById('investModal');
+  if (modal) modal.classList.remove('open');
+  renderPortfolio();
+  toast('Investment added! +15 XP', 'success');
+  state.xp += 15;
+  saveState();
+}
+
+function deleteInvest(id) {
+  state.investments = state.investments.filter(i => i.id !== id);
+  saveState();
+  renderPortfolio();
+  toast('Investment removed');
+}
+
+/* ============================================
+   AI TWIN
+   ============================================ */
+const twinResponses = {
+  savings: "Your savings rate is 33.8% — excellent! To accelerate, automate transfers right after payday. You could reach your Dubai Apartment goal 4 months earlier.",
+  invest: "Your portfolio is 60% tech stocks — consider rebalancing. Add 20% bonds and 15% real estate for stability.",
+  debt: "You have AED 17,700 in debt. Use the avalanche method: pay minimums, then extra on highest interest. You could be debt-free in 14 months.",
+  retire: "At your current rate, you can retire at 52! To retire at 48, increase monthly investments by AED 2,000.",
+  default: "I can help with savings, investing, debt, or retirement. What would you like to know?"
+};
+
+function askTwin(topic) {
+  const msg = twinResponses[topic] || twinResponses.default;
+  const twinMsg = document.getElementById('twinMessage');
+  if (twinMsg) twinMsg.textContent = '"' + msg + '"';
+  toast('🤖 Aria says: ' + msg, 'info');
+}
+
+function sendTwinMsg() {
+  const input = document.getElementById('twinInput');
+  if (!input) return;
+  const msg = input.value.trim();
+  if (!msg) return;
+
+  const chat = document.getElementById('twinChat');
+  if (!chat) return;
+  chat.innerHTML += `<div class="chat-msg user">${msg}</div>`;
+  input.value = '';
+
+  const responses = [
+    "Great question! Based on your profile, I'd suggest focusing on your emergency fund first.",
+    "You're doing well with a 33.8% savings rate. Keep it up!",
+    "Dining is your biggest expense at 28%. Reducing by 20% would save AED 840/month.",
+    "Your net worth has grown 42% this year. Review your portfolio quarterly.",
+    "Consider diversifying into global ETFs for better risk-adjusted returns."
+  ];
+
+  setTimeout(() => {
+    chat.innerHTML += `<div class="chat-msg bot">${responses[Math.floor(Math.random()*responses.length)]}</div>`;
+    chat.scrollTop = chat.scrollHeight;
+  }, 500);
+}
+
+/* ============================================
+   FIRE CALCULATOR
+   ============================================ */
+let fireChart;
+
+function calcFIRE() {
+  const exp = parseFloat(document.getElementById('fireExpenses').value) || 0;
+  const sav = parseFloat(document.getElementById('fireSavings').value) || 0;
+  const inv = parseFloat(document.getElementById('fireAnnual').value) || 0;
+  const ret = (parseFloat(document.getElementById('fireReturn').value) || 0) / 100;
+  const target = exp * 25;
+
+  let val = sav;
+  let years = 0;
+  const data = [val];
+
+  while (val < target && years < 50) {
+    val = val * (1 + ret) + inv;
+    data.push(val);
+    years++;
+  }
+
+  const fireNum = document.getElementById('fireNumber');
+  const fireYears = document.getElementById('fireYears');
+  const fireProgress = document.getElementById('fireProgress');
+  const fireBar = document.getElementById('fireBar');
+
+  if (fireNum) fireNum.textContent = fmt(target);
+  if (fireYears) fireYears.textContent = years + ' years';
+
+  const pct = Math.min(100, (sav / target) * 100);
+  if (fireProgress) fireProgress.textContent = pct.toFixed(1) + '%';
+  if (fireBar) fireBar.style.width = pct + '%';
+
+  const ctx = document.getElementById('fireChart');
+  if (fireChart) fireChart.destroy();
+  if (ctx) {
+    fireChart = new Chart(ctx, {
+      type: 'line',
+      data: { labels: data.map((_,i) => 'Y' + i), datasets: [{ label: 'Net Worth', data: data, borderColor: '#6C63FF', tension: 0.4, fill: false }] },
+      options: { plugins: { legend: { labels: { color: '#8892B0' } } } }
+    });
+  }
+}
+
+/* ============================================
+   TIME MACHINE
+   ============================================ */
+let tmChart;
+
+function runTimeMachine() {
+  const current = parseFloat(document.getElementById('tmCurrent').value) || 0;
+  const monthly = parseFloat(document.getElementById('tmMonthly').value) || 0;
+  const ret = (parseFloat(document.getElementById('tmReturn').value) || 0) / 100;
+  const years = 15;
+
+  let val = current;
+  const data = [val];
+  const labels = ['Now'];
+
+  for (let y = 1; y <= years; y++) {
+    for (let m = 0; m < 12; m++) val = val * (1 + ret/12) + monthly;
+    data.push(Math.round(val));
+    labels.push('Y' + y);
+  }
+
+  const ctx = document.getElementById('tmChart');
+  if (tmChart) tmChart.destroy();
+  if (ctx) {
+    tmChart = new Chart(ctx, {
+      type: 'line',
+      data: { labels, datasets: [{ label: 'Net Worth', data, borderColor: '#4CC9F0', tension: 0.4, fill: false }] },
+      options: { plugins: { legend: { labels: { color: '#8892B0' } } } }
+    });
+  }
+
+  [5,10,15].forEach(y => {
+    const el = document.getElementById('tm' + y);
+    if (el) el.textContent = fmt(data[Math.min(y, data.length - 1)]);
+  });
+}
+
+function setTmPreset(y) {
+  runTimeMachine();
+  toast(`Showing ${y}-year projection`);
+}
+
+/* ============================================
+   SUBSCRIPTION AUTOPSY
+   ============================================ */
+function renderSubs() {
+  const subs = [
+    {name:'Netflix',amount:49,usage:'Daily',rec:'Keep'},
+    {name:'Spotify',amount:24,usage:'Daily',rec:'Keep'},
+    {name:'Adobe CC',amount:99,usage:'Rarely',rec:'Cancel'},
+    {name:'Gym',amount:299,usage:'2x/week',rec:'Keep'},
+    {name:'Gaming Pass',amount:55,usage:'Never',rec:'Cancel'},
+    {name:'Cloud Storage',amount:15,usage:'Daily',rec:'Keep'}
+  ];
+
+  const total = subs.reduce((s, x) => s + x.amount, 0);
+  const save = subs.filter(s => s.rec === 'Cancel').reduce((s, x) => s + x.amount, 0);
+
+  const list = document.getElementById('subsList');
+  if (!list) return;
+
+  list.innerHTML = `
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
+      <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:12px;text-align:center;">
+        <div style="font-size:11px;color:#8892B0;">Monthly Subscriptions</div>
+        <div style="font-size:28px;font-weight:800;">${fmt(total)}</div>
+      </div>
+      <div style="background:rgba(46,213,115,0.05);padding:12px;border-radius:12px;text-align:center;border:1px solid rgba(46,213,115,0.1);">
+        <div style="font-size:11px;color:#8892B0;">Potential Savings</div>
+        <div style="font-size:28px;font-weight:800;color:#2ED573;">${fmt(save*12)}/yr</div>
+      </div>
+    </div>
+    ${subs.map(s => `
+      <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.08);align-items:center;">
+        <div><strong>${s.name}</strong> <span style="font-size:11px;color:#8892B0;">${s.usage}</span></div>
+        <div>${fmt(s.amount)}/mo</div>
+        <span class="badge ${s.rec==='Keep'?'green':'red'}">${s.rec}</span>
+      </div>
+    `).join('')}
+  `;
+}
+
+/* ============================================
+   ACHIEVEMENTS
+   ============================================ */
+function renderBadges() {
+  const badges = [
+    {icon:'🏆',name:'First Step',unlocked:true},
+    {icon:'💰',name:'Saver Pro',unlocked:true},
+    {icon:'🔥',name:'7-Day Streak',unlocked:true},
+    {icon:'🎯',name:'Goal Getter',unlocked:true},
+    {icon:'💎',name:'Investor',unlocked:true},
+    {icon:'🌟',name:'XP Hunter',unlocked:true},
+    {icon:'🚀',name:'FIRE Ready',unlocked:false},
+    {icon:'👑',name:'Financial King',unlocked:false},
+    {icon:'🦄',name:'Unicorn',unlocked:false}
+  ];
+
+  const grid = document.getElementById('badgeGrid');
+  if (!grid) return;
+
+  grid.innerHTML = badges.map(b => `
+    <div style="width:60px;height:60px;background:${b.unlocked?'#6C63FF':'rgba(255,255,255,0.04)'};border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;${b.unlocked?'box-shadow:0 0 40px rgba(108,99,255,0.2);':''}opacity:${b.unlocked?'1':'0.3'};">
+      <div style="font-size:24px;">${b.icon}</div>
+      <div style="font-size:7px;color:${b.unlocked?'#fff':'#4A5568'};">${b.name}</div>
+    </div>
+  `).join('');
+
+  const achLevel = document.getElementById('achLevel');
+  const achXP = document.getElementById('achXP');
+  if (achLevel) achLevel.textContent = state.level;
+  if (achXP) achXP.textContent = state.xp;
+}
+
+/* ============================================
+   CARDS
+   ============================================ */
+function renderCards() {
+  const cards = [
+    {name:'Emirates NBD Magniti',fee:'AED 0',benefit:'5% dining',icon:'💳'},
+    {name:'ADCB TouchPoints',fee:'AED 0 1st yr',benefit:'1.25% all',icon:'💎'},
+    {name:'FAB Rewards+',fee:'AED 250/yr',benefit:'Up to 5%',icon:'🌟'},
+    {name:'Mashreq Cash Back',fee:'AED 199/yr',benefit:'8% online',icon:'🔥'}
+  ];
+
+  const list = document.getElementById('cardList');
+  if (!list) return;
+
+  list.innerHTML = cards.map(c => `
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;">
+      <div style="font-size:36px;">${c.icon}</div>
+      <div style="font-weight:700;font-size:16px;">${c.name}</div>
+      <div class="text-muted">${c.benefit}</div>
+      <div style="font-size:12px;color:var(--text-muted);">Annual: ${c.fee}</div>
+    </div>
+  `).join('');
+}
+
+/* ============================================
+   BANKS
+   ============================================ */
+function renderBanks() {
+  const banks = [
+    {name:'Emirates NBD',type:'Local',branches:750},
+    {name:'ADCB',type:'Local',branches:90},
+    {name:'FAB',type:'Local',branches:180},
+    {name:'Mashreq',type:'Local',branches:58},
+    {name:'DIB',type:'Local',branches:85},
+    {name:'RAKBANK',type:'Local',branches:56},
+    {name:'HSBC UAE',type:'Foreign',branches:28},
+    {name:'Standard Chartered',type:'Foreign',branches:24},
+    {name:'Citibank UAE',type:'Foreign',branches:9}
+  ];
+
+  const list = document.getElementById('bankList');
+  if (!list) return;
+
+  list.innerHTML = banks.map(b => `
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;">
+      <div style="font-weight:700;">${b.name}</div>
+      <div class="text-muted" style="font-size:12px;">${b.type} Bank • ${b.branches} branches</div>
+    </div>
+  `).join('');
+}
+
+/* ============================================
+   INSURANCE
+   ============================================ */
+function renderInsurance() {
+  const ins = [
+    {name:'Oman Insurance',type:'Health + Life',premium:'AED 180/mo',rating:'4.7⭐'},
+    {name:'Daman',type:'Health',premium:'AED 220/mo',rating:'4.8⭐'},
+    {name:'AXA Gulf',type:'Comprehensive',premium:'AED 280/mo',rating:'4.6⭐'},
+    {name:'MetLife',type:'Life + Investment',premium:'AED 200/mo',rating:'4.7⭐'}
+  ];
+
+  const list = document.getElementById('insuranceList');
+  if (!list) return;
+
+  list.innerHTML = ins.map(i => `
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <div><strong>${i.name}</strong><div class="text-muted" style="font-size:12px;">${i.type}</div></div>
+        <div style="text-align:right;"><div style="color:#FFD700;">${i.rating}</div><div style="font-size:12px;">${i.premium}</div></div>
+      </div>
+    </div>
+  `).join('');
+}
+
+/* ============================================
+   REMITTANCE
+   ============================================ */
+function compareRemit() {
+  const amount = parseFloat(document.getElementById('remitAmount').value) || 1000;
+  const country = document.getElementById('remitDest');
+  const countryVal = country ? country.value : 'IN';
+  const rates = {IN:83.4, PK:278, PH:56.5, BD:122, NP:361, LK:325, EG:48, NG:420};
+  const rate = rates[countryVal] || 83.4;
+
+  const providers = [
+    {name:'Wise',fee:15,rate:0.995},
+    {name:'Western Union',fee:25,rate:0.985},
+    {name:'MoneyGram',fee:22,rate:0.988},
+    {name:'Al Ansari',fee:18,rate:0.992}
+  ];
+
+  const results = document.getElementById('remitResults');
+  if (!results) return;
+
+  results.innerHTML = `
+    <div class="table-wrap"><table><thead><tr><th>Provider</th><th>Fee</th><th>Rate</th><th>You Get</th></tr></thead><tbody>
+      ${providers.map(p => {
+        const received = (amount - p.fee) * rate * p.rate;
+        return `<tr><td><strong>${p.name}</strong></td><td>${fmt(p.fee)}</td><td>${p.rate}</td><td style="font-weight:700;color:#2ED573;">${received.toFixed(0)}</td></tr>`;
+      }).join('')}
+    </tbody></table>
+  `;
+}
+
+/* ============================================
+   LOANS
+   ============================================ */
+function calcEMI() {
+  const p = parseFloat(document.getElementById('emiAmount').value) || 0;
+  const r = (parseFloat(document.getElementById('emiRate').value) || 0) / 100 / 12;
+  const n = parseFloat(document.getElementById('emiTenure').value) || 1;
+
+  const emi = r > 0 ? p * r * Math.pow(1+r, n) / (Math.pow(1+r, n) - 1) : p/n;
+  const total = emi * n;
+
+  const emiMonthly = document.getElementById('emiMonthly');
+  const emiInterest = document.getElementById('emiInterest');
+  const emiTotal = document.getElementById('emiTotal');
+
+  if (emiMonthly) emiMonthly.textContent = fmt(emi);
+  if (emiInterest) emiInterest.textContent = fmt(total - p);
+  if (emiTotal) emiTotal.textContent = fmt(total);
+}
+
+/* ============================================
+   DREAMS
+   ============================================ */
+function renderDreams() {
+  const grid = document.getElementById('dreamGrid');
+  if (!grid) return;
+
+  grid.innerHTML = state.dreams.map(d => `
+    <div class="dream-card" style="background: var(--gradient);" onclick="deleteDream(${d.id})">
+      <div class="dream-icon">${d.icon}</div>
+      <div class="dream-info">
+        <div class="dream-title">${d.name}</div>
+        <div class="dream-amount">${fmt(d.target)}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function openDreamModal() {
+  const modal = document.getElementById('dreamModal');
+  if (modal) modal.classList.add('open');
+}
+
+function saveDream() {
+  const name = document.getElementById('dreamName');
+  const icon = document.getElementById('dreamIcon');
+  const target = document.getElementById('dreamTarget');
+
+  if (!name || !target) { toast('Fill all fields', 'danger'); return; }
+
+  const nameVal = name.value.trim();
+  const iconVal = icon.value || '⭐';
+  const targetVal = parseFloat(target.value);
+
+  if (!nameVal || !targetVal) { toast('Fill all fields', 'danger'); return; }
+
+  state.dreams.push({id: Date.now(), name: nameVal, icon: iconVal, target: targetVal});
+  saveState();
+  const modal = document.getElementById('dreamModal');
+  if (modal) modal.classList.remove('open');
+  renderDreams();
+  toast('Dream added! +15 XP', 'success');
+  state.xp += 15;
+  saveState();
+}
+
+function deleteDream(id) {
+  if (!confirm('Remove this dream?')) return;
+  state.dreams = state.dreams.filter(d => d.id !== id);
+  saveState();
+  renderDreams();
+}
+
+/* ============================================
+   DATA EXPORT
+   ============================================ */
+function exportAllData() {
+  const blob = new Blob([JSON.stringify(state, null, 2)], {type: 'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'fintell-backup-' + new Date().toISOString().split('T')[0] + '.json';
+  a.click();
+  URL.revokeObjectURL(url);
+  toast('✅ Data exported!', 'success');
+}
+
+function importAllData(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    try {
+      const data = JSON.parse(ev.target.result);
+      state = { ...state, ...data };
+      saveState();
+      toast('Data imported successfully', 'success');
+      setTimeout(() => location.reload(), 1000);
+    } catch(err) { toast('Invalid file', 'danger'); }
+  };
+  reader.readAsText(file);
+}
+
+function resetAllData() {
+  if (!confirm('This will delete ALL your data. Continue?')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  location.reload();
+}
+
+/* ============================================
+   NOTIFICATIONS
+   ============================================ */
+const notifBtn = document.getElementById('notifBtn');
+if (notifBtn) {
+  notifBtn.addEventListener('click', () => {
+    toast('📬 Bill due in 3 days: Netflix (AED 49)', 'info');
+    setTimeout(() => toast('🎯 Goal milestone: Dubai Apartment 25% complete!', 'success'), 800);
+    setTimeout(() => toast('🔥 14-day savings streak! Keep it up!', 'success'), 1600);
+  });
+}
+
+/* ============================================
+   VOICE COMMANDS
+   ============================================ */
+const voiceBtn = document.getElementById('voiceBtn');
+if (voiceBtn) {
+  voiceBtn.addEventListener('click', startVoice);
+}
+
+function startVoice() {
+  if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+    toast('Voice not supported in this browser', 'warning');
+    return;
+  }
+
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const rec = new SR();
+  rec.lang = 'en-US';
+
+  rec.onstart = () => {
+    toast('🎤 Listening...', 'info');
+    if (voiceBtn) voiceBtn.style.background = 'var(--danger)';
+  };
+
+  rec.onresult = e => {
+    const text = e.results[0][0].transcript.toLowerCase();
+    toast('Heard: "' + text + '"', 'success');
+    handleVoice(text);
+  };
+
+  rec.onend = () => {
+    if (voiceBtn) voiceBtn.style.background = '';
+  };
+
+  rec.onerror = () => {
+    if (voiceBtn) voiceBtn.style.background = '';
+    toast('Voice error', 'danger');
+  };
+
+  rec.start();
+}
+
+function handleVoice(text) {
+  if (text.includes('dashboard')) navigateTo('dashboard');
+  else if (text.includes('transaction')) openTxModal();
+  else if (text.includes('budget')) navigateTo('budget');
+  else if (text.includes('goal')) navigateTo('goals');
+  else if (text.includes('dark')) setTheme('dark');
+  else if (text.includes('light')) setTheme('light');
+  else if (text.includes('ocean')) setTheme('ocean');
+  else if (text.includes('panic')) togglePanic();
+  else if (text.includes('ai') || text.includes('twin')) navigateTo('aitwin');
+  else toast('Command not recognized', 'warning');
+}
+
+/* ============================================
+   MODALS
+   ============================================ */
+function closeModal(id) {
+  const modal = document.getElementById(id);
+  if (modal) modal.classList.remove('open');
+}
+
+document.querySelectorAll('.modal').forEach(m => {
+  m.addEventListener('click', e => {
+    if (e.target === m) m.classList.remove('open');
   });
 });
 
-// ── FOOTER LINK HOVER ────────────────────────────────
-document.querySelectorAll('.footer-box a').forEach(link=>{
-  link.addEventListener('mouseenter',()=> gsap.to(link,{ color:'#dbb86b', x:6, duration:.2 }));
-  link.addEventListener('mouseleave',()=> gsap.to(link,{ color:'rgba(170,170,170,.7)', x:0, duration:.2 }));
+/* ============================================
+   CALENDAR
+   ============================================ */
+function renderCalendar() {
+  const d = state.calDate;
+  const year = d.getFullYear();
+  const month = d.getMonth();
+
+  const calMonth = document.getElementById('calMonth');
+  if (calMonth) calMonth.textContent = d.toLocaleDateString('en-US', {month:'long', year:'numeric'});
+
+  const firstDay = new Date(year, month, 1).getDay();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const daysInPrev = new Date(year, month, 0).getDate();
+  const today = new Date();
+
+  const grid = document.getElementById('calendarGrid');
+  if (!grid) return;
+  grid.innerHTML = '';
+
+  ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].forEach(day => {
+    const h = document.createElement('div');
+    h.className = 'cal-header';
+    h.textContent = day;
+    grid.appendChild(h);
+  });
+
+  for (let i = 0; i < firstDay; i++) {
+    const cell = document.createElement('div');
+    cell.className = 'cal-day other-month';
+    cell.innerHTML = `<div class="day-num">${daysInPrev - firstDay + 1 + i}</div>`;
+    grid.appendChild(cell);
+  }
+
+  for (let day = 1; day <= daysInMonth; day++) {
+    const cell = document.createElement('div');
+    cell.className = 'cal-day';
+    const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+
+    if (today.getDate() === day && today.getMonth() === month && today.getFullYear() === year) {
+      cell.classList.add('today');
+    }
+
+    const txs = state.transactions.filter(t => t.date === dateStr);
+    const bills = state.bills.filter(b => b.date === dateStr);
+
+    let events = '';
+    txs.slice(0, 3).forEach(t => {
+      events += `<div class="cal-event ${t.type}"></div>`;
+    });
+    bills.forEach(() => {
+      events += `<div class="cal-event"></div>`;
+    });
+
+    cell.innerHTML = `<div class="day-num">${day}</div><div class="day-events">${events}</div>`;
+    grid.appendChild(cell);
+  }
+}
+
+function calNav(dir) {
+  state.calDate.setMonth(state.calDate.getMonth() + dir);
+  renderCalendar();
+}
+
+/* ============================================
+   INIT
+   ============================================ */
+function init() {
+  loadState();
+  setTheme(state.theme);
+  renderTicker();
+  renderDashboard();
+  renderTransactions();
+  renderBudgets();
+  renderGoals();
+  renderBills();
+  renderPortfolio();
+  renderSubs();
+  renderBadges();
+  renderCards();
+  renderBanks();
+  renderInsurance();
+  renderDreams();
+
+  // Populate category filter
+  const catFilter = document.getElementById('txFilterCat');
+  if (catFilter) {
+    catFilter.innerHTML = '<option value="all">All Categories</option>' + CATEGORIES.map(c => `<option>${c}</option>`).join('');
+  }
+
+  // Search/Filter events
+  const txSearch = document.getElementById('txSearch');
+  if (txSearch) txSearch.addEventListener('input', () => { state.txPage = 1; renderTransactions(); });
+
+  const txFilterType = document.getElementById('txFilterType');
+  if (txFilterType) txFilterType.addEventListener('change', () => { state.txPage = 1; renderTransactions(); });
+
+  const txFilterCat = document.getElementById('txFilterCat');
+  if (txFilterCat) txFilterCat.addEventListener('change', () => { state.txPage = 1; renderTransactions(); });
+
+  // Hide loader
+  setTimeout(() => {
+    const loader = document.getElementById('loader');
+    if (loader) loader.classList.add('hidden');
+  }, 1200);
+
+  toast('Welcome back! 👋', 'success');
+
+  // FIRE on load
+  setTimeout(calcFIRE, 100);
+  setTimeout(runTimeMachine, 200);
+}
+
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 1024) {
+    const sidebar = document.getElementById('sidebar');
+    if (sidebar) sidebar.classList.remove('open');
+  }
 });
 
-console.log('%cHUKSHAH SIGMA ENGINE ACTIVE 👑', 'font-size:1.2rem;color:#dbb86b;font-weight:bold;');
+document.addEventListener('DOMContentLoaded', init);
 </script>
 </body>
 </html>
